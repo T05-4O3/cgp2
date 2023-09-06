@@ -26,13 +26,13 @@ class UsersTableSeeder extends Seeder
                 'status' => 'active',
             ],
 
-            // Client
+            // Creator
             [
-                'name' => 'Client',
-                'username' => 'client',
-                'email' => 'observation.jp+savis_client@gmail.com',
+                'name' => 'Creator',
+                'username' => 'creator',
+                'email' => 'observation.jp+savis_creator@gmail.com',
                 'password' => Hash::make('111'),
-                'role' => 'client',
+                'role' => 'creator',
                 'status' => 'active',
             ],
 
