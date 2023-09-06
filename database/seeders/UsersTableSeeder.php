@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
 
             [
                 'name' => 'Admin',
-                'useradmin' => 'admin',
+                'username' => 'admin',
                 'email' => 'observation.jp+savis_admin@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'admin',
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             // Client
             [
                 'name' => 'Client',
-                'useradmin' => 'client',
+                'username' => 'client',
                 'email' => 'observation.jp+savis_client@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'client',
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
             // User
             [
                 'name' => 'User',
-                'useradmin' => 'user',
+                'username' => 'user',
                 'email' => 'observation.jp+savis_user@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'user',
