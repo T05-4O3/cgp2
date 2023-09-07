@@ -44,3 +44,5 @@ Route::middleware(['auth','role:creator'])->group(function(){
     Route::get('/creator/dashboard', [CreatorController::class, 'CreatorDashboard'])->name('creator.dashboard');
 
 }); // End Group Creator Middleware
+
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
