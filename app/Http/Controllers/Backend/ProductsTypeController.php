@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProductsType;
+use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
 {
@@ -69,6 +70,69 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Products Type Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Storytellings All Method
+    public function AllStorytelling(){
+        $storytellings = Storytellings::latest()->get();
+        return view('backend.storytellings.all_storytellings' ,compact('storytellings'));
+
+    } // End Method
+
+    public function AddStorytelling(){
+        $storytellings = Storytellings::latest()->get();
+        return view('backend.storytellings.add_storytellings');
+
+    } // End Method
+
+    public function StoreStorytelling(Request $request){
+
+        Storytellings::insert([
+            'storytellings_name' => $request->storytellings_name,
+        ]);
+
+        $notification = array(
+            'message' => 'Storytellings Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.storytelling')->with($notification);
+
+    } // End Method
+
+    public function EditStorytelling($id){
+        $storytellings = Storytellings::findOrFail($id);
+        return view('backend.storytellings.edit_storytellings',compact('storytellings'));
+
+    } // End Method
+
+
+    public function UpdateStorytelling(Request $request){
+        $story_id = $request->id;
+
+        Storytellings::findOrFail($story_id)->update([
+            'storytellings_name' => $request->storytellings_name,
+        ]);
+
+        $notification = array(
+            'message' => 'Storytellings Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.storytelling')->with($notification);
+
+    } // End Method
+
+    public function DeleteStorytelling($id){
+        Storytellings::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Storytellings Deleted Successfully',
             'alert-type' => 'success'
         );
 

@@ -37,6 +37,24 @@
                                 </ul>
                             </div>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#storytelling" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Storytelling</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="storytelling">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.storytelling') }}" class="nav-link">All Storytelling</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="pages/email/read.html" class="nav-link">Add Storytelling</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         
                         <li class="nav-item">
                             <a href="pages/apps/calendar.html" class="nav-link">

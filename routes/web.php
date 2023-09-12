@@ -85,5 +85,17 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
     });
 
+    // Storytellings All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/storytelling', 'AllStorytelling')->name('all.storytelling');
+        Route::get('/add/storytelling', 'AddStorytelling')->name('add.storytelling');
+        Route::post('/store/storytelling', 'StoreStorytelling')->name('store.storytelling');
+        Route::get('/edit/storytelling/{id}', 'EditStorytelling')->name('edit.storytelling');
+        Route::post('/update/storytelling', 'UpdateStorytelling')->name('update.storytelling');
+        Route::get('/delete/storytelling/{id}', 'DeleteStorytelling')->name('delete.storytelling');
+
+    });
+
 
 }); // End Group Admin Middleware
