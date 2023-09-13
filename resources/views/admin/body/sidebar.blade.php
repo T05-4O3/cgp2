@@ -23,16 +23,34 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
                                 <i class="link-icon" data-feather="mail"></i>
-                                <span class="link-title">Products Type</span>
+                                <span class="link-title">Products Category</span>
                                 <i class="link-arrow" data-feather="chevron-down"></i>
                             </a>
                             <div class="collapse" id="emails">
                                 <ul class="nav sub-menu">
                                     <li class="nav-item">
-                                    <a href="{{ route('all.type') }}" class="nav-link">All Type</a>
+                                    <a href="{{ route('all.type') }}" class="nav-link">All Category</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Type</a>
+                                    <a href="pages/email/read.html" class="nav-link">Add Category</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#movie" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Movie</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="movie">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.movie') }}" class="nav-link">All Movie</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="add.movie" class="nav-link">Add Movie</a>
                                     </li>
                                 </ul>
                             </div>

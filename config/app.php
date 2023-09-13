@@ -185,4 +185,11 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | YouTubeAPI
+    |--------------------------------------------------------------------------    |
+    */
+    'youtube_api_key' => env('AIzaSyAuJWGO4bzuwvPagbiXJoHS92qkigym0N0'),
+
 ];

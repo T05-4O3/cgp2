@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\ProductsTypeController;
+use App\Http\Controllers\Backend\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,14 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/edit/type/{id}', 'EditType')->name('edit.type');
         Route::post('/update/type', 'UpdateType')->name('update.type');
         Route::get('/delete/type/{id}', 'DeleteType')->name('delete.type');
+
+    });
+
+    // Movie All Route
+    Route::controller(MovieController::class)->group(function(){
+
+        Route::get('/all/movie', 'AllMovie')->name('all.movie');
+        Route::get('/add/movie', 'AddMovie')->name('add.movie');
 
     });
 
