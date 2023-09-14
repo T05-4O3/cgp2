@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProductsType;
 use App\Models\Goal;
+use App\Models\Targets;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -134,6 +135,69 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Goal Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Targets All Method
+    public function AllTarget(){
+        $targets = Targets::latest()->get();
+        return view('backend.targets.all_targets' ,compact('targets'));
+
+    } // End Method
+
+    public function AddTarget(){
+        $targets = Targets::latest()->get();
+        return view('backend.targets.add_targets');
+
+    } // End Method
+
+    public function StoreTarget(Request $request){
+
+        Targets::insert([
+            'target_type' => $request->target_type,
+        ]);
+
+        $notification = array(
+            'message' => 'Targets Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.target')->with($notification);
+
+    } // End Method
+
+    public function EditTarget($id){
+        $targets = Targets::findOrFail($id);
+        return view('backend.targets.edit_targets',compact('targets'));
+
+    } // End Method
+
+
+    public function UpdateTarget(Request $request){
+        $target_id = $request->id;
+
+        Targets::findOrFail($target_id)->update([
+            'target_type' => $request->target_type,
+        ]);
+
+        $notification = array(
+            'message' => 'Target Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.target')->with($notification);
+
+    } // End Method
+
+    public function DeleteTarget($id){
+        Targets::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'target Deleted Successfully',
             'alert-type' => 'success'
         );
 

@@ -105,6 +105,17 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/goal/{id}', 'DeleteGoal')->name('delete.goal');
 
     });
+    // Targets Type All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/target', 'AllTarget')->name('all.target');
+        Route::get('/add/target', 'AddTarget')->name('add.target');
+        Route::post('/store/target', 'StoreTarget')->name('store.target');
+        Route::get('/edit/target/{id}', 'EditTarget')->name('edit.target');
+        Route::post('/update/target', 'UpdateTarget')->name('update.target');
+        Route::get('/delete/target/{id}', 'DeleteTarget')->name('delete.target');
+
+    });
 
     // Storytellings All Route
     Route::controller(ProductsTypeController::class)->group(function(){
