@@ -14,6 +14,7 @@ use App\Models\ShapeTerms;
 use App\Models\BrightnessTerms;
 use App\Models\EmotionalTerms;
 use App\Models\EnvironmentTerms;
+use App\Models\ObjectTerms;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -606,6 +607,74 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Environment Term Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Object Terms All Method
+    public function AllObjectTerm(){
+            $object = ObjectTerms::latest()->get();
+            return view('backend.object.all_object' ,compact('object'));
+
+        } // End Method
+
+        public function AddObjectTerm(){
+            return view('backend.object.add_object');
+
+        } // End Method
+
+    public function StoreObjectTerm(Request $request){
+        // Validation
+        $request->validate([
+            'object_term' => 'required|unique:object_terms|max:200',
+            'object_icon' => 'required'
+        ]);
+
+        ObjectTerms::insert([
+            'object_term' => $request->object_term,
+            'object_icon' => $request->object_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Object Term Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.object')->with($notification);
+
+    } // End Method
+
+    public function EditObjectTerm($id){
+        $object = ObjectTerms::findOrFail($id);
+        return view('backend.object.edit_object',compact('object'));
+
+    } // End Method
+
+    public function UpdateObjectTerm(Request $request){
+        $pid = $request->id;
+
+        ObjectTerms::findOrFail($pid)->update([
+            'object_term' => $request->object_term,
+            'object_icon' => $request->object_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Object Term Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.object')->with($notification);
+
+    } // End Method
+
+    public function DeleteObjectTerm($id){
+        ObjectTerms::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Object Term Deleted Successfully',
             'alert-type' => 'success'
         );
 

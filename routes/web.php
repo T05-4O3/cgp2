@@ -189,6 +189,18 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/environment/{id}', 'DeleteEnvironmentTerm')->name('delete.environment');
 
     });
+    
+    // Object Terms All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/object', 'AllObjectTerm')->name('all.object');
+        Route::get('/add/object', 'AddObjectTerm')->name('add.object');
+        Route::post('/store/object', 'StoreObjectTerm')->name('store.object');
+        Route::get('/edit/object/{id}', 'EditObjectTerm')->name('edit.object');
+        Route::post('/update/object', 'UpdateObjectTerm')->name('update.object');
+        Route::get('/delete/object/{id}', 'DeleteObjectTerm')->name('delete.object');
+
+    });
 
     // Storytellings All Route
     Route::controller(ProductsTypeController::class)->group(function(){
