@@ -129,6 +129,18 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/appeal/{id}', 'DeleteAppealPoint')->name('delete.appeal');
 
     });
+    
+    // Color Terms All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/color', 'AllColorTerm')->name('all.color');
+        Route::get('/add/color', 'AddColorTerm')->name('add.color');
+        Route::post('/store/color', 'StoreColorTerm')->name('store.color');
+        Route::get('/edit/color/{id}', 'EditColorTerm')->name('edit.color');
+        Route::post('/update/color', 'UpdateColorTerm')->name('update.color');
+        Route::get('/delete/color/{id}', 'DeleteColorTerm')->name('delete.color');
+
+    });
 
     // Storytellings All Route
     Route::controller(ProductsTypeController::class)->group(function(){

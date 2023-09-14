@@ -9,6 +9,7 @@ use App\Models\ProductsType;
 use App\Models\Goal;
 use App\Models\Targets;
 use App\Models\AppealPoints;
+use App\Models\ColorTerms;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -37,7 +38,7 @@ class ProductsTypeController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Products Type Create Successfully',
+            'message' => 'Color Term Create Successfully',
             'alert-type' => 'success'
         );
 
@@ -226,7 +227,7 @@ class ProductsTypeController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Targets Create Successfully',
+            'message' => 'Appeal Point Create Successfully',
             'appeal_point' => 'success'
         );
 
@@ -239,7 +240,6 @@ class ProductsTypeController extends Controller
         return view('backend.appeals.edit_appeals',compact('appeals'));
 
     } // End Method
-
 
     public function UpdateAppealPoint(Request $request){
         $appeals_id = $request->id;
@@ -262,6 +262,74 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Appeal Point Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Color Terms All Method
+    public function AllColorTerm(){
+            $colors = ColorTerms::latest()->get();
+            return view('backend.colors.all_colors' ,compact('colors'));
+
+        } // End Method
+
+        public function AddColorTerm(){
+            return view('backend.colors.add_colors');
+
+        } // End Method
+
+    public function StoreColorTerm(Request $request){
+        // Validation
+        $request->validate([
+            'color_term' => 'required|unique:color_terms|max:200',
+            'color_icon' => 'required'
+        ]);
+
+        ColorTerms::insert([
+            'color_term' => $request->color_term,
+            'color_icon' => $request->color_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Color Term Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.color')->with($notification);
+
+    } // End Method
+
+    public function EditColorTerm($id){
+        $colors = ColorTerms::findOrFail($id);
+        return view('backend.colors.edit_colors',compact('colors'));
+
+    } // End Method
+
+    public function UpdateColorTerm(Request $request){
+        $pid = $request->id;
+
+        ColorTerms::findOrFail($pid)->update([
+            'color_term' => $request->color_term,
+            'color_icon' => $request->color_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Products ColorTerm Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.color')->with($notification);
+
+    } // End Method
+
+    public function DeleteColorTerm($id){
+        ColorTerms::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Color Term Deleted Successfully',
             'alert-type' => 'success'
         );
 
@@ -302,7 +370,6 @@ class ProductsTypeController extends Controller
         return view('backend.storytellings.edit_storytellings',compact('storytellings'));
 
     } // End Method
-
 
     public function UpdateStorytelling(Request $request){
         $story_id = $request->id;
