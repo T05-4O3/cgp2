@@ -92,6 +92,83 @@
                                 </div><!-- Row -->
 
                                 <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Appeal Points</label>
+                                            <select name="movie_appeals" class="form-select" id="exampleFormControlSelect1">
+                                                <option selected="" disabled="">Select Appeal Points</option>
+                                                @foreach($appealPoints as $appeal_points)
+                                                    <option value="{{ $appeal_points->id }}">{{ $appeal_points->appeal_point }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                </div><!-- Row -->
+                                
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Color Terms</label>
+                                            <select name="color_terms[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($colorTerms as $color_terms)
+                                                    <option value="{{ $color_terms->id }}">{{ $color_terms->color_term }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Shape Terms</label>
+                                            <select name="shape_terms[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($shapeTerms as $shape_terms)
+                                                    <option value="{{ $shape_terms->id }}">{{ $shape_terms->shape_term }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Brightness Terms</label>
+                                            <select name="brightness_terms[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($brightnessTerms as $brightness_terms)
+                                                    <option value="{{ $brightness_terms->id }}">{{ $brightness_terms->brightness_term }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Emotional Terms</label>
+                                            <select name="emotional_terms[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($emotionalTerms as $emotional_terms)
+                                                    <option value="{{ $emotional_terms->id }}">{{ $emotional_terms->emotional_term }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Environment Terms</label>
+                                            <select name="environment_terms[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($environmentTerms as $environment_terms)
+                                                    <option value="{{ $environment_terms->id }}">{{ $environment_terms->environment_term }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Object Terms</label>
+                                            <select name="object_terms[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($objectTerms as $object_terms)
+                                                    <option value="{{ $object_terms->id }}">{{ $object_terms->object_term }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                </div><!-- Row -->
+                                
+                                <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Storytelling</label>
