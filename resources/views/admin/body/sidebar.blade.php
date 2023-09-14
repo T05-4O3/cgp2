@@ -14,7 +14,7 @@
                     <ul class="nav">
                         <li class="nav-item nav-category">Main</li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}dashboard.html" class="nav-link">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                             <i class="link-icon" data-feather="box"></i>
                             <span class="link-title">Dashboard</span>
                             </a>
@@ -196,6 +196,24 @@
                                     </li>
                                     <li class="nav-item">
                                     <a href="pages/email/read.html" class="nav-link">Add Environment Terms</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#object" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Object Terms</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="object">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.object') }}" class="nav-link">All Object Terms</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="pages/email/read.html" class="nav-link">Add Object Terms</a>
                                     </li>
                                 </ul>
                             </div>

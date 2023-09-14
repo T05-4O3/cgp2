@@ -67,17 +67,27 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-12">
-                                            <label class="form-label">Product Category</label>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Goal</label>
                                             <div class="mb-3">
-                                                <select name="ptype_id" class="form-select" id="exampleFormControlSelect1">
-                                                    <option selected="" disabled="">Select Category</option>
-                                                    @foreach($productType as $ptype)
-                                                        <option value="{{ $ptype->id }}">{{ $ptype->type_name }}</option>
+                                                <select name="movie_goals" class="form-select" id="exampleFormControlSelect1">
+                                                    <option selected="" disabled="">Select Goal</option>
+                                                    @foreach($goal as $goals)
+                                                        <option value="{{ $goals->id }}">{{ $goals->goal_type }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div> -->
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Targets</label>
+                                            <div class="mb-3">
+                                                <select name="movie_targets[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                    @foreach($targets as $targets)
+                                                        <option value="{{ $targets->id }}">{{ $targets->target_type }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div><!-- Col -->
                                 </div><!-- Row -->
 
