@@ -13,6 +13,7 @@ use App\Models\ColorTerms;
 use App\Models\ShapeTerms;
 use App\Models\BrightnessTerms;
 use App\Models\EmotionalTerms;
+use App\Models\EnvironmentTerms;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -537,6 +538,74 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Emotional Term Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Environment Terms All Method
+    public function AllEnvironmentTerm(){
+            $environment = EnvironmentTerms::latest()->get();
+            return view('backend.environment.all_environment' ,compact('environment'));
+
+        } // End Method
+
+        public function AddEnvironmentTerm(){
+            return view('backend.environment.add_environment');
+
+        } // End Method
+
+    public function StoreEnvironmentTerm(Request $request){
+        // Validation
+        $request->validate([
+            'environment_term' => 'required|unique:environment_terms|max:200',
+            'environment_icon' => 'required'
+        ]);
+
+        EnvironmentTerms::insert([
+            'environment_term' => $request->environment_term,
+            'environment_icon' => $request->environment_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Environment Term Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.environment')->with($notification);
+
+    } // End Method
+
+    public function EditEnvironmentTerm($id){
+        $environment = EnvironmentTerms::findOrFail($id);
+        return view('backend.environment.edit_environment',compact('environment'));
+
+    } // End Method
+
+    public function UpdateEnvironmentTerm(Request $request){
+        $pid = $request->id;
+
+        EnvironmentTerms::findOrFail($pid)->update([
+            'environment_term' => $request->environment_term,
+            'environment_icon' => $request->environment_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Environment Term Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.environment')->with($notification);
+
+    } // End Method
+
+    public function DeleteEnvironmentTerm($id){
+        EnvironmentTerms::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Environment Term Deleted Successfully',
             'alert-type' => 'success'
         );
 

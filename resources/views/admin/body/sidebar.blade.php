@@ -184,6 +184,24 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#environment" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Environment Terms</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="environment">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.environment') }}" class="nav-link">All Environment Terms</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="pages/email/read.html" class="nav-link">Add Environment Terms</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#storytelling" role="button" aria-expanded="false" aria-controls="emails">
                                 <i class="link-icon" data-feather="mail"></i>
                                 <span class="link-title">Storytelling</span>

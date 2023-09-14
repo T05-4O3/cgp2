@@ -177,6 +177,18 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/emotional/{id}', 'DeleteEmotionalTerm')->name('delete.emotional');
 
     });
+    
+    // Environment Terms All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/environment', 'AllEnvironmentTerm')->name('all.environment');
+        Route::get('/add/environment', 'AddEnvironmentTerm')->name('add.environment');
+        Route::post('/store/environment', 'StoreEnvironmentTerm')->name('store.environment');
+        Route::get('/edit/environment/{id}', 'EditEnvironmentTerm')->name('edit.environment');
+        Route::post('/update/environment', 'UpdateEnvironmentTerm')->name('update.environment');
+        Route::get('/delete/environment/{id}', 'DeleteEnvironmentTerm')->name('delete.environment');
+
+    });
 
     // Storytellings All Route
     Route::controller(ProductsTypeController::class)->group(function(){
