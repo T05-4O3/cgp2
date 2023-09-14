@@ -94,6 +94,24 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#appeal" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Appeal Points</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="appeal">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.appeal') }}" class="nav-link">All Appeal Points</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="pages/email/read.html" class="nav-link">Add Appeal Points</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#storytelling" role="button" aria-expanded="false" aria-controls="emails">
                                 <i class="link-icon" data-feather="mail"></i>
                                 <span class="link-title">Storytelling</span>

@@ -105,6 +105,7 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/goal/{id}', 'DeleteGoal')->name('delete.goal');
 
     });
+
     // Targets Type All Route
     Route::controller(ProductsTypeController::class)->group(function(){
 
@@ -114,6 +115,18 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/edit/target/{id}', 'EditTarget')->name('edit.target');
         Route::post('/update/target', 'UpdateTarget')->name('update.target');
         Route::get('/delete/target/{id}', 'DeleteTarget')->name('delete.target');
+
+    });
+    
+    // Appleal Points All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/appeal', 'AllAppealPoint')->name('all.appeal');
+        Route::get('/add/appeal', 'AddAppealPoint')->name('add.appeal');
+        Route::post('/store/appeal', 'StoreAppealPoint')->name('store.appeal');
+        Route::get('/edit/appeal/{id}', 'EditAppealPoint')->name('edit.appeal');
+        Route::post('/update/appeal', 'UpdateAppealPoint')->name('update.appeal');
+        Route::get('/delete/appeal/{id}', 'DeleteAppealPoint')->name('delete.appeal');
 
     });
 

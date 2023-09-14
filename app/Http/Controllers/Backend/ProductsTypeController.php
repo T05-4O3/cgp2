@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ProductsType;
 use App\Models\Goal;
 use App\Models\Targets;
+use App\Models\AppealPoints;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -197,7 +198,70 @@ class ProductsTypeController extends Controller
         Targets::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'target Deleted Successfully',
+            'message' => 'Target Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Appeal Points All Method
+    public function AllAppealPoint(){
+        $appeals = AppealPoints::latest()->get();
+        return view('backend.appeals.all_appeals' ,compact('appeals'));
+
+    } // End Method
+
+    public function AddAppealPoint(){
+        $appeals = AppealPoints::latest()->get();
+        return view('backend.appeals.add_appeals');
+
+    } // End Method
+
+    public function StoreAppealPoint(Request $request){
+
+        AppealPoints::insert([
+            'appeal_point' => $request->appeal_point,
+        ]);
+
+        $notification = array(
+            'message' => 'Targets Create Successfully',
+            'appeal_point' => 'success'
+        );
+
+        return redirect()->route('all.appeal')->with($notification);
+
+    } // End Method
+
+    public function EditAppealPoint($id){
+        $appeals = AppealPoints::findOrFail($id);
+        return view('backend.appeals.edit_appeals',compact('appeals'));
+
+    } // End Method
+
+
+    public function UpdateAppealPoint(Request $request){
+        $appeals_id = $request->id;
+
+        AppealPoints::findOrFail($appeals_id)->update([
+            'appeal_point' => $request->appeal_point,
+        ]);
+
+        $notification = array(
+            'message' => 'Appeal Point Updated Successfully',
+            'appeal_point' => 'success'
+        );
+
+        return redirect()->route('all.appeal')->with($notification);
+
+    } // End Method
+
+    public function DeleteAppealPoint($id){
+        AppealPoints::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Appeal Point Deleted Successfully',
             'alert-type' => 'success'
         );
 
