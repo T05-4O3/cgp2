@@ -12,6 +12,7 @@ use App\Models\AppealPoints;
 use App\Models\ColorTerms;
 use App\Models\ShapeTerms;
 use App\Models\BrightnessTerms;
+use App\Models\EmotionalTerms;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -468,6 +469,74 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Brightness Term Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Emotional Terms All Method
+    public function AllEmotionalTerm(){
+            $emotional = EmotionalTerms::latest()->get();
+            return view('backend.emotional.all_emotional' ,compact('emotional'));
+
+        } // End Method
+
+        public function AddEmotionalTerm(){
+            return view('backend.emotional.add_emotional');
+
+        } // End Method
+
+    public function StoreEmotionalTerm(Request $request){
+        // Validation
+        $request->validate([
+            'emotional_term' => 'required|unique:emotional_terms|max:200',
+            'emotional_icon' => 'required'
+        ]);
+
+        EmotionalTerms::insert([
+            'emotional_term' => $request->emotional_term,
+            'emotional_icon' => $request->emotional_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Emotional Term Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.emotional')->with($notification);
+
+    } // End Method
+
+    public function EditEmotionalTerm($id){
+        $emotional = EmotionalTerms::findOrFail($id);
+        return view('backend.emotional.edit_emotional',compact('emotional'));
+
+    } // End Method
+
+    public function UpdateEmotionalTerm(Request $request){
+        $pid = $request->id;
+
+        EmotionalTerms::findOrFail($pid)->update([
+            'emotional_term' => $request->emotional_term,
+            'emotional_icon' => $request->emotional_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Emotional Term Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.emotional')->with($notification);
+
+    } // End Method
+
+    public function DeleteEmotionalTerm($id){
+        EmotionalTerms::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Emotional Term Deleted Successfully',
             'alert-type' => 'success'
         );
 

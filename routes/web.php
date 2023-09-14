@@ -165,6 +165,18 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/brightness/{id}', 'DeleteBrightnessTerm')->name('delete.brightness');
 
     });
+    
+    // Emotional Terms All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/emotional', 'AllEmotionalTerm')->name('all.emotional');
+        Route::get('/add/emotional', 'AddEmotionalTerm')->name('add.emotional');
+        Route::post('/store/emotional', 'StoreEmotionalTerm')->name('store.emotional');
+        Route::get('/edit/emotional/{id}', 'EditEmotionalTerm')->name('edit.emotional');
+        Route::post('/update/emotional', 'UpdateEmotionalTerm')->name('update.emotional');
+        Route::get('/delete/emotional/{id}', 'DeleteEmotionalTerm')->name('delete.emotional');
+
+    });
 
     // Storytellings All Route
     Route::controller(ProductsTypeController::class)->group(function(){
