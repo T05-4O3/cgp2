@@ -141,6 +141,30 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/color/{id}', 'DeleteColorTerm')->name('delete.color');
 
     });
+    
+    // Shape Terms All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/shape', 'AllShapeTerm')->name('all.shape');
+        Route::get('/add/shape', 'AddShapeTerm')->name('add.shape');
+        Route::post('/store/shape', 'StoreShapeTerm')->name('store.shape');
+        Route::get('/edit/shape/{id}', 'EditShapeTerm')->name('edit.shape');
+        Route::post('/update/shape', 'UpdateShapeTerm')->name('update.shape');
+        Route::get('/delete/shape/{id}', 'DeleteShapeTerm')->name('delete.shape');
+
+    });
+    
+    // Brightness Terms All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/brightness', 'AllBrightnessTerm')->name('all.brightness');
+        Route::get('/add/brightness', 'AddBrightnessTerm')->name('add.brightness');
+        Route::post('/store/brightness', 'StoreBrightnessTerm')->name('store.brightness');
+        Route::get('/edit/brightness/{id}', 'EditBrightnessTerm')->name('edit.brightness');
+        Route::post('/update/brightness', 'UpdateBrightnessTerm')->name('update.brightness');
+        Route::get('/delete/brightness/{id}', 'DeleteBrightnessTerm')->name('delete.brightness');
+
+    });
 
     // Storytellings All Route
     Route::controller(ProductsTypeController::class)->group(function(){

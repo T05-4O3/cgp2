@@ -10,6 +10,8 @@ use App\Models\Goal;
 use App\Models\Targets;
 use App\Models\AppealPoints;
 use App\Models\ColorTerms;
+use App\Models\ShapeTerms;
+use App\Models\BrightnessTerms;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -38,7 +40,7 @@ class ProductsTypeController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Color Term Create Successfully',
+            'message' => 'Products Type Create Successfully',
             'alert-type' => 'success'
         );
 
@@ -317,7 +319,7 @@ class ProductsTypeController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Products ColorTerm Updated Successfully',
+            'message' => 'Color Term Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -330,6 +332,142 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Color Term Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Shape Terms All Method
+    public function AllShapeTerm(){
+            $shapes = ShapeTerms::latest()->get();
+            return view('backend.shapes.all_shapes' ,compact('shapes'));
+
+        } // End Method
+
+        public function AddShapeTerm(){
+            return view('backend.shapes.add_shapes');
+
+        } // End Method
+
+    public function StoreShapeTerm(Request $request){
+        // Validation
+        $request->validate([
+            'shape_term' => 'required|unique:shape_terms|max:200',
+            'shape_icon' => 'required'
+        ]);
+
+        ShapeTerms::insert([
+            'shape_term' => $request->shape_term,
+            'shape_icon' => $request->shape_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Shape Term Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.shape')->with($notification);
+
+    } // End Method
+
+    public function EditShapeTerm($id){
+        $shapes = ShapeTerms::findOrFail($id);
+        return view('backend.shapes.edit_shapes',compact('shapes'));
+
+    } // End Method
+
+    public function UpdateShapeTerm(Request $request){
+        $pid = $request->id;
+
+        ShapeTerms::findOrFail($pid)->update([
+            'shape_term' => $request->shape_term,
+            'shape_icon' => $request->shape_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Shape Term Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.shape')->with($notification);
+
+    } // End Method
+
+    public function DeleteShapeTerm($id){
+        ShapeTerms::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Shape Term Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Brightness Terms All Method
+    public function AllBrightnessTerm(){
+            $brightness = BrightnessTerms::latest()->get();
+            return view('backend.brightness.all_brightness' ,compact('brightness'));
+
+        } // End Method
+
+        public function AddBrightnessTerm(){
+            return view('backend.brightness.add_brightness');
+
+        } // End Method
+
+    public function StoreBrightnessTerm(Request $request){
+        // Validation
+        $request->validate([
+            'brightness_term' => 'required|unique:brightness_terms|max:200',
+            'brightness_icon' => 'required'
+        ]);
+
+        BrightnessTerms::insert([
+            'brightness_term' => $request->brightness_term,
+            'brightness_icon' => $request->brightness_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Brightness Term Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.brightness')->with($notification);
+
+    } // End Method
+
+    public function EditBrightnessTerm($id){
+        $brightness = BrightnessTerms::findOrFail($id);
+        return view('backend.brightness.edit_brightness',compact('brightness'));
+
+    } // End Method
+
+    public function UpdateBrightnessTerm(Request $request){
+        $pid = $request->id;
+
+        BrightnessTerms::findOrFail($pid)->update([
+            'brightness_term' => $request->brightness_term,
+            'brightness_icon' => $request->brightness_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Brightness Term Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.brightness')->with($notification);
+
+    } // End Method
+
+    public function DeleteBrightnessTerm($id){
+        BrightnessTerms::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Brightness Term Deleted Successfully',
             'alert-type' => 'success'
         );
 
