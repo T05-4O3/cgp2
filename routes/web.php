@@ -74,6 +74,14 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
  /// Admin Group Middleware
  Route::middleware(['auth','role:admin'])->group(function(){
     
+    // Movie All Route
+    Route::controller(MovieController::class)->group(function(){
+
+        Route::get('/all/movie', 'AllMovie')->name('all.movie');
+        Route::get('/add/movie', 'AddMovie')->name('add.movie');
+
+    });
+
     // Products Type All Route
     Route::controller(ProductsTypeController::class)->group(function(){
 
@@ -86,11 +94,15 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
     });
 
-    // Movie All Route
-    Route::controller(MovieController::class)->group(function(){
+    // Goal Type All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
 
-        Route::get('/all/movie', 'AllMovie')->name('all.movie');
-        Route::get('/add/movie', 'AddMovie')->name('add.movie');
+        Route::get('/all/goal', 'AllGoal')->name('all.goal');
+        Route::get('/add/goal', 'AddGoal')->name('add.goal');
+        Route::post('/store/goal', 'StoreGoal')->name('store.goal');
+        Route::get('/edit/goal/{id}', 'EditGoal')->name('edit.goal');
+        Route::post('/update/goal', 'UpdateGoal')->name('update.goal');
+        Route::get('/delete/goal/{id}', 'DeleteGoal')->name('delete.goal');
 
     });
 

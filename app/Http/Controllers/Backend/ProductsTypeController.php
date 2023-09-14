@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProductsType;
+use App\Models\Goal;
 use App\Models\Storytellings;
 
 class ProductsTypeController extends Controller
@@ -70,6 +71,69 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Products Type Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Goals All Method
+    public function AllGoal(){
+        $goals = Goal::latest()->get();
+        return view('backend.goals.all_goals' ,compact('goals'));
+
+    } // End Method
+
+    public function AddGoal(){
+        $goals = Goal::latest()->get();
+        return view('backend.goals.add_goals');
+
+    } // End Method
+
+    public function StoreGoal(Request $request){
+
+        Goal::insert([
+            'goal_type' => $request->goal_type,
+        ]);
+
+        $notification = array(
+            'message' => 'Goals Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.goal')->with($notification);
+
+    } // End Method
+
+    public function EditGoal($id){
+        $goals = Goal::findOrFail($id);
+        return view('backend.goals.edit_goals',compact('goals'));
+
+    } // End Method
+
+
+    public function UpdateGoal(Request $request){
+        $goal_id = $request->id;
+
+        Goal::findOrFail($goal_id)->update([
+            'goal_type' => $request->goal_type,
+        ]);
+
+        $notification = array(
+            'message' => 'Goal Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.goal')->with($notification);
+
+    } // End Method
+
+    public function DeleteGoal($id){
+        Goal::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Goal Deleted Successfully',
             'alert-type' => 'success'
         );
 

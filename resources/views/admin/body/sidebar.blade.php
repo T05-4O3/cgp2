@@ -20,23 +20,6 @@
                             </a>
                         </li>
                         <li class="nav-item nav-category">SAVIS</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-                                <i class="link-icon" data-feather="mail"></i>
-                                <span class="link-title">Products Category</span>
-                                <i class="link-arrow" data-feather="chevron-down"></i>
-                            </a>
-                            <div class="collapse" id="emails">
-                                <ul class="nav sub-menu">
-                                    <li class="nav-item">
-                                    <a href="{{ route('all.type') }}" class="nav-link">All Category</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Category</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#movie" role="button" aria-expanded="false" aria-controls="emails">
@@ -51,6 +34,42 @@
                                     </li>
                                     <li class="nav-item">
                                     <a href="add.movie" class="nav-link">Add Movie</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#product" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Products Category</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="product">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.type') }}" class="nav-link">All Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="pages/email/read.html" class="nav-link">Add Category</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#goal" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Goals</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="goal">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.goal') }}" class="nav-link">All Goals</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="pages/email/read.html" class="nav-link">Add Goals</a>
                                     </li>
                                 </ul>
                             </div>
