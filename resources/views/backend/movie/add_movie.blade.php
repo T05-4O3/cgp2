@@ -47,18 +47,6 @@
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-6">
-                                    <!-- <div class="row">
-                                        <div class="col-md-12">
-                                            <label class="form-label">Movie Status</label>
-                                            <div class="form-group mb-3">
-                                                <select name="movie_status" class="form-select" id="exampleFormControlSelect1"> -->
-                                                    <!-- <option selected="" disabled="">Select Status</option> -->
-                                                    <!-- <option value="ad_movie">Ad Movie</option> -->
-                                                    <!-- <option value="reel">Reel</option> -->
-                                                <!-- </select>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-12">
                                         <label class="form-label">Product Category</label>
                                         <div class="form-group mb-3">
@@ -82,6 +70,17 @@
                                         </div>
                                     </div>
                                     <!-- // Same Amenities -->
+                                    <div class="col-md-12">
+                                        <label class="form-label">Targets</label>
+                                        <div class="form-group mb-3">
+                                            <select name="targets_type_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                                @foreach($targets as $targe)
+                                                    <option value="{{ $targe->id }}">{{ $targe->target_type }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- End // -->
                                     <!-- End // -->
                                     <div class="col-md-12">
                                         <label class="form-label">Appeal Points</label>
@@ -98,27 +97,86 @@
                             </div><!-- Row -->
                             
                             <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Color Terms</label>
+                                        <select name="color_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($color as $colo)
+                                                <option value="{{ $colo->id }}">{{ $colo->color_term }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Shape Terms</label>
+                                        <select name="shape_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($shape as $shap)
+                                                <option value="{{ $shap->id }}">{{ $shap->shape_term }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Brightness Terms</label>
+                                        <select name="brightness_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($brightness as $bright)
+                                                <option value="{{ $bright->id }}">{{ $bright->brightness_term }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Emotional Terms</label>
+                                        <select name="emotional_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($emotional as $emoti)
+                                                <option value="{{ $emoti->id }}">{{ $emoti->emotional_term }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Environment Terms</label>
+                                        <select name="environment_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($environment as $enviro)
+                                                <option value="{{ $enviro->id }}">{{ $enviro->environment_term }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Object Terms</label>
+                                        <select name="object_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($object as $obje)
+                                                <option value="{{ $obje->id }}">{{ $obje->object_term }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
                                 
                             </div><!-- Row -->
                             
                             <div class="row">
                                 
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Creator</label>
-                                        <select name="creator_id" class="form-select" id="exampleFormControlSelect1">
-                                            <option selected="" disabled="">Select Creator</option>
-                                            @foreach($activeCreator as $creator)
-                                                <option value="{{ $creator->id }}">{{ $creator->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div><!-- Col -->
                             </div><!-- Row -->
 
                             <!-- // Same Facilities -->
                             <div class="row add_item">
                                 <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Storytelling</label>
+                                        <select name="storytellings_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+                                            @foreach($storytellings as $story)
+                                                <option value="{{ $story->id }}">{{ $story->storytellings_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="genre" class="form-label">Tags Genre</label>
                                         <select name="genre[]" id="genre" class="form-control">
@@ -129,7 +187,7 @@
                                         </select>
                                     </div>
                                 </div><!-- Col -->
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="tag" class="form-label">Tags</label>
                                         <input type="text" name="tag[]" id="tag" class="form-control">
@@ -137,7 +195,7 @@
                                 </div>
                                 <!-- End // -->
 
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="mb-3">
                                         <div style="padding-top: 29px;">
                                             <a class="btn btn btn-inverse-primary addeventmore">Add More</a>
@@ -165,6 +223,28 @@
                                                 Hot Movie
                                             </label>
                                         </div>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-3">
+                                    <div class="md-3">
+                                        <!-- <label class="form-label">Movie Status</label> -->
+                                        <div class="form-group mb-3">
+                                            <select name="movie_status" class="form-select" id="exampleFormControlSelect1"> -->
+                                                <!-- <option selected="" disabled="">Select Status</option> -->
+                                                <option value="ad_movie">Ad Movie</option>
+                                                <!-- <option value="reel">Reel</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <select name="creator_id" class="form-select" id="exampleFormControlSelect1">
+                                            <option selected="" disabled="">Select Creator</option>
+                                            @foreach($activeCreator as $creator)
+                                                <option value="{{ $creator->id }}">{{ $creator->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div><!-- Col -->
                             </div><!-- Row -->
@@ -200,31 +280,31 @@
                 movie_goals: {
                     required : true,
                 }, 
-                "movie_targets[]": {
+                "targets_type_id[]": {
                     required : true,
                 }, 
                 movie_appeals: {
                     required : true,
                 }, 
-                "color_terms[]": {
+                "color_id[]": {
                     required : true,
                 }, 
-                "shape_terms[]": {
+                "shape_id[]": {
                     required : true,
                 }, 
-                "brightness_terms[]": {
+                "brightness_id[]": {
                     required : true,
                 }, 
-                "emotional_terms[]": {
+                "emotional_id[]": {
                     required : true,
                 }, 
-                "environment_terms[]": {
+                "environment_id[]": {
                     required : true,
                 }, 
-                "object_terms[]": {
+                "object_id[]": {
                     required : true,
                 }, 
-                "storytellings[]": {
+                "storytellings_id[]": {
                     required : true,
                 }, 
                 
@@ -242,31 +322,31 @@
                 movie_goals: {
                     required : 'Please Select Goal',
                 },
-                "movie_targets[]": {
+                "targets_type_id[]": {
                     required : 'Please Select Target',
                 },
                 movie_appeals: {
                     required : 'Please Select Appeal Point',
                 },
-                "color_terms[]": {
+                "color_id[]": {
                     required : 'Please Choice Color Term',
                 },
-                "shape_terms[]": {
+                "shape_id[]": {
                     required : 'Please Choice Shape Term',
                 },
-                "brightness_terms[]": {
+                "brightness_id[]": {
                     required : 'Please Choice Brightness Terms',
                 },
-                "emotional_terms[]": {
+                "emotional_id[]": {
                     required : 'Please Choice Emotional Terms',
                 },
-                "environment_terms[]": {
+                "environment_id[]": {
                     required : 'Please Choice Environment Terms',
                 },
-                "object_terms[]": {
+                "object_id[]": {
                     required : 'Please Choice Object Terms',
                 },
-                "storytellings[]": {
+                "storytellings_id[]": {
                     required : 'Please Select Storytellings',
                 },
             },
@@ -348,6 +428,8 @@
             <div class="container mt-2">
                 <div class="row">
                     <div class="form-group col-md-4">
+                    </div>
+                    <div class="form-group col-md-3">
                         <div class="mb-3">
                             <label for="genre">Tags</label>
                             <select name="genre[]" id="genre" class="form-control">
@@ -358,13 +440,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <div class="mb-3">
                             <label for="tag">Tag</label>
                             <input type="text" name="tag[]" id="tag" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group col-md-4" style="padding-top: 23px">
+                    <div class="form-group col-md-2" style="padding-top: 23px">
                         <span class="btn btn-inverse-primary btn-sm addeventmore">Add</span>
                         <span class="btn btn-inverse-danger btn-sm removeeventmore">Remove</span>
                     </div>

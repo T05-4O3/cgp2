@@ -20,19 +20,19 @@ return new class extends Migration
             $table->string('movie_title');
             $table->string('movie_code');
 
-            $table->string('movie_status')->nullable();
+            $table->string('movie_status');
             $table->string('movie_goals');
-            $table->string('targets_type_id')->nullable();
+            $table->string('targets_type_id');
             $table->string('movie_appeals');
             
-            $table->string('color_id')->nullable();
-            $table->string('shape_id')->nullable();
-            $table->string('brightness_id')->nullable();
-            $table->string('emotional_id')->nullable();
-            $table->string('environment_id')->nullable();
-            $table->string('object_id')->nullable();
+            $table->string('color_id');
+            $table->string('shape_id');
+            $table->string('brightness_id');
+            $table->string('emotional_id');
+            $table->string('environment_id');
+            $table->string('object_id');
 
-            $table->string('storytellings_id')->nullable();
+            $table->string('storytellings_id');
 
             $table->string('genre')->nullable();
             $table->string('tag')->nullable();

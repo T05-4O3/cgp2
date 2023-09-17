@@ -21,7 +21,6 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Movie Url</th>
-                                    <th>Movie Title</th>
                                     <th>Category</th>
                                     <th>Status Type</th>
                                     <th>Status</th>
@@ -34,10 +33,12 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->movie_url }}
                                         <button type="button" class="btn btn-inverse-primary" onclick="loadVideo('{{ $item->movie_url }}', 'videoFrame{{ $key }}')">View</button>
+                                        </br>
+                                        {{ $item->movie_title }}</br>
                                         <div id="videoContainer{{ $key }}">
                                             <iframe id="videoFrame{{ $key }}" frameborder="0" allowfullscreen src=""></iframe>
                                         </div>
-                                    <td>{{ $item->movie_title }}</td>
+                                    </td>
                                     <td>{{ $item->movcat_id }}</td>
                                     <td>{{ $item->movie_status }}</td>
                                     <td>
