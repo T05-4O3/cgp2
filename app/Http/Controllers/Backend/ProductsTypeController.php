@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ProductsType;
 use App\Models\Goal;
 use App\Models\Targets;
+use App\Models\Tag;
 use App\Models\AppealPoints;
 use App\Models\ColorTerms;
 use App\Models\ShapeTerms;
@@ -267,6 +268,69 @@ class ProductsTypeController extends Controller
 
         $notification = array(
             'message' => 'Appeal Point Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    // Tags All Method
+    public function AllTag(){
+        $tags = Tag::latest()->get();
+        return view('backend.tags.all_tag' ,compact('tags'));
+
+    } // End Method
+
+    public function AddTag(){
+        $tags = Tag::latest()->get();
+        return view('backend.tags.add_tag');
+
+    } // End Method
+
+    public function StoreTag(Request $request){
+
+        Tag::insert([
+            'tag' => $request->tag,
+        ]);
+
+        $notification = array(
+            'message' => 'Tags Create Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.tag')->with($notification);
+
+    } // End Method
+
+    public function EditTag($id){
+        $tags = Tag::findOrFail($id);
+        return view('backend.tags.edit_tag',compact('tags'));
+
+    } // End Method
+
+
+    public function UpdateTag(Request $request){
+        $tag_id = $request->id;
+
+        Tag::findOrFail($tag_id)->update([
+            'tag_type' => $request->tag_type,
+        ]);
+
+        $notification = array(
+            'message' => 'Tag Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.tag')->with($notification);
+
+    } // End Method
+
+    public function DeleteTag($id){
+        Tag::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Tag Deleted Successfully',
             'alert-type' => 'success'
         );
 

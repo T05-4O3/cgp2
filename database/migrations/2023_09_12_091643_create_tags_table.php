@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->integer('movies_id');
+            $table->integer('mov_id');
+            $table->string('genre')->nullable();
             $table->string('tag')->nullable();
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('movie_urls', function (Blueprint $table) {
             $table->id();
-            $table->integer('movies_id');
+            $table->integer('mov_id');
             $table->string('url');
             $table->timestamps();
         });

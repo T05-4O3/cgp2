@@ -13,28 +13,39 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->string('ptype_id');
-            $table->string('storytellings_id');
+            // Products Category
+            $table->string('movcat_id');
+
             $table->string('movie_url');
             $table->string('movie_title');
-            $table->string('movie_slug');
-            $table->string('movie_status');
-            $table->string('movie_goals')->nullable();
-            $table->string('movie_targets')->nullable();
-            $table->string('movie_appeals')->nullable();
-            $table->string('color_terms')->nullable();
-            $table->string('shape_terms')->nullable();
-            $table->string('brightness_terms')->nullable();
-            $table->string('emotional_terms')->nullable();
-            $table->string('environment_terms')->nullable();
-            $table->string('object_terms')->nullable();
+            $table->string('movie_code');
+
+            $table->string('movie_status')->nullable();
+            $table->string('movie_goals');
+            $table->string('targets_type_id')->nullable();
+            $table->string('movie_appeals');
+            
+            $table->string('color_id')->nullable();
+            $table->string('shape_id')->nullable();
+            $table->string('brightness_id')->nullable();
+            $table->string('emotional_id')->nullable();
+            $table->string('environment_id')->nullable();
+            $table->string('object_id')->nullable();
+
+            $table->string('storytellings_id')->nullable();
+
+            $table->string('genre')->nullable();
             $table->string('tag')->nullable();
-            $table->string('filming_tech')->nullable();
-            $table->string('editing_tech')->nullable();
+
+            $table->string('filming_tech_id')->nullable();
+            $table->string('editing_tech_id')->nullable();
+
             $table->string('featured')->nullable();
             $table->string('hot')->nullable();
+
             $table->integer('creator_id')->nullable();
             $table->string('status')->default(0);
+            
             $table->timestamps();
         });
     }

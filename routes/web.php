@@ -79,6 +79,7 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
         Route::get('/all/movie', 'AllMovie')->name('all.movie');
         Route::get('/add/movie', 'AddMovie')->name('add.movie');
+        Route::post('/store/movie', 'StoreMovie')->name('store.movie');
 
     });
 
@@ -127,6 +128,18 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/edit/appeal/{id}', 'EditAppealPoint')->name('edit.appeal');
         Route::post('/update/appeal', 'UpdateAppealPoint')->name('update.appeal');
         Route::get('/delete/appeal/{id}', 'DeleteAppealPoint')->name('delete.appeal');
+
+    });
+    
+    // Tags All Route
+    Route::controller(ProductsTypeController::class)->group(function(){
+
+        Route::get('/all/tag', 'AllTag')->name('all.tag');
+        Route::get('/add/tag', 'AddTag')->name('add.tag');
+        Route::post('/store/tag', 'StoreTag')->name('store.tag');
+        Route::get('/edit/tag/{id}', 'EditTag')->name('edit.tag');
+        Route::post('/update/tag', 'UpdateTag')->name('update.tag');
+        Route::get('/delete/tag/{id}', 'DeleteTag')->name('delete.tag');
 
     });
     

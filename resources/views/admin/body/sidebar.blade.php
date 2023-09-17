@@ -33,7 +33,7 @@
                                     <a href="{{ route('all.movie') }}" class="nav-link">All Movie</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="add.movie" class="nav-link">Add Movie</a>
+                                    <a href="{{ route('add.movie') }}" class="nav-link">Add Movie</a>
                                     </li>
                                 </ul>
                             </div>
@@ -51,7 +51,7 @@
                                     <a href="{{ route('all.type') }}" class="nav-link">All Category</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Category</a>
+                                    <a href="{{ route('add.type') }}" class="nav-link">Add Category</a>
                                     </li>
                                 </ul>
                             </div>
@@ -69,7 +69,7 @@
                                     <a href="{{ route('all.goal') }}" class="nav-link">All Goals</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Goals</a>
+                                    <a href="{{ route('add.goal') }}"" class="nav-link">Add Goals</a>
                                     </li>
                                 </ul>
                             </div>
@@ -87,7 +87,7 @@
                                     <a href="{{ route('all.target') }}" class="nav-link">All Targets</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Targets</a>
+                                    <a href="{{ route('add.target') }}" class="nav-link">Add Targets</a>
                                     </li>
                                 </ul>
                             </div>
@@ -105,7 +105,25 @@
                                     <a href="{{ route('all.appeal') }}" class="nav-link">All Appeal Points</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Appeal Points</a>
+                                    <a href="{{ route('all.appeal') }}" class="nav-link">Add Appeal Points</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#tag" role="button" aria-expanded="false" aria-controls="emails">
+                                <i class="link-icon" data-feather="mail"></i>
+                                <span class="link-title">Tags</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="tag">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                    <a href="{{ route('all.tag') }}" class="nav-link">All Tags</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a href="{{ route('add.tag') }}" class="nav-link">Add Tags</a>
                                     </li>
                                 </ul>
                             </div>
@@ -123,7 +141,7 @@
                                     <a href="{{ route('all.color') }}" class="nav-link">All Color Terms</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Color Terms</a>
+                                    <a href="{{ route('add.color') }}" class="nav-link">Add Color Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -141,7 +159,7 @@
                                     <a href="{{ route('all.shape') }}" class="nav-link">All Shape Terms</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Shape Terms</a>
+                                    <a href="{{ route('add.shape') }}" class="nav-link">Add Shape Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -159,7 +177,7 @@
                                     <a href="{{ route('all.brightness') }}" class="nav-link">All Brightness Terms</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Brightness Terms</a>
+                                    <a href="{{ route('add.brightness') }}" class="nav-link">Add Brightness Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -177,7 +195,7 @@
                                     <a href="{{ route('all.emotional') }}" class="nav-link">All Emotional Terms</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Emotional Terms</a>
+                                    <a href="{{ route('add.emotional') }}" class="nav-link">Add Emotional Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -195,7 +213,7 @@
                                     <a href="{{ route('all.environment') }}" class="nav-link">All Environment Terms</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Environment Terms</a>
+                                    <a href="{{ route('add.environment') }}" class="nav-link">Add Environment Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -213,7 +231,7 @@
                                     <a href="{{ route('all.object') }}" class="nav-link">All Object Terms</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Object Terms</a>
+                                    <a href="{{ route('add.object') }}" class="nav-link">Add Object Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -231,7 +249,7 @@
                                     <a href="{{ route('all.storytelling') }}" class="nav-link">All Storytelling</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Add Storytelling</a>
+                                    <a href="{{ route('add.storytelling') }}" class="nav-link">Add Storytelling</a>
                                     </li>
                                 </ul>
                             </div>
