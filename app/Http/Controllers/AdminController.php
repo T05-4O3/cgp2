@@ -88,22 +88,91 @@ class AdminController extends Controller
                 'message' => 'Old Password Does not Match!',
                 'alert-type' => 'error'
             );
-    
             return back()->with($notification);
-
         }
 
         /// Update The New Password
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
-
         $notification = array(
             'message' => 'Password Change Successfully',
             'alert-type' => 'success'
         );
-
         return back()->with($notification);
 
-    } // End Method
+        } // End Method
+
+
+        /// Creator User All Method
+
+        public function AllCreator(){
+            $allcreator = User::where('role', 'creator')->get();
+            return view('backend.creatoruser.all_creator', compact('allcreator'));
+            
+        } // End Method
+
+        public function AddCreator(){
+            return view('backend.creatoruser.add_creator');
+            
+        } // End Method
+
+        public function StoreCreator(Request $request){
+            User::insert([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'company' => $request->company,
+                'password' => Hash::make($request->password),
+                'role' => 'creator',
+                'status' => 'active',
+            ]);
+            $notification = array(
+                'message' => 'Creator Created Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('all.creator')->with($notification);
+            
+        } // End Method
+
+        public function EditCreator($id){
+            $allcreator = User::findOrFail($id);
+            return view('backend.creatoruser.edit_creator', compact('allcreator'));
+            
+        } // End Method
+
+        public function UpdateCreator(Request $request){
+            $user_id = $request->id;
+            User::findOrFail($user_id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'company' => $request->company,
+            ]);
+            $notification = array(
+                'message' => 'Creator Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('all.creator')->with($notification);
+            
+        } // End Method
+
+        public function DeleteCreator($id){
+            User::findOrFail($id)->delete();
+            $notification = array(
+                'message' => 'Creator Deleted Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+            
+        } // End Method
+
+        public function changeStatus(Request $request){
+            $user = User::find($request->user_id);
+            $user->status = $request->status;
+            $user->save();
+            return response()->json(['success'=>'Status Change Successfully']);
+            
+        } // End Method
+
 }

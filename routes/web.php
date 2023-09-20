@@ -7,7 +7,8 @@ use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\ProductsTypeController;
 use App\Http\Controllers\Backend\MovieController;
-
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Controllers\Creator\CreatorMovieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,10 +67,19 @@ Route::middleware(['auth','role:admin'])->group(function(){
 Route::middleware(['auth','role:creator'])->group(function(){
 
     Route::get('/creator/dashboard', [CreatorController::class, 'CreatorDashboard'])->name('creator.dashboard');
+    Route::get('/creator/logout', [CreatorController::class, 'CreatorLogout'])->name('creator.logout');
+    Route::get('/creator/profile', [CreatorController::class, 'CreatorProfile'])->name('creator.profile');
+    Route::post('/creator/profile/store', [CreatorController::class, 'CreatorProfileStore'])->name('creator.profile.store');
+    Route::get('/creator/change/password', [CreatorController::class, 'CreatorChangePassword'])->name('creator.change.password');
+    Route::post('/creator/update/store', [CreatorController::class, 'CreatorUpdatePassword'])->name('creator.update.password');
 
 }); // End Group Creator Middleware
 
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('/creator/login', [CreatorController::class, 'CreatorLogin'])->name('creator.login')->middleware(RedirectIfAuthenticated::class);
+
+Route::post('/creator/register', [CreatorController::class, 'CreatorRegister'])->name('creator.register');
+
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 
  /// Admin Group Middleware
  Route::middleware(['auth','role:admin'])->group(function(){
@@ -80,6 +90,14 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/all/movie', 'AllMovie')->name('all.movie');
         Route::get('/add/movie', 'AddMovie')->name('add.movie');
         Route::post('/store/movie', 'StoreMovie')->name('store.movie');
+        Route::get('/edit/movie/{id}', 'EditMovie')->name('edit.movie');
+        Route::post('/update/movie', 'UpdateMovie')->name('update.movie');
+        Route::post('/update/movie/tags', 'UpdateMovieTags')->name('update.movie.tags');
+        Route::get('/delete/movie/{id}', 'DeleteMovie')->name('delete.movie');
+        Route::get('/details/movie/{id}', 'DetailsMovie')->name('details.movie');
+        Route::post('/inactive/movie', 'InactiveMovie')->name('inactive.movie');
+        Route::post('/active/movie', 'ActiveMovie')->name('active.movie');
+
 
     });
 
@@ -227,5 +245,33 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
     });
 
+    // Creator All Route from Admin
+    Route::controller(AdminController::class)->group(function(){
+
+        Route::get('/all/creator', 'AllCreator')->name('all.creator');
+        Route::get('/add/creator', 'AddCreator')->name('add.creator');
+        Route::post('/store/creator', 'StoreCreator')->name('store.creator');
+        Route::get('/edit/creator/{id}', 'EditCreator')->name('edit.creator');
+        Route::post('/update/creator', 'UpdateCreator')->name('update.creator');
+        Route::get('/delete/creator/{id}', 'DeleteCreator')->name('delete.creator');
+        Route::get('/changeStatus', 'changeStatus');
+    });
 
 }); // End Group Admin Middleware
+
+/// Creator Group Middleware
+Route::middleware(['auth','role:creator'])->group(function(){
+    // Creator All Movie
+    Route::controller(CreatorMovieController::class)->group(function(){
+
+        Route::get('/creator/all/movie', 'CreatorAllMovie')->name('creator.all.movie');
+        Route::get('/creator/add/movie', 'CreatorAddMovie')->name('creator.add.movie');
+        Route::post('/creator/store/movie', 'CreatorStoreMovie')->name('creator.store.movie');
+        Route::get('/creator/edit/movie/{id}', 'CreatorEditMovie')->name('creator.edit.movie');
+        Route::post('/creator/update/movie', 'CreatorUpdateMovie')->name('creator.update.movie');
+        Route::post('/creator/update/movie/tags', 'CreatorUpdateMovieTags')->name('creator.update.movie.tags');
+        Route::get('/creator/details/movie/{id}', 'CreatorDetailsMovie')->name('creator.details.movie');
+        Route::get('/creator/delete/movie/{id}', 'CreatorDeleteMovie')->name('creator.delete.movie');
+    });
+
+}); // End Group Creator Middleware

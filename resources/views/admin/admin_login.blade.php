@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="col-md-8 ps-md-0">
                                         <div class="auth-form-wrapper px-4 py-5">
-                                            <a href="#" class="noble-ui-logo logo-light d-block mb-2">SAVIS<span>Login</span></a>
+                                            <a href="#" class="noble-ui-logo logo-light d-block mb-2">SoYouKnow<span>Login</span></a>
                                                 <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
                                             <form class="forms-sample" method="post" action="{{ route('login') }}">
                                                 @csrf
@@ -116,28 +116,28 @@
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-        <script>
-        @if(Session::has('message'))
-        var type = "{{ Session::get('alert-type','info') }}"
-        switch(type){
-            case 'info':
-            toastr.info(" {{ Session::get('message') }} ");
-            break;
+    <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
 
-            case 'success':
-            toastr.success(" {{ Session::get('message') }} ");
-            break;
+        case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
 
-            case 'warning':
-            toastr.warning(" {{ Session::get('message') }} ");
-            break;
+        case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
 
-            case 'error':
-            toastr.error(" {{ Session::get('message') }} ");
-            break; 
-        }
-        @endif 
-        </script>
+        case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break; 
+    }
+    @endif 
+    </script>
         <!-- End custom js for this page -->
 
     </body>

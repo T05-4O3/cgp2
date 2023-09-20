@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('creator.creator_dashboard')
+@section('creator')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <h6 class="card-title">Add Movie</h6>
 
-                        <form method="post" action="{{ route('store.movie') }}" id="myForm" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('creator.store.movie') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -53,7 +53,7 @@
                                             <select name="movcat_id" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Category</option>
                                                 @foreach($productType as $movcat)
-                                                    <option value="{{ $movcat->type_name }}">{{ $movcat->type_name }}</option>
+                                                        <option value="{{ $movcat->type_name }}">{{ $movcat->type_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -206,30 +206,10 @@
                             
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <div class="mb-3">
-                                        <div class="form-check form-check-inline">
-                                            <input type="checkbox" name="featured" value="1" class="form-check-input" id="checkInline1">
-                                            <label class="form-label" for="checkInline1">
-                                                Features Movie
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div><!-- Col -->
-                                <div class="col-sm-3">
-                                    <div class="mb-3">
-                                        <div class="form-check form-check-inline">
-                                            <input type="checkbox" name="hot" value="1" class="form-check-input" id="checkInline">
-                                            <label class="form-label" for="checkInline">
-                                                Hot Movie
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div><!-- Col -->
-                                <div class="col-sm-3">
                                     <div class="md-3">
                                         <!-- <label class="form-label">Movie Status</label> -->
                                         <div class="form-group mb-3">
-                                            <select name="movie_status" class="form-select" id="exampleFormControlSelect1"> -->
+                                            <select name="movie_status" class="form-select" id="exampleFormControlSelect1">
                                                 <!-- <option selected="" disabled="">Select Status</option> -->
                                                 <option value="ad_movie">Ad Movie</option>
                                                 <!-- <option value="reel">Reel</option> -->
@@ -237,17 +217,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="mb-3">
-                                        <select name="creator_id" class="form-select" id="exampleFormControlSelect1">
-                                            <option selected="" disabled="">Select Creator</option>
-                                            @foreach($activeCreator as $creator)
-                                                <option value="{{ $creator->id }}">{{ $creator->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div><!-- Col -->
-                            </div><!-- Row -->
+                            <!-- </div>Row -->
 
                             <div class="row">
                                 <div class="col-sm-3">
@@ -365,6 +335,7 @@
     });
 </script>
 
+
 <script type="text/javascript">
     // Ad Movie View
     function loadVideo() {
@@ -393,6 +364,7 @@
     }
 
     function getVideoTitle(videoId) {
+
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&key=AIzaSyAuJWGO4bzuwvPagbiXJoHS92qkigym0N0&part=snippet', true);
         xhr.onreadystatechange = function () {

@@ -34,9 +34,6 @@ return new class extends Migration
 
             $table->string('storytellings_id');
 
-            $table->string('genre')->nullable();
-            $table->string('tag')->nullable();
-
             $table->string('filming_tech_id')->nullable();
             $table->string('editing_tech_id')->nullable();
 

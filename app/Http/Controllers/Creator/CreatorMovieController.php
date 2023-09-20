@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Creator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -20,16 +20,20 @@ use App\Models\Tag;
 use App\Models\User;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
-class MovieController extends Controller
+class CreatorMovieController extends Controller
 {
-    public function AllMovie(){
-        $movie = Movie::latest()->get();
-        return view('backend.movie.all_movie',compact('movie'));
+    public function CreatorAllMovie(){
+        $id = Auth::user()->id;
+        $movie = Movie::where('creator_id', $id)->latest()->get();
+        return view('creator.movie.all_movie',compact('movie'));
 
-    } // End Method
+    } // End Method  
 
-    public function AddMovie(){
+    public function CreatorAddMovie(){
+
+        // $apiKey = env('YOUTUBE_API_KEY');
 
         $productType = ProductsType::latest()->get();
         $goal = Goal::latest()->get();
@@ -43,9 +47,9 @@ class MovieController extends Controller
         $object = ObjectTerms::latest()->get();
         $storytellings = Storytellings::latest()->get();
         $tags = Tag::latest()->get();
-        $activeCreator = User::where('status','active')->where('role','creator')->latest()->get();
 
-        return view('backend.movie.add_movie',compact(
+        return view('creator.movie.add_movie',compact(
+            // 'apiKey',
             'productType',
             'goal',
             'targets',
@@ -57,13 +61,12 @@ class MovieController extends Controller
             'environment',
             'object',
             'storytellings',
-            'tags',
-            'activeCreator'
+            'tags'
         ));
 
     } // End Method
 
-    public function StoreMovie(Request $request){
+    public function CreatorStoreMovie(Request $request){
 
         $targe = $request->targets_type_id;
         $targets = implode(",", $targe);
@@ -123,7 +126,7 @@ class MovieController extends Controller
             'featured' => $request->featured,
             'hot' => $request->hot,
 
-            'creator_id' => $request->creator_id,
+            'creator_id' => Auth::user()->id,
             'status' => 1,
             'created_at' => Carbon::now(),
 
@@ -148,11 +151,11 @@ class MovieController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect() -> route('all.movie') -> with($notification);
+        return redirect() -> route('creator.all.movie') -> with($notification);
 
     } // End Method
 
-    public function EditMovie($id){
+    public function CreatorEditMovie($id){
         $movie = Movie::findOrFail($id);
         $productType = ProductsType::latest()->get();
         $goal = Goal::latest()->get();
@@ -190,9 +193,8 @@ class MovieController extends Controller
         $movie_sto = explode(',', $sto);
 
         $tag = Tag::where('mov_id', $id)->get();
-        $activeCreator = User::where('status','active')->where('role','creator')->latest()->get();
 
-        return view('backend.movie.edit_movie',compact(
+        return view('creator.movie.edit_movie',compact(
             'movie',
             'productType',
             'goal',
@@ -220,14 +222,12 @@ class MovieController extends Controller
 
             'storytellings',
             'movie_sto',
-            'tag',
-
-            'activeCreator'
+            'tag'
         ));
 
     } // End Method
 
-    public function UpdateMovie(Request $request){
+    public function CreatorUpdateMovie(Request $request){
 
         $targe = $request->targets_type_id;
         $targets = implode(",", $targe);
@@ -278,7 +278,7 @@ class MovieController extends Controller
             'featured' => $request->featured,
             'hot' => $request->hot,
 
-            'creator_id' => $request->creator_id,
+            'creator_id' => Auth::user()->id,
             'updated_at' => Carbon::now(),
 
         ]);
@@ -288,11 +288,11 @@ class MovieController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect() -> route('all.movie') -> with($notification);
+        return redirect() -> route('creator.all.movie') -> with($notification);
 
     } // End Method
 
-    public function UpdateMovieTags(Request $request){
+    public function CreatorUpdateMovieTags(Request $request){
         // Tags Update From Here //
         $tid = $request -> id;
         if($request -> genre == NULL) {
@@ -319,25 +319,7 @@ class MovieController extends Controller
 
     } // End Method
 
-    public function DeleteMovie($id){
-        $movie = Movie::findOrFail($id);
-        Movie :: findOrFail($id) -> delete();
-        $tagsData = Tag::where('mov_id', $id)->get();
-        foreach($tagsData as $item){
-            $item -> genre;
-            Tag::where('mov_id', $id) -> delete();
-        }
-
-        $notification = array(
-            'message' => 'Movie Deleted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect() -> back() -> with($notification);
-
-    } // End Method
-
-    public function DetailsMovie($id){
+    public function CreatorDetailsMovie($id){
         $movie = Movie::findOrFail($id);
         $productType = ProductsType::latest()->get();
         $goal = Goal::latest()->get();
@@ -375,9 +357,8 @@ class MovieController extends Controller
         $movie_sto = explode(',', $sto);
 
         $tag = Tag::where('mov_id', $id)->get();
-        $activeCreator = User::where('status','active')->where('role','creator')->latest()->get();
 
-        return view('backend.movie.details_movie',compact(
+        return view('creator.movie.details_movie',compact(
             'movie',
             'productType',
             'goal',
@@ -407,40 +388,26 @@ class MovieController extends Controller
             'movie_sto',
             'tag',
 
-            'activeCreator'
         ));
 
     } // End Method
 
-    public function InactiveMovie(Request $request){
-        $tid = $request->id;
-        Movie::findOrFail($tid) -> update([
-            'status' => 0,
-        ]);
+    public function CreatorDeleteMovie($id){
+        $movie = Movie::findOrFail($id);
+        Movie :: findOrFail($id) -> delete();
+        $tagsData = Tag::where('mov_id', $id)->get();
+        foreach($tagsData as $item){
+            $item -> genre;
+            Tag::where('mov_id', $id) -> delete();
+        }
 
         $notification = array(
-            'message' => 'Movie Inactive Successfully',
+            'message' => 'Movie Deleted Successfully',
             'alert-type' => 'success'
         );
 
-        return redirect() -> route('all.movie') -> with($notification);
+        return redirect() -> back() -> with($notification);
 
     } // End Method
-
-    public function ActiveMovie(Request $request){
-        $tid = $request->id;
-        Movie::findOrFail($tid) -> update([
-            'status' => 1,
-        ]);
-
-        $notification = array(
-            'message' => 'Movie Active Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect() -> route('all.movie') -> with($notification);
-
-    } // End Method
-
 
 }

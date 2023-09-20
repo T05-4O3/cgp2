@@ -8,7 +8,7 @@
         <meta name="author" content="NobleUI">
         <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-        <title>Admin Panel - SAVIS</title>
+        <title>Admin Panel - SoYouKnow</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,5 +130,7 @@
         <script src="{{ asset('backend/assets/js/typeahead.js') }}"></script>
         <script src="{{ asset('backend/assets/js/tags-input.js') }}"></script>
         <!-- End Input Tags -->
+        
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     </body>
 </html>    

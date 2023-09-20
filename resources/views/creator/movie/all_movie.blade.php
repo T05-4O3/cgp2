@@ -1,11 +1,11 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('creator.creator_dashboard')
+@section('creator')
 
 <div class="page-content">
 
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <a href="{{ route('add.movie') }}" class="btn btn-inverse-info"> Add Movies</a>
+            <a href="{{ route('creator.add.movie') }}" class="btn btn-inverse-info"> Add Movies</a>
         </ol>
     </nav>
 
@@ -39,7 +39,7 @@
                                             <iframe id="videoFrame{{ $key }}" frameborder="0" allowfullscreen src=""></iframe>
                                         </div>
                                     </td>
-                                    <td>{{ $item['type']['type_name'] ?? '' }}</td>
+                                    <td>{{ $item['type']['type_name'] ?? ''}}</td>
                                     <td>{{ $item->movie_status }}</td>
                                     <td>
                                         @if($item->status == 1)
@@ -49,9 +49,9 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('details.movie' ,$item->id) }}" class="btn btn-inverse-info" title="Details"><i data-feather="eye"></i></a>
-                                        <a href="{{ route('edit.movie' ,$item->id) }}" class="btn btn-inverse-warning" title="Edit"><i data-feather="edit"></i></a>
-                                        <a href="{{ route('delete.movie',$item->id) }}" class="btn btn-inverse-danger" id="delete" title="Delete"><i data-feather="trash-2"></i></a>
+                                        <a href="{{ route('creator.details.movie' ,$item->id) }}" class="btn btn-inverse-info" title="Details"><i data-feather="eye"></i></a>
+                                        <a href="{{ route('creator.edit.movie' ,$item->id) }}" class="btn btn-inverse-warning" title="Edit"><i data-feather="edit"></i></a>
+                                        <a href="{{ route('creator.delete.movie',$item->id) }}" class="btn btn-inverse-danger" id="delete" title="Delete"><i data-feather="trash-2"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach()
@@ -64,7 +64,6 @@
     </div>
 
 </div>
-
 
 <script type="text/javascript">
     // 動画情報を取得して表示する関数
