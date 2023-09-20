@@ -52,7 +52,7 @@
                             <ul class="navigation clearfix">
                                 <li class="current dropdown"><a href="index.html"><span>Home</span></a>
                                     <ul>
-                                        <li><a href="index.html">Main Home</a></li>
+                                        <!-- <li><a href="index.html">Main Home</a></li>
                                         <li><a href="index-2.html">Home Modern</a></li>
                                         <li><a href="index-3.html">Home Map</a></li>
                                         <li><a href="index-4.html">Home Half Map</a></li>
@@ -65,28 +65,28 @@
                                                 <li><a href="index-2.html">Header Style 02</a></li>
                                                 <li><a href="index-3.html">Header Style 03</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="index.html"><span>Listing</span></a>
                                     <ul>
-                                        <li><a href="agents-list.html">Agents List</a></li>
-                                        <li><a href="agents-grid.html">Agents Grid</a></li>
-                                        <li><a href="agents-details.html">Agent Details</a></li>
+                                        <li><a href="creators-list.html">Creators List</a></li>
+                                        <li><a href="creators-grid.html">Creators Grid</a></li>
+                                        <li><a href="creators-details.html">Creators Details</a></li>
                                     </ul>
                                 </li> 
                                 <li class="dropdown"><a href="index.html"><span>Ad Movies</span></a>
                                     <ul>
-                                        <li><a href="property-list.html">Property List</a></li>
-                                        <li><a href="property-grid.html">Property Grid</a></li>
-                                        <li><a href="property-list-2.html">Property List Full View</a></li>
-                                        <li><a href="property-grid-2.html">Property Grid Full View</a></li>
-                                        <li><a href="property-list-3.html">Property List Half View</a></li>
-                                        <li><a href="property-grid-3.html">Property Grid Half View</a></li>
-                                        <li><a href="property-details.html">Property Details 01</a></li>
-                                        <li><a href="property-details-2.html">Property Details 02</a></li>
-                                        <li><a href="property-details-3.html">Property Details 03</a></li>
-                                        <li><a href="property-details-4.html">Property Details 04</a></li>
+                                        <li><a href="movie-list.html">Movies List</a></li>
+                                        <li><a href="movie-grid.html">Movies Grid</a></li>
+                                        <li><a href="movie-list-2.html">Movies List Full View</a></li>
+                                        <li><a href="movie-grid-2.html">Movies Grid Full View</a></li>
+                                        <li><a href="movie-list-3.html">Movies List Half View</a></li>
+                                        <li><a href="movie-grid-3.html">Movies Grid Half View</a></li>
+                                        <li><a href="movie-details.html">Movies Details 01</a></li>
+                                        <li><a href="movie-details-2.html">Movies Details 02</a></li>
+                                        <li><a href="movie-details-3.html">Movies Details 03</a></li>
+                                        <li><a href="movie-details-4.html">Movies Details 04</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="index.html"><span>Pages</span></a>
@@ -101,8 +101,8 @@
                                                     <li><a href="pricing.html">Pricing Table</a></li>
                                                     <li><a href="compare-roperties.html">Compare Properties</a></li>
                                                     <li><a href="categories.html">Categories Page</a></li>
-                                                    <li><a href="career.html">Career Opportunity</a></li>
-                                                    <li><a href="testimonials.html">Testimonials</a></li>
+                                                    <!-- <li><a href="career.html">Career Opportunity</a></li>
+                                                    <li><a href="testimonials.html">Testimonials</a></li> -->
                                                 </ul>
                                             </div>
                                             <div class="col-xl-4 column">
@@ -113,9 +113,9 @@
                                                     <li><a href="signin.html">Sign In</a></li>
                                                     <li><a href="signup.html">Sign Up</a></li>
                                                     <li><a href="error.html">404</a></li>
-                                                    <li><a href="agents-list.html">Agents List</a></li>
-                                                    <li><a href="agents-grid.html">Agents Grid</a></li>
-                                                    <li><a href="agents-details.html">Agent Details</a></li>
+                                                    <li><a href="creators-list.html">Creators List</a></li>
+                                                    <li><a href="creators-grid.html">Creators Grid</a></li>
+                                                    <li><a href="creators-details.html">Creator Details</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-xl-4 column">
@@ -125,9 +125,9 @@
                                                     <li><a href="blog-2.html">Blog 02</a></li>
                                                     <li><a href="blog-3.html">Blog 03</a></li>
                                                     <li><a href="blog-details.html">Blog Details</a></li>
-                                                    <li><a href="agency-list.html">Agency List</a></li>
-                                                    <li><a href="agency-grid.html">Agency Grid</a></li>
-                                                    <li><a href="agency-details.html">Agency Details</a></li>
+                                                    <li><a href="creator-list.html">Creator List</a></li>
+                                                    <li><a href="creator-grid.html">Creator Grid</a></li>
+                                                    <li><a href="creator-details.html">Creator Details</a></li>
                                                     <li><a href="contact.html">Contact Us</a></li>
                                                 </ul>
                                             </div>                                   
@@ -136,9 +136,9 @@
                                 </li> 
                                 <li class="dropdown"><a href="index.html"><span>Cerator</span></a>
                                     <ul>
-                                        <li><a href="agency-list.html">Agency List</a></li>
-                                        <li><a href="agency-grid.html">Agency Grid</a></li>
-                                        <li><a href="agency-details.html">Agency Details</a></li>
+                                        <li><a href="crator-list.html">Creator List</a></li>
+                                        <li><a href="creator-grid.html">Creator Grid</a></li>
+                                        <li><a href="creator-details.html">Creator Details</a></li>
                                     </ul>
                                 </li>
                                 <!-- <li class="dropdown"><a href="index.html"><span>Blog</span></a>

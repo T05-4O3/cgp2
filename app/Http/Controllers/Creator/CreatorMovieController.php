@@ -410,4 +410,9 @@ class CreatorMovieController extends Controller
 
     } // End Method
 
+    public function BuyPackage(){
+        return view('creator.package.buy_package');
+
+    } // End Method  
+
 }

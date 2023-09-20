@@ -17,27 +17,27 @@
 
 
 <!-- video-section -->
-@include('frontend.home.video')
+<!-- @include('frontend.home.video') -->
 <!-- video-section end -->
 
 
 <!-- deals-section -->
-@include('frontend.home.deals')
+<!-- @include('frontend.home.deals') -->
 <!-- deals-section end -->
 
 
 <!-- testimonial-section end -->
-@include('frontend.home.testimonial')
+<!-- @include('frontend.home.testimonial') -->
 <!-- testimonial-section end -->
 
 
 <!-- chooseus-section -->
-@include('frontend.home.chooseus')
+<!-- @include('frontend.home.chooseus') -->
 <!-- chooseus-section end -->
 
 
 <!-- place-section -->
-@include('frontend.home.place')
+<!-- @include('frontend.home.place') -->
 <!-- place-section end -->
 
 
@@ -47,11 +47,11 @@
 
 
 <!-- news-section -->
-@include('frontend.home.news')
+<!-- @include('frontend.home.news') -->
 <!-- news-section end -->
 
 
 <!-- download-section -->
-@include('frontend.home.download')
+<!-- @include('frontend.home.download') -->
 <!-- download-section end -->
 @endsection

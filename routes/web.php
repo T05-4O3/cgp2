@@ -274,4 +274,10 @@ Route::middleware(['auth','role:creator'])->group(function(){
         Route::get('/creator/delete/movie/{id}', 'CreatorDeleteMovie')->name('creator.delete.movie');
     });
 
+    // Creator All Route from Admin
+    Route::controller(CreatorMovieController::class)->group(function(){
+
+        Route::get('/buy/package', 'BuyPackage')->name('buy.package');
+    });
+
 }); // End Group Creator Middleware

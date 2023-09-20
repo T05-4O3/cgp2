@@ -55,7 +55,7 @@
                                             <select name="movcat_id" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Category</option>
                                                 @foreach($productType as $movcat)
-                                                    <option value="{{ $movcat->type_name }}" {{ $movcat -> type_name == $movie -> movcat_id ? 'selected' : '' }}>{{ $movcat->type_name }}</option>
+                                                    <option value="{{ $movcat->id }}" {{ $movcat -> id == $movie -> movcat_id ? 'selected' : '' }}>{{ $movcat->type_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -90,7 +90,7 @@
                                             <select name="movie_appeals" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Appeal Points</option>
                                                 @foreach($appealPoints as $appeal_points)
-                                                    <option value="{{ $appeal_points->appeal_point }}" {{ $appeal_points -> appeal_point == $movie -> movcat_id ? 'selected' : '' }}>{{ $appeal_points->appeal_point }}</option>
+                                                    <option value="{{ $appeal_points->id }}" {{ $appeal_points -> id == $movie -> movcat_id ? 'selected' : '' }}>{{ $appeal_points->appeal_point }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -1,5 +1,5 @@
 
-<section class="banner-section" id="p5-canvas" style="background-image: url({{ asset('frontend/assets/images/banner/banner-1.js') }});">
+<section class="banner-section" id="p5-canvas" style="background-image: url({{ asset('frontend/assets/images/banner/banner-1.jpg') }});">
     <div class="auto-container">
         <div class="inner-container">
             <div class="content-box centred">
@@ -12,7 +12,7 @@
                 <div class="tabs-box">
                     <div class="tab-btn-box">
                         <ul class="tab-btns tab-buttons centred clearfix">
-                            <li class="tab-btn active-btn" data-tab="#tab-1">Reel</li>
+                            <!-- <li class="tab-btn active-btn" data-tab="#tab-1">Reel</li> -->
                             <li class="tab-btn" data-tab="#tab-2">Ad Movie</li>
                         </ul>
                     </div>

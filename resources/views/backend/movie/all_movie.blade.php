@@ -67,25 +67,20 @@
 
 
 <script type="text/javascript">
-    // 動画情報を取得して表示する関数
     function loadVideo(videoUrl, iframeId) {
-        // 動画URLから動画IDを抽出
         var videoId = getYouTubeVideoId(videoUrl);
 
-        // 動画をiframeに表示
         var iframe = document.getElementById(iframeId);
         iframe.src = 'https://www.youtube.com/embed/' + videoId;
     }
 
-    // YouTubeの動画URLから動画IDを抽出する関数
     function getYouTubeVideoId(url) {
-        // 動画IDを抽出する正規表現パターン
         var pattern = /(?:\?v=|\/embed\/|\/watch\?v=|\/watch\?feature=player_embedded&v=|\/watch\?feature=player_embedded&amp;v=)([0-9a-zA-Z_-]{11})/;
         var match = url.match(pattern);
         if (match) {
             return match[1];
         } else {
-            return null; // 動画IDが見つからない場合は null を返すなど、エラーハンドリングを追加
+            return null;
         }
     }
 </script>
