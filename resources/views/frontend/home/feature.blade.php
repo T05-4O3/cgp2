@@ -12,15 +12,11 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
             <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                 <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <div class="image-box" style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="align right;">
-                                <button type="button" class="btn btn-inverse-primary" onclick="loadVideo('{{ $item->movie_url }}', 'videoFrame{{ $key }}')">View</button>
-                            </div>
-                            <div id="videoContainer{{ $key }}">
-                                <iframe id="videoFrame{{ $key }}" frameborder="0" allowfullscreen src=""></iframe>
-                            </div>
-                            <div class="batch"><i class="icon-11"></i></div>
-                            <span class="category">Featured</span>
+                        <div class="image-box video-container" style="display: flex; justify-content: space-between; align-items: center;" id="videoContainer{{ $key }}">
+                            @php
+                                $embeddedUrl = str_replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/', $item->movie_url);
+                            @endphp
+                            <iframe src="{{ $embeddedUrl }}" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="lower-content">
                             <div class="author-info clearfix">
@@ -34,12 +30,12 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
                                     @endif
                                 </div>
                                 <div class="buy-btn pull-right">
-                                    <a href="property-details.html">{{ $item->movie_status }}</a>
+                                    <!-- <a href="property-details.html">{{ $item->movie_status }}</a> -->
                                 </div>
                             </div>
                             <div class="title-text">
                                 <h4>
-                                    <a href="property-details.html">{{ $item->movie_title }}</a>
+                                    <a href="{{ url('movie/details/'.$item->id) }}">{{ $item->movie_title }}</a>
                                 </h4>
                             </div>
                             <div class="price-box clearfix">
@@ -48,7 +44,7 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
                                 </div>
                                 <ul class="other-option pull-right clearfix">
                                     <li><a href="property-details.html"><i class="icon-12"></i></a></li>
-                                    <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+                                    <li><a area-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="icon-13"></i></a></li>
                                 </ul>
                             </div>
                             <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing sed.</p>
@@ -57,7 +53,7 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
                                 <li><i class="icon-15"></i>2 Baths</li>
                                 <li><i class="icon-16"></i>600 Sq Ft</li>
                             </ul> -->
-                            <div class="btn-box"><a href="property-details.html" class="theme-btn btn-two">See Details</a></div>
+                            <div class="btn-box"><a href="{{ url('movie/details/'.$item->id) }}" class="theme-btn btn-two">See Details</a></div>
                         </div>
                     </div>
                 </div>
@@ -69,20 +65,18 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
 </section>
 
 <script type="text/javascript">
-    function loadVideo(videoUrl, iframeId) {
-        var videoId = getYouTubeVideoId(videoUrl);
+    window.addEventListener('DOMContentLoaded', function() {
+    var videoContainers = document.querySelectorAll('.video-container');
 
-        var iframe = document.getElementById(iframeId);
-        iframe.src = 'https://www.youtube.com/embed/' + videoId;
-    }
+    videoContainers.forEach(function(container) {
+        var iframe = container.querySelector('iframe');
 
-    function getYouTubeVideoId(url) {
-        var pattern = /(?:\?v=|\/embed\/|\/watch\?v=|\/watch\?feature=player_embedded&v=|\/watch\?feature=player_embedded&amp;v=)([0-9a-zA-Z_-]{11})/;
-        var match = url.match(pattern);
-        if (match) {
-            return match[1];
-        } else {
-            return null;
-        }
-    }
+        iframe.style.width = '100%';
+
+        var aspectRatio = 16 / 9;
+        var width = container.offsetWidth;
+        var calculatedHeight = width / aspectRatio;
+        iframe.style.height = calculatedHeight + 'px';
+    });
+});
 </script>

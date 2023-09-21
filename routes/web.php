@@ -9,6 +9,9 @@ use App\Http\Controllers\Backend\ProductsTypeController;
 use App\Http\Controllers\Backend\MovieController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Creator\CreatorMovieController;
+use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\WishlistController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -281,3 +284,10 @@ Route::middleware(['auth','role:creator'])->group(function(){
     });
 
 }); // End Group Creator Middleware
+
+// Frontend Movie Details All Route
+Route::get('movie/details/{id}', [IndexController::class, 'MovieDetails']);
+
+// WishList Add Route
+Route::post('/add-to-wishlist/{movie_id}', [WishlistController::class, 'AddToWishList']);
+

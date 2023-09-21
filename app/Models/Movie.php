@@ -14,7 +14,10 @@ class Movie extends Model
         return $this -> belongsTo(ProductsType::class,'movcat_id','id');
     }
     public function goals(){
-        return $this -> belongsTo(Goal::class,'goal_type','id');
+        return $this -> belongsTo(Goal::class,'movie_goals','id');
+    }
+    public function appeals(){
+        return $this -> belongsTo(AppealPoints::class,'movie_appeals','id');
     }
     public function user(){
         return $this -> belongsTo(User::class,'creator_id','id');
