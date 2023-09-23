@@ -43,8 +43,8 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
                                     <h6>{{ $item['type']['type_name'] ?? '' }}</h6>
                                 </div>
                                 <ul class="other-option pull-right clearfix">
-                                    <li><a href="property-details.html"><i class="icon-12"></i></a></li>
-                                    <li><a area-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="icon-13"></i></a></li>
+                                    <li><a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="icon-12"></i></a></li>
+                                    <li><a aria-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="icon-13"></i></a></li>
                                 </ul>
                             </div>
                             <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing sed.</p>
