@@ -53,6 +53,14 @@ $status = $creatorId->status;
                             <span class="link-title">Buy Packege</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('creator.movie.message') }}" class="nav-link">
+                            <i class="link-icon" data-feather="calendar"></i>
+                            <span class="link-title">Message</span>
+                            </a>
+                        </li>
+
                         <li class="nav-item nav-category">Components</li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">

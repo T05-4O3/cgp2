@@ -162,7 +162,7 @@
             }
         </script>
 
-    // start load Wishlist Data
+    <!-- // start load Wishlist Data -->
     <script type="text/javascript">
         function wishlist(){
             $.ajax({
@@ -207,6 +207,7 @@
                 dataType: 'json',
                 url: "/wishlist-remove/"+id,
                 success:function(data){
+                    wishlist();
                         // Start Message 
                         const Toast = Swal.mixin({
                             toast: true,
@@ -233,7 +234,7 @@
         }
     </script>
 
-    <!-- // Add To Wishlist -->
+    <!-- // Add To Compare -->
     <script type="text/javascript">
         function addToCompare(movie_id){
             $.ajax({
@@ -266,6 +267,149 @@
             })
         }
     </script>
+
+    <!-- // start load Conpare Data -->
+    <script type="text/javascript">
+        function compare(){
+            $.ajax({
+                type: "GET", 
+                dataType: 'json', 
+                url: "/get-compare-movie/",
+
+                success:function(response){
+                    var rows = ""
+                    $.each(response, function(key,value){ 
+                        rows += `
+                        <tr>
+                            <th>Movie Info</th>
+                            <th>
+                                <figure class="image" id="videoContainer/${value.movie.movie_url}">
+                                <iframe src="https://www.youtube.com/embed/${value.movie.movie_url.replace('https://www.youtube.com/watch?v=', '')}" frameborder="0" allowfullscreen></iframe>
+                                </figure>
+                                <div class="title">${value.movie.movie_title}</div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Goal</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.movie_goals}</p>
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td>
+                                <p>Targets</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.targets_type_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Color Terms</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.color_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Shape Terms</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.shape_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Brightness Terms</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.brightness_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Emotional Terms</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.emotional_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Environment Terms</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.environment_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Object Terms</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.object_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Storytelling</p>
+                            </td>
+                            <td>
+                                <p>${value.movie.storytellings_id}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Action</p>
+                            </td>
+                            <td>
+                                <a type="submit" class="text-body" id="${value.id}" onclick="compareRemove(this.id)"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>                      
+                        `
+                    });
+                    $('#compare').html(rows);
+                }
+            })
+        }
+        compare();
+        // Compare Remove
+        function compareRemove(id){
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/compare-remove/"+id,
+                success:function(data){
+                    compare();
+                        // Start Message 
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000 
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                                Toast.fire({
+                                type: 'success',
+                                icon: 'success', 
+                                title: data.success, 
+                                })
+                        }else{
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error', 
+                            title: data.error, 
+                            })
+                        }
+                        // End Message
+                }
+            })
+        }
+        
+    </script>    
 
     <script type="text/javascript">
         window.addEventListener('DOMContentLoaded', function() {

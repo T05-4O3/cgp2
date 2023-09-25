@@ -18,6 +18,9 @@ use App\Models\ObjectTerms;
 use App\Models\Storytellings;
 use App\Models\Tag;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Models\MovieMessage;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -65,4 +68,36 @@ class IndexController extends Controller
         ));
 
     }// End Method
+
+    public function MovieMessage(Request $request){
+        $mid = $request->movie_id;
+        $cid = $request->creator_id;
+        if (Auth::check()){
+            MovieMessage::insert([
+                'user_id' => Auth::user()->id,
+                'creator_id' => $cid,
+                'movie_id' => $mid,
+                'msg_name' => $request->msg_name,
+                'msg_email' => $request->msg_email,
+                'msg_phone' => $request->msg_phone,
+                'message' => $request->message,
+                'created_at' => Carbon::now(),
+            ]);
+            $notification = array(
+                'message' => 'Send Message Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+
+
+        }else{
+            $notification = array(
+                'message' => 'Please Login Your Account First',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
+    }
+
 }

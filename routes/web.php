@@ -49,6 +49,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/get-wishlist-movie', 'GetWishlistMovie');
         Route::get('/wishlist-remove/{id}', 'WishlistRemove');
     });
+    
+    // User Compare All Route
+    Route::controller(CompareController::class)->group(function(){
+        Route::get('/user/compare', 'UserCompare')->name('user.compare');
+        Route::get('/get-compare-movie', 'GetCompareMovie');
+        Route::get('/compare-remove/{id}', 'CompareRemove');
+    });
 
 });
 
@@ -273,7 +280,9 @@ Route::middleware(['auth','role:creator'])->group(function(){
         Route::post('/creator/update/movie', 'CreatorUpdateMovie')->name('creator.update.movie');
         Route::post('/creator/update/movie/tags', 'CreatorUpdateMovieTags')->name('creator.update.movie.tags');
         Route::get('/creator/details/movie/{id}', 'CreatorDetailsMovie')->name('creator.details.movie');
-        Route::get('/creator/delete/movie/{id}', 'CreatorDeleteMovie')->name('creator.delete.movie');
+        Route::post('/creator/store/movie', 'CreatorStoreMovie')->name('creator.store.movie');
+        Route::get('/creator/movie/message', 'CreatorMovieMessage')->name('creator.movie.message');
+        Route::get('/creator/message/details/{id}', 'CreatorMessageDetails')->name('creator.message.details');
     });
 
     // Creator All Route from Admin
@@ -293,3 +302,5 @@ Route::post('/add-to-wishList/{movie_id}', [WishlistController::class, 'AddToWis
 // Compare Add Route
 Route::post('/add-to-compare/{movie_id}', [CompareController::class, 'AddToCompare']);
 
+// Send Message From Property Details Route
+Route::post('movie/message', [IndexController::class, 'MovieMessage'])->name('movie.message');

@@ -21,6 +21,7 @@ use App\Models\User;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Models\MovieMessage;
 
 class CreatorMovieController extends Controller
 {
@@ -414,5 +415,19 @@ class CreatorMovieController extends Controller
         return view('creator.package.buy_package');
 
     } // End Method  
+
+    public function CreatorMovieMessage(){
+        $id = Auth::user()->id;
+        $usermsg = MovieMessage::where('creator_id', $id)->get();
+        return view('creator.message.all_message', compact('usermsg'));
+
+    } // End Method
+
+    public function CreatorMessageDetails($id){
+        $usermsg = MovieMessage::where('creator_id', $id)->get();
+        $msgdetails = MovieMessage::findOrFail($id);
+        return view('creator.message.message_details', compact('usermsg','msgdetails'));
+
+    } // End Method
 
 }
