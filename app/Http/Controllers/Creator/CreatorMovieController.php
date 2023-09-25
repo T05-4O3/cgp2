@@ -424,7 +424,8 @@ class CreatorMovieController extends Controller
     } // End Method
 
     public function CreatorMessageDetails($id){
-        $usermsg = MovieMessage::where('creator_id', $id)->get();
+        $uid = Auth::user()->id;
+        $usermsg = MovieMessage::where('creator_id', $uid)->get();
         $msgdetails = MovieMessage::findOrFail($id);
         return view('creator.message.message_details', compact('usermsg','msgdetails'));
 

@@ -93,7 +93,7 @@
                                         </tr>
                                         <tr>
                                             <th>Movie Title</th>
-                                            <td>{{ $msgdetails['movie']['movie_title'] }}</td>
+                                            <td>{{ $msgdetails['user']['name'] ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>Message</th>

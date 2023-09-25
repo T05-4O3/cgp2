@@ -14,7 +14,7 @@ $ptype = App\Models\ProductsType::latest()->limit(5)->get();
                     <div class="category-block-one">
                         <div class="inner-box">
                             <!-- <div class="icon-box"><i class="{{ $item->type_icon }}"></i></div> -->
-                            <h5><a href="property-details.html">{{ $item->type_name }}</a></h5>
+                            <h5><a href="{{ route('movie.type', $item->id) }}">{{ $item->type_name }}</a></h5>
                             <span>{{ count($product) }}</span>
                         </div>
                     </div>

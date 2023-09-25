@@ -50,112 +50,15 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current dropdown"><a href="index.html"><span>Home</span></a>
-                                    <ul>
-                                        <!-- <li><a href="index.html">Main Home</a></li>
-                                        <li><a href="index-2.html">Home Modern</a></li>
-                                        <li><a href="index-3.html">Home Map</a></li>
-                                        <li><a href="index-4.html">Home Half Map</a></li>
-                                        <li><a href="index-5.html">Home Agent</a></li>
-                                        <li><a href="index-onepage.html">OnePage Home</a></li>
-                                        <li><a href="index-rtl.html">RTL Home</a></li>
-                                        <li class="dropdown"><a href="index.html">Header Style</a>
-                                            <ul>
-                                                <li><a href="index.html">Header Style 01</a></li>
-                                                <li><a href="index-2.html">Header Style 02</a></li>
-                                                <li><a href="index-3.html">Header Style 03</a></li>
-                                            </ul>
-                                        </li> -->
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="index.html"><span>Listing</span></a>
-                                    <ul>
-                                        <li><a href="creators-list.html">Creators List</a></li>
-                                        <li><a href="creators-grid.html">Creators Grid</a></li>
-                                        <li><a href="creators-details.html">Creators Details</a></li>
-                                    </ul>
-                                </li> 
-                                <li class="dropdown"><a href="index.html"><span>Ad Movies</span></a>
-                                    <ul>
-                                        <li><a href="movie-list.html">Movies List</a></li>
-                                        <li><a href="movie-grid.html">Movies Grid</a></li>
-                                        <li><a href="movie-list-2.html">Movies List Full View</a></li>
-                                        <li><a href="movie-grid-2.html">Movies Grid Full View</a></li>
-                                        <li><a href="movie-list-3.html">Movies List Half View</a></li>
-                                        <li><a href="movie-grid-3.html">Movies Grid Half View</a></li>
-                                        <li><a href="movie-details.html">Movies Details 01</a></li>
-                                        <li><a href="movie-details-2.html">Movies Details 02</a></li>
-                                        <li><a href="movie-details-3.html">Movies Details 03</a></li>
-                                        <li><a href="movie-details-4.html">Movies Details 04</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="index.html"><span>Pages</span></a>
-                                    <div class="megamenu">
-                                        <div class="row clearfix">
-                                            <div class="col-xl-4 column">
-                                                <ul>
-                                                    <li><h4>Pages</h4></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="services.html">Our Services</a></li>
-                                                    <li><a href="faq.html">Faq's Page</a></li>
-                                                    <li><a href="pricing.html">Pricing Table</a></li>
-                                                    <li><a href="compare-roperties.html">Compare Properties</a></li>
-                                                    <li><a href="categories.html">Categories Page</a></li>
-                                                    <!-- <li><a href="career.html">Career Opportunity</a></li>
-                                                    <li><a href="testimonials.html">Testimonials</a></li> -->
-                                                </ul>
-                                            </div>
-                                            <div class="col-xl-4 column">
-                                                <ul>
-                                                    <li><h4>Reels</h4></li>
-                                                    <li><a href="gallery.html">Our Gallery</a></li>
-                                                    <li><a href="profile.html">My Profile</a></li>
-                                                    <li><a href="signin.html">Sign In</a></li>
-                                                    <li><a href="signup.html">Sign Up</a></li>
-                                                    <li><a href="error.html">404</a></li>
-                                                    <li><a href="creators-list.html">Creators List</a></li>
-                                                    <li><a href="creators-grid.html">Creators Grid</a></li>
-                                                    <li><a href="creators-details.html">Creator Details</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-xl-4 column">
-                                                <ul>
-                                                    <li><h4>Pages</h4></li>
-                                                    <li><a href="blog-1.html">Blog 01</a></li>
-                                                    <li><a href="blog-2.html">Blog 02</a></li>
-                                                    <li><a href="blog-3.html">Blog 03</a></li>
-                                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                                    <li><a href="creator-list.html">Creator List</a></li>
-                                                    <li><a href="creator-grid.html">Creator Grid</a></li>
-                                                    <li><a href="creator-details.html">Creator Details</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                </ul>
-                                            </div>                                   
-                                        </div>                                        
-                                    </div>
-                                </li> 
-                                <li class="dropdown"><a href="index.html"><span>Cerator</span></a>
-                                    <ul>
-                                        <li><a href="crator-list.html">Creator List</a></li>
-                                        <li><a href="creator-grid.html">Creator Grid</a></li>
-                                        <li><a href="creator-details.html">Creator Details</a></li>
-                                    </ul>
-                                </li>
-                                <!-- <li class="dropdown"><a href="index.html"><span>Blog</span></a>
-                                    <ul>
-                                        <li><a href="blog-1.html">Blog 01</a></li>
-                                        <li><a href="blog-2.html">Blog 02</a></li>
-                                        <li><a href="blog-3.html">Blog 03</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>   -->
-                                <li><a href="contact.html"><span>Contact</span></a></li>   
+                                <li><a href="{{ url('/')}}"><span>Home</span></a></li>
+                                <li><a href="{{ url('/')}}"><span>About Us</span></a></li>
+                                <li><a href="{{ url('/')}}"><span>Creators</span></a></li>
+                                <li><a href="{{ url('/')}}"><span>Blog</span></a></li>
+                                <li><a href="contact.html"><span>Contact</span></a></li>
+                                <li><a href="{{ route('creator.login') }}" class="btn btn-success"><span>+</span>Add Movie</a></li> 
                             </ul>
                         </div>
                     </nav>
-                </div>
-                <div class="btn-box">
-                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Listing</a>
                 </div>
             </div>
         </div>

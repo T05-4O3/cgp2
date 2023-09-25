@@ -108,6 +108,8 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::post('/inactive/movie', 'InactiveMovie')->name('inactive.movie');
         Route::post('/active/movie', 'ActiveMovie')->name('active.movie');
 
+        Route::get('/admin/movie/message', 'AdminMovieMessage')->name('admin.movie.message');
+
     });
 
     // Products Type All Route
@@ -304,3 +306,12 @@ Route::post('/add-to-compare/{movie_id}', [CompareController::class, 'AddToCompa
 
 // Send Message From Property Details Route
 Route::post('movie/message', [IndexController::class, 'MovieMessage'])->name('movie.message');
+
+// Creator Details Page in Frontend
+Route::get('creator/details/{id}', [IndexController::class, 'CreatorDetails'])->name('creator.details');
+
+// Send Message From Creator Details Route
+Route::post('creator/details/message', [IndexController::class, 'CreatorDetailsMessage'])->name('creator.details.message');
+
+// Get All Movie Type Data
+Route::get('movie/type/{id}', [IndexController::class, 'MovieType'])->name('movie.type');

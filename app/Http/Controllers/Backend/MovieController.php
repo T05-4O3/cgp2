@@ -20,6 +20,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
+use App\Models\MovieMessage;
 
 class MovieController extends Controller
 {
@@ -439,6 +440,12 @@ class MovieController extends Controller
         );
 
         return redirect() -> route('all.movie') -> with($notification);
+
+    } // End Method
+
+    public function AdminMovieMessage(){
+        $usermsg = MovieMessage::latest()->get();
+        return view('backend.message.all_message', compact('usermsg'));
 
     } // End Method
 

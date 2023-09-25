@@ -67,7 +67,7 @@ class IndexController extends Controller
             'relatedMovieAppeal'
         ));
 
-    }// End Method
+    } // End Method
 
     public function MovieMessage(Request $request){
         $mid = $request->movie_id;
@@ -98,6 +98,55 @@ class IndexController extends Controller
             return redirect()->back()->with($notification);
         }
 
-    }
+    } // End Method
+
+    public function CreatorDetails($id){
+        $creator = User::findOrFail($id);
+        $movie = Movie::where('creator_id', $id)->get();
+        $featured = Movie::where('featured', '1')->limit(3)->get();
+        return view('frontend.creator.creator_details', 
+        compact('creator', 
+        'movie', 
+        'featured'
+    ));
+
+    } // End Method
+
+    public function CreatorDetailsMessage(Request $request){
+        $cid = $request->creator_id;
+        if (Auth::check()){
+            MovieMessage::insert([
+                'user_id' => Auth::user()->id,
+                'creator_id' => $cid,
+                'msg_name' => $request->msg_name,
+                'msg_email' => $request->msg_email,
+                'msg_phone' => $request->msg_phone,
+                'message' => $request->message,
+                'created_at' => Carbon::now(),
+            ]);
+            $notification = array(
+                'message' => 'Send Message Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+
+
+        }else{
+            $notification = array(
+                'message' => 'Please Login Your Account First',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
+    } // End Method
+
+    public function MovieType($id){
+        $movie = Movie::where('status', '1')->where('movcat_id', $id)->get();
+        $cbread = ProductsType::where('id', $id)->first();
+        return view('frontend.movie.movie_type', compact('movie', 'cbread'));
+
+    } // End Method
+
 
 }
