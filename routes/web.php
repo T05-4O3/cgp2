@@ -279,6 +279,7 @@ Route::middleware(['auth','role:creator'])->group(function(){
         Route::get('/creator/add/movie', 'CreatorAddMovie')->name('creator.add.movie');
         Route::post('/creator/store/movie', 'CreatorStoreMovie')->name('creator.store.movie');
         Route::get('/creator/edit/movie/{id}', 'CreatorEditMovie')->name('creator.edit.movie');
+        Route::get('/creator/delete/movie/{id}', 'CreatorDeleteMovie')->name('creator.delete.movie');
         Route::post('/creator/update/movie', 'CreatorUpdateMovie')->name('creator.update.movie');
         Route::post('/creator/update/movie/tags', 'CreatorUpdateMovieTags')->name('creator.update.movie.tags');
         Route::get('/creator/details/movie/{id}', 'CreatorDetailsMovie')->name('creator.details.movie');
@@ -312,6 +313,12 @@ Route::get('creator/details/{id}', [IndexController::class, 'CreatorDetails'])->
 
 // Send Message From Creator Details Route
 Route::post('creator/details/message', [IndexController::class, 'CreatorDetailsMessage'])->name('creator.details.message');
+
+// Get All Advertising Content
+Route::get('advertising/content', [IndexController::class, 'AdvertisingContent'])->name('advertising.content');
+
+// Get All Other Content
+Route::get('other/content', [IndexController::class, 'OtherContent'])->name('other.content');
 
 // Get All Movie Type Data
 Route::get('movie/type/{id}', [IndexController::class, 'MovieType'])->name('movie.type');

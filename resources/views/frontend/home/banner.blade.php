@@ -4,16 +4,15 @@
         <div class="inner-container">
             <div class="content-box centred">
                 <h2>Contextual Vision</h2>
-                <p>Understand the diverse meanings contained in advertisements and other images to achieve effective communication.</p>
-                <p>映像に秘められた意味の共通理解を促し、広告、マーケティング、コミュニケーションへの活用をサポートします。</br>
-                    私たちのサービスは、広告映像のパターンを文脈に基づいて分析し、共通理解を助けます。</p>
+                <p>Understand the diverse contexts contained in advertisements and other images to ensure effective communication.</p>
+                <p>映像に込められた文脈の共通理解を促し、クリエイティブ、コミュニケーションへの活用をサポートします。</p>
             </div>
             <div class="search-field">
                 <div class="tabs-box">
                     <div class="tab-btn-box">
                         <ul class="tab-btns tab-buttons centred clearfix">
-                            <!-- <li class="tab-btn active-btn" data-tab="#tab-1">Reel</li> -->
-                            <li class="tab-btn" data-tab="#tab-2">Ad Movie</li>
+                            <li class="tab-btn active-btn" data-tab="#tab-1">Other</li>
+                            <li class="tab-btn" data-tab="#tab-2">Advertising</li>
                         </ul>
                     </div>
                     <div class="tabs-content info-group">
@@ -66,7 +65,8 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="switch_btn_one ">
+
+                                <!-- <div class="switch_btn_one ">
                                     <button class="nav-btn nav-toggler navSidebar-button clearfix search__toggler">Advanced Search<i class="fas fa-angle-down"></i></button>
                                     <div class="advanced-search">
                                         <div class="close-btn">
@@ -181,7 +181,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+
                             </div>
                         </div>
                         <div class="tab" id="tab-2">
@@ -233,7 +234,8 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="switch_btn_one ">
+                                
+                                <!-- <div class="switch_btn_one ">
                                     <button class="nav-btn nav-toggler navSidebar-button clearfix search__toggler">Advanced Search<i class="fas fa-angle-down"></i></button>
                                     <div class="advanced-search">
                                         <div class="close-btn">
@@ -348,7 +350,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+
                             </div>
                         </div>
                     </div>

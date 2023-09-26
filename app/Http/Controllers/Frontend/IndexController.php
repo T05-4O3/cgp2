@@ -104,10 +104,14 @@ class IndexController extends Controller
         $creator = User::findOrFail($id);
         $movie = Movie::where('creator_id', $id)->get();
         $featured = Movie::where('featured', '1')->limit(3)->get();
+        $admovie = Movie::where('movie_status', 'ad_movie')->get();
+        $othmovie = Movie::where('movie_status', 'other')->get();
         return view('frontend.creator.creator_details', 
         compact('creator', 
         'movie', 
-        'featured'
+        'featured',
+        'admovie',
+        'othmovie'
     ));
 
     } // End Method
@@ -141,8 +145,20 @@ class IndexController extends Controller
 
     } // End Method
 
+    public function AdvertisingContent(){
+        $movie = Movie::where('status', '1')->where('movie_status', 'ad_movie')->paginate(5);
+        return view('frontend.movie.advertising', compact('movie'));
+
+    } // End Method
+
+    public function OtherContent(){
+        $movie = Movie::where('status', '1')->where('movie_status', 'other')->paginate(5);
+        return view('frontend.movie.other', compact('movie'));
+
+    } // End Method
+
     public function MovieType($id){
-        $movie = Movie::where('status', '1')->where('movcat_id', $id)->get();
+        $movie = Movie::where('status', '1')->where('movcat_id', $id)->paginate(5);
         $cbread = ProductsType::where('id', $id)->first();
         return view('frontend.movie.movie_type', compact('movie', 'cbread'));
 

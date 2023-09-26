@@ -22,7 +22,7 @@
 
 
 <!-- deals-section -->
-<!-- @include('frontend.home.deals') -->
+@include('frontend.home.deals')
 <!-- deals-section end -->
 
 

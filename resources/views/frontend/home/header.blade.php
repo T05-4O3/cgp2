@@ -52,6 +52,11 @@
                             <ul class="navigation clearfix">
                                 <li><a href="{{ url('/')}}"><span>Home</span></a></li>
                                 <li><a href="{{ url('/')}}"><span>About Us</span></a></li>
+                                <li class="dropdown"><a href="#"><span>Movies</span></a>
+                                    <ul>
+                                        <li><a href="{{ route('advertising.content') }}">Advertising</a></li>
+                                        <li><a href="{{ route('other.content') }}">Other</a></li>
+                                    </ul>
                                 <li><a href="{{ url('/')}}"><span>Creators</span></a></li>
                                 <li><a href="{{ url('/')}}"><span>Blog</span></a></li>
                                 <li><a href="contact.html"><span>Contact</span></a></li>

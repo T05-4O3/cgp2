@@ -9,4 +9,5 @@ class ProductsType extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    
 }

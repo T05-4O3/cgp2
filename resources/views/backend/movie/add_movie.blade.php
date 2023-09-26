@@ -229,10 +229,10 @@
                                     <div class="md-3">
                                         <!-- <label class="form-label">Movie Status</label> -->
                                         <div class="form-group mb-3">
-                                            <select name="movie_status" class="form-select" id="exampleFormControlSelect1"> -->
-                                                <!-- <option selected="" disabled="">Select Status</option> -->
-                                                <option value="ad_movie">Ad Movie</option>
-                                                <!-- <option value="reel">Reel</option> -->
+                                            <select name="movie_status" class="form-select" id="exampleFormControlSelect1">
+                                                <option selected="" disabled="">Select Status</option>
+                                                <option value="ad_movie">Advertising</option>
+                                                <option value="other">Other</option>
                                             </select>
                                         </div>
                                     </div>

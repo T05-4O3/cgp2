@@ -9,10 +9,10 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>{{ $cbread->type_name }} Movie List</h1>
+            <h1>Adviertising Content</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/')}}">Home</a></li>
-                <li>{{ $cbread->type_name }}</li>
+                <li>Adviertising Content List</li>
             </ul>
         </div>
     </div>
@@ -87,18 +87,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="price-filter sidebar-widget">
+                    <div class="category-widget sidebar-widget">
                         <div class="widget-title">
-                            <h5>Select Price Range</h5>
+                            <h5>Status Of Gallery</h5>
                         </div>
-                        <div class="range-slider clearfix">
-                            <div class="clearfix">
-                                <div class="input">
-                                    <input type="text" class="property-amount" name="field-name" readonly="">
-                                </div>
-                            </div>
-                            <div class="price-range-slider"></div>
-                        </div>
+                        <ul class="category-list clearfix">
+                            <li><a href="{{ route('advertising.content') }}">Advertising<span></span></a></li>
+                            <li><a href="{{ route('other.content') }}">Other<span></span></a></li>
+                        </ul>                        
                     </div>
                 </div>
             </div>
@@ -106,7 +102,7 @@
                 <div class="property-content-side">
                     <div class="item-shorting clearfix">
                         <div class="left-column pull-left">
-                            <h5>Search Reasults: <span>Showing {{ count($movie)}} Movies</span></h5>
+                            <h5>Search Reasults: <span>Showing {{ count($movie)}} Content</span></h5>
                         </div>
                         <div class="right-column pull-right clearfix">
                         </div>

@@ -66,7 +66,7 @@
                                             <select name="movie_goals" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Goal</option>
                                                 @foreach($goal as $goals)
-                                                    <option value="{{ $goals->goal_type }}" {{ $goals -> goal_type == $movie -> movcat_id ? 'selected' : '' }}>{{ $goals->goal_type }}</option>
+                                                    <option value="{{ $goals->goal_type }}" {{ $goals -> goal_type == $movie -> movie_goals ? 'selected' : '' }}>{{ $goals->goal_type }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -90,7 +90,7 @@
                                             <select name="movie_appeals" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Appeal Points</option>
                                                 @foreach($appealPoints as $appeal_points)
-                                                    <option value="{{ $appeal_points->id }}" {{ $appeal_points -> id == $movie -> movcat_id ? 'selected' : '' }}>{{ $appeal_points->appeal_point }}</option>
+                                                    <option value="{{ $appeal_points->id }}" {{ $appeal_points -> id == $movie -> movie_appeals ? 'selected' : '' }}>{{ $appeal_points->appeal_point }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -216,9 +216,9 @@
                                         <!-- <label class="form-label">Movie Status</label> -->
                                         <div class="form-group mb-3">
                                             <select name="movie_status" class="form-select" id="exampleFormControlSelect1">
-                                                <!-- <option selected="" disabled="">Select Status</option> -->
-                                                <option value="ad_movie" {{ $movie -> movie_status == 'ad_movie' ? 'selected' : '' }}>Ad Movie</option>
-                                                <!-- <option value="reel" {{ $movie -> movie_status == 'reel' ? 'selected' : '' }}>Reel</option> -->
+                                                <option selected="" disabled="">Select Status</option>
+                                                <option value="ad_movie" {{ $movie -> movie_status == 'ad_movie' ? 'selected' : '' }}>Advertising</option>
+                                                <option value="other" {{ $movie -> movie_status == 'other' ? 'selected' : '' }}>Other</option>
                                             </select>
                                         </div>
                                     </div>

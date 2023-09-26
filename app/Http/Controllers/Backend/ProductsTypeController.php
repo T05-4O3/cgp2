@@ -17,6 +17,7 @@ use App\Models\EmotionalTerms;
 use App\Models\EnvironmentTerms;
 use App\Models\ObjectTerms;
 use App\Models\Storytellings;
+use App\Models\Movie;
 
 class ProductsTypeController extends Controller
 {
@@ -807,4 +808,13 @@ class ProductsTypeController extends Controller
         return redirect()->back()->with($notification);
 
     } // End Method
+
+    public function index(){
+        $categories = ProductsType::pluck('type_name')->unique();
+        $moviesCategories = Movie::distinct()->pluck('movcat_id');
+        return view('your_view', [
+            'categories' => $categories,
+            'moviesCategories' => $moviesCategories,
+        ]);
+    }
 }

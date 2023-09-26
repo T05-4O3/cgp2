@@ -186,8 +186,12 @@
                     </div>
                     <div class="category-widget sidebar-widget">
                         <div class="widget-title">
-                            <h5>Status Of Property</h5>
+                            <h5>Status Of Gallery</h5>
                         </div>
+                        <ul class="category-list clearfix">
+                            <li><a href="{{ route('advertising.content') }}">Advertising<span>({{ count($admovie) }})</span></a></li>
+                            <li><a href="{{ route('other.content') }}">Other<span>({{ count($othmovie) }})</span></a></li>
+                        </ul>                        
                     </div>
                     <div class="featured-widget sidebar-widget">
                         <div class="widget-title">
