@@ -164,5 +164,58 @@ class IndexController extends Controller
 
     } // End Method
 
+    // Advertising Contents Search
+    public function AdvertisingGallerySearch(Request $request){
+        $item = $request->search;
+        $movcat_id = $request->movcat_id; // 選択されたカテゴリー
+        $movie_goals = $request->movie_goals; // 選択されたゴール
+    
+        $query = Movie::where('movie_title', 'like', '%' . $item . '%')
+            ->where('movie_status', 'ad_movie')
+            ->with('type', 'goals');
+    
+        if ($movcat_id !== "Select Category") {
+            // カテゴリーが選択された場合、カテゴリーにマッチする条件を追加
+            $query->whereHas('type', function ($query) use ($movcat_id) {
+                $query->where('type_name', $movcat_id);
+            });
+        }
+    
+        if ($movie_goals !== "Select Goal") {
+            // ゴールが選択された場合、ゴールにマッチする条件を追加
+            $query->where('movie_goals', $movie_goals);
+        }
+    
+        $movie = $query->get();
+    
+        return view('frontend.movie.movie_search', compact('movie'));
+    } // End Method
+
+    // Advertising Contents Search
+    public function OtherGallerySearch(Request $request){
+        $item = $request->search;
+        $movcat_id = $request->movcat_id; // 選択されたカテゴリー
+        $movie_goals = $request->movie_goals; // 選択されたゴール
+    
+        $query = Movie::where('movie_title', 'like', '%' . $item . '%')
+            ->where('movie_status', 'other')
+            ->with('type', 'goals');
+    
+        if ($movcat_id !== "Select Category") {
+            // カテゴリーが選択された場合、カテゴリーにマッチする条件を追加
+            $query->whereHas('type', function ($query) use ($movcat_id) {
+                $query->where('type_name', $movcat_id);
+            });
+        }
+    
+        if ($movie_goals !== "Select Goal") {
+            // ゴールが選択された場合、ゴールにマッチする条件を追加
+            $query->where('movie_goals', $movie_goals);
+        }
+    
+        $movie = $query->get();
+    
+        return view('frontend.movie.movie_search', compact('movie'));
+    } // End Method
 
 }

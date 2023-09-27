@@ -322,3 +322,9 @@ Route::get('other/content', [IndexController::class, 'OtherContent'])->name('oth
 
 // Get All Movie Type Data
 Route::get('movie/type/{id}', [IndexController::class, 'MovieType'])->name('movie.type');
+
+// Home Page Advertising Search Options Route
+Route::post('advertising/gallery/search', [IndexController::class, 'AdvertisingGallerySearch'])->name('advertising.gallery.search');
+
+// Home Page Other Search Options Route
+Route::post('other/gallery/search', [IndexController::class, 'OtherGallerySearch'])->name('other.gallery.search');

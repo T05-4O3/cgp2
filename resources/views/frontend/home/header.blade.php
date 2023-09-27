@@ -82,7 +82,7 @@
                     </nav>
                 </div>
                 <div class="btn-box">
-                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Listing</a>
+                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Movie</a>
                 </div>
             </div>
         </div>

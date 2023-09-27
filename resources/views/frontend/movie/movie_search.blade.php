@@ -9,10 +9,10 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>{{ $cbread->type_name }} Movie List</h1>
+            <h1>Content Search</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/')}}">Home</a></li>
-                <li>{{ $cbread->type_name }}</li>
+                <li>Content Search</li>
             </ul>
         </div>
     </div>
@@ -33,53 +33,53 @@
                         <div class="widget-content">
                             <div class="select-box">
                                 <select class="wide">
-                                    <option data-display="All Type">All Type</option>
+                                    <!-- <option data-display="All Type">All Type</option>
                                     <option value="1">Villa</option>
                                     <option value="2">Commercial</option>
-                                    <option value="3">Residential</option>
+                                    <option value="3">Residential</option> -->
                                 </select>
                             </div>
                             <div class="select-box">
                                 <select class="wide">
-                                    <option data-display="Select Location">Select Location</option>
+                                    <!-- <option data-display="Select Location">Select Location</option>
                                     <option value="1">New York</option>
                                     <option value="2">California</option>
                                     <option value="3">London</option>
-                                    <option value="4">Maxico</option>
+                                    <option value="4">Maxico</option> -->
                                 </select>
                             </div>
                             <div class="select-box">
                                 <select class="wide">
-                                    <option data-display="This Area Only">This Area Only</option>
+                                    <!-- <option data-display="This Area Only">This Area Only</option>
                                     <option value="1">New York</option>
                                     <option value="2">California</option>
                                     <option value="3">London</option>
-                                    <option value="4">Maxico</option>
+                                    <option value="4">Maxico</option> -->
                                 </select>
                             </div>
                             <div class="select-box">
                                 <select class="wide">
-                                    <option data-display="All Type">Max Rooms</option>
+                                    <!-- <option data-display="All Type">Max Rooms</option>
                                     <option value="1">2+ Rooms</option>
                                     <option value="2">3+ Rooms</option>
                                     <option value="3">4+ Rooms</option>
-                                    <option value="4">5+ Rooms</option>
+                                    <option value="4">5+ Rooms</option> -->
                                 </select>
                             </div>
                             <div class="select-box">
                                 <select class="wide">
-                                    <option data-display="Most Popular">Most Popular</option>
+                                    <!-- <option data-display="Most Popular">Most Popular</option>
                                     <option value="1">Villa</option>
                                     <option value="2">Commercial</option>
-                                    <option value="3">Residential</option>
+                                    <option value="3">Residential</option> -->
                                 </select>
                             </div>
                             <div class="select-box">
                                 <select class="wide">
-                                    <option data-display="All Type">Select Floor</option>
+                                    <!-- <option data-display="All Type">Select Floor</option>
                                     <option value="1">2x Floor</option>
                                     <option value="2">3x Floor</option>
-                                    <option value="3">4x Floor</option>
+                                    <option value="3">4x Floor</option> -->
                                 </select>
                             </div>
                             <div class="filter-btn">
@@ -87,26 +87,22 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="price-filter sidebar-widget">
+                    <div class="category-widget sidebar-widget">
                         <div class="widget-title">
-                            <h5>Select Price Range</h5>
+                            <h5>Status Of Gallery</h5>
                         </div>
-                        <div class="range-slider clearfix">
-                            <div class="clearfix">
-                                <div class="input">
-                                    <input type="text" class="property-amount" name="field-name" readonly="">
-                                </div>
-                            </div>
-                            <div class="price-range-slider"></div>
-                        </div>
-                    </div> -->
+                        <ul class="category-list clearfix">
+                            <li><a href="{{ route('advertising.content') }}">Advertising<span></span></a></li>
+                            <li><a href="{{ route('other.content') }}">Other<span></span></a></li>
+                        </ul>                        
+                    </div>
                 </div>
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
                 <div class="property-content-side">
                     <div class="item-shorting clearfix">
                         <div class="left-column pull-left">
-                            <h5>Search Reasults: <span>Showing {{ count($movie)}} Movies</span></h5>
+                            <h5>Search Reasults: <span>Showing {{ count($movie)}} Content</span></h5>
                         </div>
                         <div class="right-column pull-right clearfix">
                         </div>
@@ -163,9 +159,8 @@
                             
                         </div>
                     </div>
-                    <div class="pagination-wrapper">
-                        {{ $movie->links('vendor.pagination.custom') }}
-                    </div>
+                    
+                    
                 </div>
             </div>
         </div>

@@ -251,7 +251,7 @@
                                         <li><i class="fas fa-map-marker-alt"></i> </li>
                                         <li><i class="fas fa-phone"></i><a href="tel:000"> </a></li>
                                     </ul>
-                                    <div class="btn-box"><a href="creator-details.html">View Listing</a></div>
+                                    <div class="btn-box"><a href="creator-details.html">View Gallery</a></div>
                                 </div>
                                 @else
                                 <figure class="author-thumb"><img src="{{ !empty($movie->user->photo) ?url('upload/creator_images/'.$movie->user->photo) : url('upload/no_image.jpg') }}" alt=""></figure>
@@ -261,7 +261,7 @@
                                         <li><i class="fas fa-map-marker-alt"></i>{{ $movie->user->company }}</li>
                                         <li><i class="fas fa-phone"></i><a href="tel:{{ $movie->user->phone }}">{{ $movie->user->phone }}</a></li>
                                     </ul>
-                                    <div class="btn-box"><a href="agents-details.html">View Listing</a></div>
+                                    <div class="btn-box"><a href="agents-details.html">View Gallery</a></div>
                                 </div>
                                 @endif
                             </div>

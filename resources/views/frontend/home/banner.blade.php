@@ -1,4 +1,7 @@
-
+@php
+$mcat = App\Models\ProductsType::latest()->get();
+$mgoal = App\Models\Goal::latest()->get();
+@endphp
 <section class="banner-section" id="p5-canvas" style="background-image: url({{ asset('frontend/assets/images/banner/banner-1.jpg') }});">
     <div class="auto-container">
         <div class="inner-container">
@@ -11,36 +14,27 @@
                 <div class="tabs-box">
                     <div class="tab-btn-box">
                         <ul class="tab-btns tab-buttons centred clearfix">
-                            <li class="tab-btn active-btn" data-tab="#tab-1">Other</li>
-                            <li class="tab-btn" data-tab="#tab-2">Advertising</li>
+                            <li class="tab-btn active-btn" data-tab="#tab-1">Advertising</li>
+                            <li class="tab-btn" data-tab="#tab-2">Other</li>
                         </ul>
                     </div>
                     <div class="tabs-content info-group">
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">
-                                <div class="top-search">
-                                    <form action="index.html" method="post" class="search-form">
+                                <div class="top-search" style="border: 4px solid #2DBE6C;">
+                                    <form action="{{ route('advertising.gallery.search') }}" method="post" class="search-form">
+                                        @csrf
                                         <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Search Ad Movie</label>
-                                                    <div class="field-input">
-                                                        <i class="fas fa-search"></i>
-                                                        <input type="search" name="search-field" placeholder="Search by Property, Location or Landmark..." required="">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12 column">
                                                 <div class="form-group">
-                                                    <label>Products</label>
+                                                    <label>Category</label>
                                                     <div class="select-box">
-                                                        <i class="far fa-compass"></i>
-                                                        <select class="wide">
-                                                        <option data-display="Input location">Input location</option>
-                                                        <option value="1">New York</option>
-                                                        <option value="2">California</option>
-                                                        <option value="3">London</option>
-                                                        <option value="4">Maxico</option>
+                                                        <select name="movcat_id" class="wide">
+                                                        <option data-display="Select Category">Select Category</option>
+                                                        <!-- $mcat=Description in PHP at the top & $ptype=Option Value Description Only -->
+                                                        @foreach($mcat as $ptype)
+                                                        <option value="{{ $ptype->type_name }}">{{ $ptype->type_name }}</option>
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -49,13 +43,21 @@
                                                 <div class="form-group">
                                                     <label>Goal</label>
                                                     <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="All Type">All Type</option>
-                                                        <option value="1">Laxury</option>
-                                                        <option value="2">Classic</option>
-                                                        <option value="3">Modern</option>
-                                                        <option value="4">New</option>
+                                                        <select name="movie_goals" class="wide">
+                                                            <option data-display="Select Goal">Select Goal</option>
+                                                            @foreach($mgoal as $sgoal)
+                                                            <option value="{{ $sgoal->goal_type }}">{{ $sgoal->goal_type }}</option>
+                                                            @endforeach
                                                         </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12 col-sm-12 column">
+                                                <div class="form-group">
+                                                    <label>Search Other</label>
+                                                    <div class="field-input">
+                                                        <i class="fas fa-search"></i>
+                                                        <input type="search" name="search" placeholder="Search by Title Keywords...">
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,44 +189,43 @@
                         </div>
                         <div class="tab" id="tab-2">
                             <div class="inner-box">
-                                <div class="top-search">
-                                    <form action="index.html" method="post" class="search-form">
+                                <div class="top-search" style="border: 4px solid #2DBE6C;">
+                                    <form action="{{ route('other.gallery.search') }}" method="post" class="search-form">
+                                        @csrf
                                         <div class="row clearfix">
+                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                <div class="form-group">
+                                                    <label>Category</label>
+                                                    <div class="select-box">
+                                                        <select name="movcat_id" class="wide">
+                                                        <option data-display="Select Category">Select Category</option>
+                                                        <!-- $mcat=Description in PHP at the top & $ptype=Option Value Description Only -->
+                                                        @foreach($mcat as $ptype)
+                                                        <option value="{{ $ptype->type_name }}">{{ $ptype->type_name }}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                <div class="form-group">
+                                                    <label>Goal</label>
+                                                    <div class="select-box">
+                                                        <select name="movie_goals" class="wide">
+                                                            <option data-display="Select Goal">Select Goal</option>
+                                                            @foreach($mgoal as $sgoal)
+                                                            <option value="{{ $sgoal->goal_type }}">{{ $sgoal->goal_type }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-4 col-md-12 col-sm-12 column">
                                                 <div class="form-group">
-                                                    <label>Search Property</label>
+                                                    <label>Search Other</label>
                                                     <div class="field-input">
                                                         <i class="fas fa-search"></i>
-                                                        <input type="search" name="search-field" placeholder="Search by Property, Location or Landmark..." required="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Location</label>
-                                                    <div class="select-box">
-                                                        <i class="far fa-compass"></i>
-                                                        <select class="wide">
-                                                        <option data-display="Input location">Input location</option>
-                                                        <option value="1">New York</option>
-                                                        <option value="2">California</option>
-                                                        <option value="3">London</option>
-                                                        <option value="4">Maxico</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Property Type</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="All Type">All Type</option>
-                                                        <option value="1">Laxury</option>
-                                                        <option value="2">Classic</option>
-                                                        <option value="3">Modern</option>
-                                                        <option value="4">New</option>
-                                                        </select>
+                                                        <input type="search" name="search" placeholder="Search by Title Keywords...">
                                                     </div>
                                                 </div>
                                             </div>
@@ -234,7 +235,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                
+
                                 <!-- <div class="switch_btn_one ">
                                     <button class="nav-btn nav-toggler navSidebar-button clearfix search__toggler">Advanced Search<i class="fas fa-angle-down"></i></button>
                                     <div class="advanced-search">
