@@ -218,7 +218,7 @@
                                             <select name="movie_status" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Status</option>
                                                 <option value="ad_movie" {{ $movie -> movie_status == 'ad_movie' ? 'selected' : '' }}>Advertising</option>
-                                                <option value="other" {{ $movie -> movie_status == 'other' ? 'selected' : '' }}>Other</option>
+                                                <option value="other" {{ $movie -> movie_status == 'other' ? 'selected' : '' }}></option>
                                             </select>
                                         </div>
                                     </div>

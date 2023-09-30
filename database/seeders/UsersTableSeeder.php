@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'username' => 'admin',
-                'email' => 'observation.jp+savis_admin@gmail.com',
+                'email' => 'admin@test.com',
                 'password' => Hash::make('111'),
                 'role' => 'admin',
                 'status' => 'active',
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Creator',
                 'username' => 'creator',
-                'email' => 'observation.jp+savis_creator@gmail.com',
+                'email' => 'creator@test.com',
                 'password' => Hash::make('111'),
                 'role' => 'creator',
                 'status' => 'active',
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'User',
                 'username' => 'user',
-                'email' => 'observation.jp+savis_user@gmail.com',
+                'email' => 'user@test.com',
                 'password' => Hash::make('111'),
                 'role' => 'user',
                 'status' => 'active',

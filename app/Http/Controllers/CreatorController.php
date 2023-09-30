@@ -22,17 +22,26 @@ class CreatorController extends Controller
     } // End Method
 
     public function CreatorRegister(Request $request){
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'role' => 'creator',
-            'status' => 'inactive',
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
-        event(new Registered($user));
-        Auth::login($user);
-        return redirect(RouteServiceProvider::CREATOR);
+
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => Hash::make($request->password),
+                'role' => 'creator',
+                'status' => 'inactive',
+            ]);
+            event(new Registered($user));
+            Auth::login($user);
+            return redirect(RouteServiceProvider::CREATOR);
+        } catch(\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors(['email' => 'Your Email is Already Registered.']);
+        }
     } // End Method
 
     public function CreatorLogout(Request $request){

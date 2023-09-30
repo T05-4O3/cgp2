@@ -5,7 +5,7 @@ $movie = App\Models\Movie::where('status', '1')->where('featured', '1')->limit(3
     <div class="auto-container">
         <div class="sec-title centred">
             <h5>Features</h5>
-            <h2>Featured Movie</h2>
+            <h2>Featured Video</h2>
         </div>
         <div class="row clearfix">
             @foreach($movie as $key => $item)

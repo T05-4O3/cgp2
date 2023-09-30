@@ -328,7 +328,7 @@
                             </div>
 
                         </div>
-                        <div class="calculator-widget sidebar-widget">
+                        <!-- <div class="calculator-widget sidebar-widget">
                             <div class="calculate-inner">
                                 <div class="widget-title">
                                     <h4>Mortgage Calculator</h4>
@@ -363,13 +363,13 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
             <div class="similar-content">
                 <div class="title">
-                    <h4>Similar Movies</h4>
+                    <h4>Similar Contents</h4>
                 </div>
                 <div class="row clearfix">
                     @foreach($relatedMovieCat as $item)

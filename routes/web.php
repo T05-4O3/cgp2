@@ -85,8 +85,9 @@ Route::middleware(['auth','role:creator'])->group(function(){
 
 }); // End Group Creator Middleware
 
-Route::get('/creator/login', [CreatorController::class, 'CreatorLogin'])->name('creator.login')->middleware(RedirectIfAuthenticated::class);
+Route::post('/client/register', [UserController::class, 'ClientRegister'])->name('client.register');
 
+Route::get('/creator/login', [CreatorController::class, 'CreatorLogin'])->name('creator.login')->middleware(RedirectIfAuthenticated::class);
 Route::post('/creator/register', [CreatorController::class, 'CreatorRegister'])->name('creator.register');
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
@@ -297,7 +298,7 @@ Route::middleware(['auth','role:creator'])->group(function(){
 }); // End Group Creator Middleware
 
 // Frontend Movie Details All Route
-Route::get('movie/details/{id}', [IndexController::class, 'MovieDetails']);
+Route::get('/movie/details/{id}', [IndexController::class, 'MovieDetails']);
 
 // Wishlist Add Route
 Route::post('/add-to-wishList/{movie_id}', [WishlistController::class, 'AddToWishList']);
@@ -306,25 +307,28 @@ Route::post('/add-to-wishList/{movie_id}', [WishlistController::class, 'AddToWis
 Route::post('/add-to-compare/{movie_id}', [CompareController::class, 'AddToCompare']);
 
 // Send Message From Property Details Route
-Route::post('movie/message', [IndexController::class, 'MovieMessage'])->name('movie.message');
+Route::post('/movie/message', [IndexController::class, 'MovieMessage'])->name('movie.message');
 
 // Creator Details Page in Frontend
-Route::get('creator/details/{id}', [IndexController::class, 'CreatorDetails'])->name('creator.details');
+Route::get('/creator/details/{id}', [IndexController::class, 'CreatorDetails'])->name('creator.details');
 
 // Send Message From Creator Details Route
-Route::post('creator/details/message', [IndexController::class, 'CreatorDetailsMessage'])->name('creator.details.message');
+Route::post('/creator/details/message', [IndexController::class, 'CreatorDetailsMessage'])->name('creator.details.message');
 
 // Get All Advertising Content
-Route::get('advertising/content', [IndexController::class, 'AdvertisingContent'])->name('advertising.content');
+Route::get('/advertising/content', [IndexController::class, 'AdvertisingContent'])->name('advertising.content');
 
 // Get All Other Content
-Route::get('other/content', [IndexController::class, 'OtherContent'])->name('other.content');
+Route::get('/other/content', [IndexController::class, 'OtherContent'])->name('other.content');
 
 // Get All Movie Type Data
-Route::get('movie/type/{id}', [IndexController::class, 'MovieType'])->name('movie.type');
+Route::get('/movie/type/{id}', [IndexController::class, 'MovieType'])->name('movie.type');
 
 // Home Page Advertising Search Options Route
-Route::post('advertising/gallery/search', [IndexController::class, 'AdvertisingGallerySearch'])->name('advertising.gallery.search');
+Route::post('/advertising/gallery/search', [IndexController::class, 'AdvertisingGallerySearch'])->name('advertising.gallery.search');
 
 // Home Page Other Search Options Route
-Route::post('other/gallery/search', [IndexController::class, 'OtherGallerySearch'])->name('other.gallery.search');
+Route::post('/other/gallery/search', [IndexController::class, 'OtherGallerySearch'])->name('other.gallery.search');
+
+// Other Contents Search Options Route
+Route::post('/all/gallery/search', [IndexController::class, 'AllGallerySearch'])->name('all.gallery.search');

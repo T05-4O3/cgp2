@@ -30,11 +30,11 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <label>Category</label>
                                                     <div class="select-box">
                                                         <select name="movcat_id" class="wide">
-                                                        <option data-display="Select Category">Select Category</option>
-                                                        <!-- $mcat=Description in PHP at the top & $ptype=Option Value Description Only -->
-                                                        @foreach($mcat as $ptype)
-                                                        <option value="{{ $ptype->type_name }}">{{ $ptype->type_name }}</option>
-                                                        @endforeach
+                                                            <option data-display="Select Category">Select Category</option>
+                                                            <!-- $mcat=Description in PHP at the top & $ptype=Option Value Description Only -->
+                                                            @foreach($mcat as $ptype)
+                                                            <option value="{{ $ptype->type_name }}">{{ $ptype->type_name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

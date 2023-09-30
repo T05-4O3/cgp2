@@ -27,6 +27,7 @@
                 @else
                 <div class="sign-box">
                     <a href="{{ route('login') }}"><i class="fas fa-user"></i>Sign In</a>
+                    <a href="{{ url('creator/login') }}"><i class="fas fa-user"></i>Creator?</a>
                 </div>
                 @endauth
 
@@ -52,12 +53,18 @@
                             <ul class="navigation clearfix">
                                 <li><a href="{{ url('/')}}"><span>Home</span></a></li>
                                 <li><a href="{{ url('/')}}"><span>About Us</span></a></li>
-                                <li class="dropdown"><a href="#"><span>Movies</span></a>
+                                <li class="dropdown"><a href="#"><span>Videos</span></a>
                                     <ul>
                                         <li><a href="{{ route('advertising.content') }}">Advertising</a></li>
                                         <li><a href="{{ route('other.content') }}">Other</a></li>
                                     </ul>
-                                <li><a href="{{ url('/')}}"><span>Creators</span></a></li>
+                                </li>
+                                <li class="dropdown"><a href="#"><span>How to Use</span></a>
+                                    <ul>
+                                        <li><a href="{{ url('/')}}">Client</a></li>
+                                        <li><a href="{{ url('/')}}">Creator</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="{{ url('/')}}"><span>Blog</span></a></li>
                                 <li><a href="contact.html"><span>Contact</span></a></li>
                                 <li><a href="{{ route('creator.login') }}" class="btn btn-success"><span>+</span>Add Movie</a></li> 
@@ -74,7 +81,7 @@
         <div class="outer-box">
             <div class="main-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="index.html"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a></figure>
+                    <figure class="logo"><a href="{{ url('/')}}"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a></figure>
                 </div>
                 <div class="menu-area clearfix">
                     <nav class="main-menu clearfix">
@@ -82,7 +89,7 @@
                     </nav>
                 </div>
                 <div class="btn-box">
-                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Movie</a>
+                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Gallery</a>
                 </div>
             </div>
         </div>

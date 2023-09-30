@@ -87,7 +87,7 @@
                                                     
                                                     </button>
                                                 </div>
-                                                <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign up</a>
+                                                <a href="{{ route('creator.register') }}" class="d-block mt-3 text-muted">Not a user? Sign up</a>
                                             </form>
                                         </div>
                                     </div>

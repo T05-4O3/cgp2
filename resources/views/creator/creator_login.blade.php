@@ -11,7 +11,7 @@
         <div class="content-box clearfix">
             <h1>Sign In</h1>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('/')}}">Home</a></li>
                 <li>Sign In</li>
             </ul>
         </div>
@@ -31,18 +31,18 @@
                 <div class="tabs-box">
                     <div class="tab-btn-box">
                         <ul class="tab-btns tab-buttons centred clearfix">
-                            <li class="tab-btn active-btn" data-tab="#tab-1">Creator Login</li>
-                            <li class="tab-btn" data-tab="#tab-2">Creator Register</li>
+                            <li class="tab-btn active-btn" {{ !$errors->any() ? 'active-btn' : '' }}" data-tab="#tab-1">Creator Login</li>
+                            <li class="tab-btn" {{ $errors->any() ? 'active-btn' : '' }}" data-tab="#tab-2">Creator Register</li>
                         </ul>
                     </div>
                     <div class="tabs-content">
-                        <div class="tab active-tab" id="tab-1">
+                        <div class="tab active-tab" {{ !$errors->any() ? 'active-tab' : '' }}" id="tab-1">
                             <div class="inner-box">
                                 <h4>Creator Sign in</h4>
                                 <form action="{{ route('login') }}" method="post" class="default-form">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Email or Name or Phone</label>
+                                        <label>Email or Name</label>
                                         <input type="text" name="login" id="login" required="">
                                     </div>
                                     
@@ -59,13 +59,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab" id="tab-2">
+                        <div class="tab" {{ $errors->any() ? 'active-tab' : '' }}" id="tab-2">
                             <div class="inner-box">
                                 <h4>Creator Register</h4>
                                 <form action="{{ route('creator.register') }}" method="post" class="default-form">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Creator (Company) Name</label>
+                                        <label>Creator Name</label>
                                         <input type="text" name="name" id="name" required="">
                                     </div>
                                     <div class="form-group">
@@ -73,7 +73,7 @@
                                         <input type="email" name="email" id="email" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label>Creator Phone</label>
+                                        <label>Job Title / Occupation / Role</label>
                                         <input type="text" name="phone" id="phone" required="">
                                     </div>
                                     <div class="form-group">
@@ -85,7 +85,7 @@
                                     </div>
                                 </form>
                                 <div class="othre-text">
-                                    <p>Have not any account? <a href="signup.html">Register Now</a></p>
+                                    <p>Have not any account? <a href="{{ route('creator.register') }}">Register Now</a></p>
                                 </div>
                             </div>
                         </div>

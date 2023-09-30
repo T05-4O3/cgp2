@@ -169,6 +169,8 @@ class IndexController extends Controller
         $item = $request->search;
         $movcat_id = $request->movcat_id; // 選択されたカテゴリー
         $movie_goals = $request->movie_goals; // 選択されたゴール
+        $admovie = Movie::where('movie_status', 'ad_movie')->get();
+        $othmovie = Movie::where('movie_status', 'other')->get();
     
         $query = Movie::where('movie_title', 'like', '%' . $item . '%')
             ->where('movie_status', 'ad_movie')
@@ -186,16 +188,18 @@ class IndexController extends Controller
             $query->where('movie_goals', $movie_goals);
         }
     
-        $movie = $query->get();
+        $movie = $query->paginate(5);
     
-        return view('frontend.movie.movie_search', compact('movie'));
+        return view('frontend.movie.movie_search', compact('movie,advertising'));
     } // End Method
 
-    // Advertising Contents Search
+    // Other Contents Search
     public function OtherGallerySearch(Request $request){
         $item = $request->search;
         $movcat_id = $request->movcat_id; // 選択されたカテゴリー
         $movie_goals = $request->movie_goals; // 選択されたゴール
+        $admovie = Movie::where('movie_status', 'ad_movie')->get();
+        $othmovie = Movie::where('movie_status', 'other')->get();
     
         $query = Movie::where('movie_title', 'like', '%' . $item . '%')
             ->where('movie_status', 'other')
@@ -213,9 +217,47 @@ class IndexController extends Controller
             $query->where('movie_goals', $movie_goals);
         }
     
-        $movie = $query->get();
+        $movie = $query->paginate(5);
     
-        return view('frontend.movie.movie_search', compact('movie'));
+        return view('frontend.movie.movie_search', compact('movie,other'));
+    } // End Method
+
+    // All Contents Search
+    public function AllGallerySearch(Request $request){
+        $movie_status = $request->movie_status;
+        $item = $request->search;
+        $movcat_id = $request->movcat_id; // category
+        $movie_goals = $request->movie_goals; // goal
+        $movie_appeals = $request->movie_appeals; // target
+        $admovie = Movie::where('movie_status', 'ad_movie')->get();
+        $othmovie = Movie::where('movie_status', 'other')->get();
+
+        $query = Movie::where('status', '1');
+
+        $query->where(function($q) use ($movcat_id, $movie_goals, $movie_appeals) {
+            // Filter by category if selected
+            if ($movcat_id !== "Select Category") {
+                $q->whereHas('type', function($query) use ($movcat_id) {
+                    $query->where('type_name', $movcat_id);
+                });
+            }
+
+            // Filter by goal if selected
+            if ($movie_goals !== "Select Goal") {
+                $q->where('movie_goals', 'like', '%' . $movie_goals . '%');
+            }
+
+            // Filter by appeal point if selected
+            if ($movie_appeals !== "Select Appeal Point") {
+                $q->whereHas('appeals', function($query) use ($movie_appeals) {
+                    $query->where('appeal_point', 'like', '%' . $movie_appeals . '%');
+                });
+            }
+        });
+
+        $movie = $query->paginate(5);
+
+        return view('frontend.movie.movie_search', compact('movie,movie_search'));
     } // End Method
 
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class UserController extends Controller
 {
@@ -44,6 +46,31 @@ class UserController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    } // End Method
+
+    public function ClientRegister(Request $request){
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'company' => $request->company,
+                'phone' => $request->phone,
+                'password' => Hash::make($request->password),
+                'role' => 'user',
+                'status' => 'active',
+            ]);
+    
+            event(new Registered($user));
+            Auth::login($user);
+            return redirect(RouteServiceProvider::CLIENT);
+        } catch(\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors(['email' => 'Your Email is Already Registered.']);
+        }
     } // End Method
 
     /**

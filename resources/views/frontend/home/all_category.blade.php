@@ -1,5 +1,5 @@
 @php
-$ptype = App\Models\ProductsType::latest()->limit(5)->get();
+$ptype = App\Models\ProductsType::latest()->limit(16)->get();
 
 @endphp
 <section class="category-section centred">
@@ -14,14 +14,13 @@ $ptype = App\Models\ProductsType::latest()->limit(5)->get();
                     <div class="category-block-one">
                         <div class="inner-box">
                             <!-- <div class="icon-box"><i class="{{ $item->type_icon }}"></i></div> -->
-                            <h5><a href="{{ route('movie.type', $item->id) }}">{{ $item->type_name }}</a></h5>
+                            <h5><a href="{{ url('/') }}">{{ $item->type_name }}</a></h5>
                             <span>{{ count($product) }}</span>
                         </div>
                     </div>
                 </li>
                 @endforeach
             </ul>
-            <div class="more-btn"><a href="{{ url('/all-category') }}" class="theme-btn btn-one">All Categories</a></div>
         </div>
     </div>
 </section>
