@@ -321,8 +321,11 @@ Route::get('/advertising/content', [IndexController::class, 'AdvertisingContent'
 // Get All Other Content
 Route::get('/other/content', [IndexController::class, 'OtherContent'])->name('other.content');
 
-// Get All Movie Type Data
+// Get Pagenate5 Movie Type Data
 Route::get('/movie/type/{id}', [IndexController::class, 'MovieType'])->name('movie.type');
+
+// ALL Movie Type Data
+Route::get('/movie/type_16/{id}', [IndexController::class, 'Type16'])->name('movie.type_16');
 
 // Home Page Advertising Search Options Route
 Route::post('/advertising/gallery/search', [IndexController::class, 'AdvertisingGallerySearch'])->name('advertising.gallery.search');

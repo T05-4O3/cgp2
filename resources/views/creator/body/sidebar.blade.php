@@ -55,7 +55,7 @@ $status = $creatorId->status;
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('buy.package') }}" class="nav-link">
+                            <a href="{{ route('creator.movie.message') }}" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">Message</span>
                             </a>

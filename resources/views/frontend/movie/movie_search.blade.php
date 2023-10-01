@@ -35,6 +35,8 @@
                         $mcat = App\Models\ProductsType::latest()->get();
                         $mgoal = App\Models\Goal::latest()->get();
                         $mappeal = App\Models\AppealPoints::latest()->get();
+                        $admovie = App\Models\Movie::where('movie_status', 'ad_movie')->get();
+                        $othmovie = App\Models\Movie::where('movie_status', 'other')->get();
                         @endphp
 
                         <form action="{{ route('all.gallery.search') }}" method="post" class="search-form">
@@ -149,6 +151,9 @@
                             @endforeach
                             
                         </div>
+                    </div>
+                    <div class="pagination-wrapper">
+                        {{ $movie->links('vendor.pagination.custom') }}
                     </div>
                     
 

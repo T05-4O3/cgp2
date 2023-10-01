@@ -28,78 +28,58 @@
                 <div class="default-sidebar property-sidebar">
                     <div class="filter-widget sidebar-widget">
                         <div class="widget-title">
-                            <h5>Movie</h5>
+                            <h5>Video</h5>
                         </div>
-                        <div class="widget-content">
-                            <div class="select-box">
-                                <select class="wide">
-                                    <option data-display="All Type">All Type</option>
-                                    <option value="1">Villa</option>
-                                    <option value="2">Commercial</option>
-                                    <option value="3">Residential</option>
-                                </select>
-                            </div>
-                            <div class="select-box">
-                                <select class="wide">
-                                    <option data-display="Select Location">Select Location</option>
-                                    <option value="1">New York</option>
-                                    <option value="2">California</option>
-                                    <option value="3">London</option>
-                                    <option value="4">Maxico</option>
-                                </select>
-                            </div>
-                            <div class="select-box">
-                                <select class="wide">
-                                    <option data-display="This Area Only">This Area Only</option>
-                                    <option value="1">New York</option>
-                                    <option value="2">California</option>
-                                    <option value="3">London</option>
-                                    <option value="4">Maxico</option>
-                                </select>
-                            </div>
-                            <div class="select-box">
-                                <select class="wide">
-                                    <option data-display="All Type">Max Rooms</option>
-                                    <option value="1">2+ Rooms</option>
-                                    <option value="2">3+ Rooms</option>
-                                    <option value="3">4+ Rooms</option>
-                                    <option value="4">5+ Rooms</option>
-                                </select>
-                            </div>
-                            <div class="select-box">
-                                <select class="wide">
-                                    <option data-display="Most Popular">Most Popular</option>
-                                    <option value="1">Villa</option>
-                                    <option value="2">Commercial</option>
-                                    <option value="3">Residential</option>
-                                </select>
-                            </div>
-                            <div class="select-box">
-                                <select class="wide">
-                                    <option data-display="All Type">Select Floor</option>
-                                    <option value="1">2x Floor</option>
-                                    <option value="2">3x Floor</option>
-                                    <option value="3">4x Floor</option>
-                                </select>
-                            </div>
-                            <div class="filter-btn">
-                                <button type="submit" class="theme-btn btn-one"><i class="fas fa-filter"></i>&nbsp;Filter</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="price-filter sidebar-widget">
-                        <div class="widget-title">
-                            <h5>Select Price Range</h5>
-                        </div>
-                        <div class="range-slider clearfix">
-                            <div class="clearfix">
-                                <div class="input">
-                                    <input type="text" class="property-amount" name="field-name" readonly="">
+
+                        @php
+                        $admovie = App\Models\Movie::where('movie_status', 'ad_movie')->get();
+                        $othmovie = App\Models\Movie::where('movie_status', 'other')->get();
+                        $mcat = App\Models\ProductsType::latest()->get();
+                        $mgoal = App\Models\Goal::latest()->get();
+                        $mappeal = App\Models\AppealPoints::latest()->get();
+                        @endphp
+
+                        <form action="{{ route('all.gallery.search') }}" method="post" class="search-form">
+                            @csrf
+                            <div class="widget-content">
+                                <div class="select-box">
+                                    <select name="movie_status" class="wide">
+                                        <option data-display="All Status">All Status</option>
+                                        <option value="Advertisig"><a href="{{ route('advertising.content') }}">Advertising<span>({{ count($admovie) }})</span></a></option>
+                                        <option value="Other"><a href="{{ route('other.content') }}">Other<span>({{ count($othmovie) }})</span></a></option>
+                                    </select>
+                                </div>
+                                <div class="select-box">
+                                    <select name="movcat_id" class="wide">
+                                        <option data-display="Select Category">Select Category</option>
+                                        <!-- $mcat=Description in PHP at the top & $ptype=Option Value Description Only -->
+                                        @foreach($mcat as $ptype)
+                                        <option value="{{ $ptype->type_name }}">{{ $ptype->type_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="select-box">
+                                    <select name="movie_goals" class="wide">
+                                        <option data-display="Select Goal" selected="" disabled="">Select Goal</option>
+                                        @foreach($mgoal as $sgoal)
+                                        <option value="{{ $sgoal->goal_type }}">{{ $sgoal->goal_type }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="select-box">
+                                    <select name="movie_appeals" class="wide">
+                                        <option data-display="Select Appeal Point" selected="" disabled="">Select Appeal Point</option>
+                                        @foreach($mappeal as $sappeal)
+                                        <option value="{{ $sappeal->appeal_point }}">{{ $sappeal->appeal_point }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="filter-btn">
+                                    <button type="submit" class="theme-btn btn-one"><i class="fas fa-filter"></i>&nbsp;Filter</button>
                                 </div>
                             </div>
-                            <div class="price-range-slider"></div>
-                        </div>
-                    </div> -->
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
