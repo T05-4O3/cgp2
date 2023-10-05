@@ -19,7 +19,13 @@ class Movie extends Model
     public function appeals(){
         return $this -> belongsTo(AppealPoints::class,'movie_appeals','id');
     }
+    public function getTargetsTypeIdArrayAttribute() {
+        return explode(',', $this->targets_type_id);
+    }
     public function user(){
         return $this -> belongsTo(User::class,'creator_id','id');
+    }
+    public function getStoryTellingsIdArrayAttribute() {
+        return explode(',', $this->storytellings_id);
     }
 }

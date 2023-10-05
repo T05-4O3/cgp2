@@ -192,4 +192,7 @@ return [
     */
     'youtube_api_key' => env('AIzaSyAuJWGO4bzuwvPagbiXJoHS92qkigym0N0'),
 
+    Intervention\Image\ImageServiceProvider::class,
+    'Image' => Intervention\Image\Facades\Image::class,
+
 ];

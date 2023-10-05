@@ -1,6 +1,8 @@
 @php
 $mcat = App\Models\ProductsType::latest()->get();
 $mgoal = App\Models\Goal::latest()->get();
+$admovie = App\Models\Movie::where('movie_status', 'ad_movie')->get();
+$othmovie = App\Models\Movie::where('movie_status', 'other')->get();
 @endphp
 <section class="banner-section" id="p5-canvas" style="background-image: url({{ asset('frontend/assets/images/banner/banner-1.jpg') }});">
     <div class="auto-container">
@@ -67,7 +69,7 @@ $mgoal = App\Models\Goal::latest()->get();
                                         </div>
                                 </div>
 
-                                <div class="switch_btn_one ">
+                                <div class="switch_btn_one">
                                     <button class="nav-btn nav-toggler navSidebar-button clearfix search__toggler">Advanced Search<i class="fas fa-angle-down"></i></button>
                                     <div class="advanced-search">
                                         <div class="close-btn">
@@ -77,62 +79,26 @@ $mgoal = App\Models\Goal::latest()->get();
                                         $mcat = App\Models\ProductsType::latest()->get();
                                         $mgoal = App\Models\Goal::latest()->get();
                                         $mappeal = App\Models\AppealPoints::latest()->get();
-                                        $admovie = App\Models\Movie::where('movie_status', 'ad_movie')->get();
-                                        $othmovie = App\Models\Movie::where('movie_status', 'other')->get();
+                                        $mtarge = App\Models\Targets::latest()->get();
+                                        $mstory = App\Models\Storytellings::latest()->get();
+                                        $mcolor = App\Models\ColorTerms::latest()->get();
+                                        $mshape = App\Models\ShapeTerms::latest()->get();
+                                        $mbright = App\Models\BrightnessTerms::latest()->get();
+                                        $memotion = App\Models\EmotionalTerms::latest()->get();
+                                        $menviro = App\Models\EnvironmentTerms::latest()->get();
+                                        $mobject = App\Models\ObjectTerms::latest()->get();
                                         @endphp
                                             <div class="row clearfix">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 column">
                                                     <div class="form-group">
                                                         <label>Targets</label>
                                                         <div>
+                                                            @foreach($mtarge as $targe)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                4-12 yo
-                                                                </label>
+                                                                <input type="checkbox" name="targets_type_id[]" class="form-check-input" id="check_{{ $targe->id }}" value="{{ $targe->id }}">
+                                                                <label class="form-check-label" for="check_{{ $targe->id }}"><p>{{ $targe->target_type }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                13-19 yo
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                20-29 yo Female
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                30-49 yo Female
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                50- yo Female
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                20-29 yo male
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                30-49 yo male
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                50- yo male
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,12 +117,27 @@ $mgoal = App\Models\Goal::latest()->get();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12 column">
+                                                <div class="col-lg-2 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Search Actor</label>
+                                                        <div class="field-input">
+                                                            <input type="search" name="actor_name" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Search Brand</label>
+                                                        <div class="field-input">
+                                                            <input type="search" name="brand_name" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 column">
                                                     <div class="form-group">
                                                         <label>Search Other</label>
                                                         <div class="field-input">
-                                                            <i class="fas fa-search"></i>
-                                                            <input type="" name="" placeholder="Search by Title Keywords...">
+                                                            <input type="search" name="other_keyword" placeholder="Keyword">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,78 +147,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Story Tellings</label>
                                                         <div>
+                                                            @foreach($mstory as $storytell)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Drama
-                                                                </label>
+                                                                <input type="checkbox" name="storytellings_id[]" class="form-check-input" id="check_{{ $storytell->id }}" value="{{ $storytell->id }}">
+                                                                <label class="form-check-label" for="check_{{ $storytell->id }}"><p>{{ $storytell->storytellings_name }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Cinematic
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Interview / Talk
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Events / Sports
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Music Video
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Functional Description / Usage
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                User Experience / Evaluation
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Animation
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Motion Graphic
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Infographic
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Computer Graphics
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Other
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,54 +162,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Color Terms</label>
                                                         <div>
+                                                            @foreach($mcolor as $colo)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Vibrant : 鮮やかな
-                                                                </label>
+                                                                <input type="checkbox" name="color_id[]" class="form-check-input" id="check_{{ $colo->id }}" value="{{ $colo->id }}">
+                                                                <label class="form-check-label" for="check_{{ $colo->id }}"><p>{{ $colo->color_term }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Deep : 深い
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Shallow : 浅い
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Soft : 柔らかい
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Sharp : 鮮明な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Blurred : ぼやけた
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Contrasting : コントラストがある
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Muted : 落ち着いた
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,54 +175,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Shape Terms</label>
                                                         <div>
+                                                            @foreach($mshape as $shap)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Fine : 細かい
-                                                                </label>
+                                                                <input type="checkbox" name="shape_id[]" class="form-check-input" id="check_{{ $shap->id }}" value="{{ $shap->id }}">
+                                                                <label class="form-check-label" for="check_{{ $shap->id }}"><p>{{ $shap->shape_term }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Coarse : 粗い
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Patterned : パターンがある
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Geometric : 幾何学的な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Curved : 曲線的な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Straight : 直線的な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Intricate : 複雑な形状の
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Simple : 単純な形状の
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -357,36 +188,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Brightness Terms</label>
                                                         <div>
+                                                            @foreach($mbright as $bright)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Luminous : 明るい
-                                                                </label>
+                                                                <input type="checkbox" name="brightness_id[]" class="form-check-input" id="check_{{ $bright->id }}" value="{{ $bright->id }}">
+                                                                <label class="form-check-label" for="check_{{ $bright->id }}"><p>{{ $bright->brightness_term }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Shadowy : 暗い
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Glowing : 輝いている
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Transparent : 透明な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Opaque : 不透明な
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -394,66 +201,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Emotional Terms</label>
                                                         <div>
+                                                            @foreach($memotion as $emoti)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Peaceful : 平和的な
-                                                                </label>
+                                                                <input type="checkbox" name="emotional_id[]" class="form-check-input" id="check_{{ $emoti->id }}" value="{{ $emoti->id }}">
+                                                                <label class="form-check-label" for="check_{{ $emoti->id }}"><p>{{ $emoti->emotional_term }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Elegant : 華やかな
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Glamorous : 華麗な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Astonishing : 驚くべき
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Beautiful : 美しい
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Aesthetic : 美的な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Grand : 壮大な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Bold : 勇敢な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Serene : 穏やかな
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Sad : 悲しい
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -461,42 +214,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Environment Terms</label>
                                                         <div>
+                                                            @foreach($menviro as $enviro)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Natural : 自然の
-                                                                </label>
+                                                                <input type="checkbox" name="environment_id[]" class="form-check-input" id="check_{{ $enviro->id }}" value="{{ $enviro->id }}">
+                                                                <label class="form-check-label" for="check_{{ $enviro->id }}"><p>{{ $enviro->environment_term }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Urban : 都会の
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Cosmic : 宇宙的な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Marine : 海洋の
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Suburban : 郊外の
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                AOpen : 開放的な
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -504,54 +227,12 @@ $mgoal = App\Models\Goal::latest()->get();
                                                     <div class="form-group">
                                                         <label>Object Terms</label>
                                                         <div>
+                                                            @foreach($mobject as $objec)
                                                             <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Complex Objects : 複雑な物体
-                                                                </label>
+                                                                <input type="checkbox" name="object_id[]" class="form-check-input" id="check_{{ $objec->id }}" value="{{ $objec->id }}">
+                                                                <label class="form-check-label" for="check_{{ $objec->id }}"><p>{{ $objec->object_term }}</p></label>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Simple Objects : 単純な物体
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Natural Elements : 自然の対象
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Structures : 建造物
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Plants : 植物
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline1">
-                                                                <label class="form-check-label" for="checkInline1">
-                                                                Animals / Insects : 動物 / 昆虫
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline2">
-                                                                <label class="form-check-label" for="checkInline2">
-                                                                Grand : 壮大な
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input type="checkbox" name="skill_check" class="form-check-input" id="checkInline3">
-                                                                <label class="form-check-label" for="checkInline3">
-                                                                Figures / 人物
-                                                                </label>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -608,125 +289,179 @@ $mgoal = App\Models\Goal::latest()->get();
                                         <div class="search-btn">
                                             <button type="submit"><i class="fas fa-search"></i>Search</button>
                                         </div>
-                                    </form>
                                 </div>
 
-                                <!-- <div class="switch_btn_one ">
+                                <div class="switch_btn_one ">
                                     <button class="nav-btn nav-toggler navSidebar-button clearfix search__toggler">Advanced Search<i class="fas fa-angle-down"></i></button>
                                     <div class="advanced-search">
                                         <div class="close-btn">
                                             <a href="#" class="close-side-widget"><i class="far fa-times"></i></a>
                                         </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Distance from Location</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="Distance from Location">Distance from Location</option>
-                                                        <option value="1">Max Bath</option>
-                                                        <option value="2">Within 1 Mile</option>
-                                                        <option value="3">Within 2 Mile</option>
-                                                        <option value="4">Within 3 Mile</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Bedrooms</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="Max Rooms">Max Rooms</option>
-                                                        <option value="1">One Rooms</option>
-                                                        <option value="2">Two Rooms</option>
-                                                        <option value="3">Three Rooms</option>
-                                                        <option value="4">Four Rooms</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Sort by</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="Most Popular">Most Popular</option>
-                                                        <option value="1">Top Rating</option>
-                                                        <option value="2">New Rooms</option>
-                                                        <option value="3">Classic Rooms</option>
-                                                        <option value="4">Luxry Rooms</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Floor</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="Select Floor">Select Floor</option>
-                                                        <option value="1">One Floor</option>
-                                                        <option value="2">Two Floor</option>
-                                                        <option value="3">Three Floor</option>
-                                                        <option value="4">Four Floor</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Bath</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="Max Bath">Max Bath</option>
-                                                        <option value="1">Max Bath</option>
-                                                        <option value="2">Max Bath</option>
-                                                        <option value="3">Max Bath</option>
-                                                        <option value="4">Max Bath</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Agencies</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                        <option data-display="Any Agency">Any Agency</option>
-                                                        <option value="1">Any Agency</option>
-                                                        <option value="2">Agency 01</option>
-                                                        <option value="3">Agency 02</option>
-                                                        <option value="4">Agency 03</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="range-box">
+                                        @php
+                                        $mcat = App\Models\ProductsType::latest()->get();
+                                        $mgoal = App\Models\Goal::latest()->get();
+                                        $mappeal = App\Models\AppealPoints::latest()->get();
+                                        $mtarge = App\Models\Targets::latest()->get();
+                                        $mstory = App\Models\Storytellings::latest()->get();
+                                        $mcolor = App\Models\ColorTerms::latest()->get();
+                                        $mshape = App\Models\ShapeTerms::latest()->get();
+                                        $mbright = App\Models\BrightnessTerms::latest()->get();
+                                        $memotion = App\Models\EmotionalTerms::latest()->get();
+                                        $menviro = App\Models\EnvironmentTerms::latest()->get();
+                                        $mobject = App\Models\ObjectTerms::latest()->get();
+                                        @endphp
                                             <div class="row clearfix">
-                                                <div class="col-lg-6 col-md-6 col-sm-12 column">
-                                                    <div class="price-range">
-                                                        <h6>Select Price Range</h6>
-                                                        <div class="range-input">
-                                                            <div class="input"><input type="text" class="property-amount" name="field-name" readonly=""></div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Targets</label>
+                                                        <div>
+                                                            @foreach($mtarge as $targe)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="targets_type_id[]" class="form-check-input" id="check_{{ $targe->id }}" value="{{ $targe->id }}">
+                                                                <label class="form-check-label" for="check_{{ $targe->id }}"><p>{{ $targe->target_type }}</p></label>
+                                                            </div>
+                                                            @endforeach
                                                         </div>
-                                                        <div class="price-range-slider"></div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12 column">
-                                                    <div class="area-range">
-                                                        <h6>Select Area</h6>
-                                                        <div class="range-input">
-                                                            <div class="input"><input type="text" class="area-range" name="field-name" readonly=""></div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-6 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Appeal Point</label>
+                                                        <div class="select-box">
+                                                            <select name="movie_appeals" class="wide">
+                                                                <option data-display="Select Appeal Point" selected="" disabled="">Select Appeal Point</option>
+                                                                @foreach($mappeal as $sappeal)
+                                                                <option value="{{ $sappeal->appeal_point }}">{{ $sappeal->appeal_point }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <div class="area-range-slider"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Search Actor</label>
+                                                        <div class="field-input">
+                                                            <input type="search" name="actor_name" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Search Brand</label>
+                                                        <div class="field-input">
+                                                            <input type="search" name="brand_name" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Search Other</label>
+                                                        <div class="field-input">
+                                                            <input type="search" name="other_keyword" placeholder="Keyword">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Story Tellings</label>
+                                                        <div>
+                                                            @foreach($mstory as $storytell)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="storytellings_id[]" class="form-check-input" id="check_{{ $storytell->id }}" value="{{ $storytell->id }}">
+                                                                <label class="form-check-label" for="check_{{ $storytell->id }}"><p>{{ $storytell->storytellings_name }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Color Terms</label>
+                                                        <div>
+                                                            @foreach($mcolor as $colo)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="color_id[]" class="form-check-input" id="check_{{ $colo->id }}" value="{{ $colo->id }}">
+                                                                <label class="form-check-label" for="check_{{ $colo->id }}"><p>{{ $colo->color_term }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Shape Terms</label>
+                                                        <div>
+                                                            @foreach($mshape as $shap)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="shape_id[]" class="form-check-input" id="check_{{ $shap->id }}" value="{{ $shap->id }}">
+                                                                <label class="form-check-label" for="check_{{ $shap->id }}"><p>{{ $shap->shape_term }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Brightness Terms</label>
+                                                        <div>
+                                                            @foreach($mbright as $bright)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="brightness_id[]" class="form-check-input" id="check_{{ $bright->id }}" value="{{ $bright->id }}">
+                                                                <label class="form-check-label" for="check_{{ $bright->id }}"><p>{{ $bright->brightness_term }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Emotional Terms</label>
+                                                        <div>
+                                                            @foreach($memotion as $emoti)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="emotional_id[]" class="form-check-input" id="check_{{ $emoti->id }}" value="{{ $emoti->id }}">
+                                                                <label class="form-check-label" for="check_{{ $emoti->id }}"><p>{{ $emoti->emotional_term }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Environment Terms</label>
+                                                        <div>
+                                                            @foreach($menviro as $enviro)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="environment_id[]" class="form-check-input" id="check_{{ $enviro->id }}" value="{{ $enviro->id }}">
+                                                                <label class="form-check-label" for="check_{{ $enviro->id }}"><p>{{ $enviro->environment_term }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                                                    <div class="form-group">
+                                                        <label>Object Terms</label>
+                                                        <div>
+                                                            @foreach($mobject as $objec)
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="checkbox" name="object_id[]" class="form-check-input" id="check_{{ $objec->id }}" value="{{ $objec->id }}">
+                                                                <label class="form-check-label" for="check_{{ $objec->id }}"><p>{{ $objec->object_term }}</p></label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div> -->
+                                    </form>
+                                </div>
 
                             </div>
                         </div>

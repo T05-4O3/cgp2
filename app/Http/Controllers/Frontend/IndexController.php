@@ -21,6 +21,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MovieMessage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -177,8 +178,6 @@ class IndexController extends Controller
         $movcat_id = $request->movcat_id; // category
         $movie_goals = $request->movie_goals; // goal
         $movie_appeals = $request->movie_appeals; // appeal
-        $admovie = Movie::where('movie_status', 'ad_movie')->get();
-        $othmovie = Movie::where('movie_status', 'other')->get();
     
         $query = Movie::where('movie_title', 'like', '%' . $item . '%')
             ->where('movie_status', 'ad_movie')
@@ -202,8 +201,115 @@ class IndexController extends Controller
                 $query->where('appeal_point', 'like', '%' . $movie_appeals . '%');
             });
         }
+
+        // Filter by target point if selected
+        if ($request->has('targets_type_id') && !empty($request->targets_type_id)) {
+            foreach ($request->targets_type_id as $target_id) {
+                $query
+                ->orWhere('targets_type_id', 'LIKE', "%,$target_id,%")
+                ->orWhere('targets_type_id', 'LIKE', "$target_id,%")
+                ->orWhere('targets_type_id', 'LIKE', "%,$target_id");
+            }
+        }
+
+        // Search for actor_name in tags table and get related movie ids
+        if($request->has('actor_name') && !empty($request->actor_name)){
+            $actor_movie_ids = DB::table('tags')
+                                ->where('genre', 'ActorActress')
+                                ->where('tag', 'LIKE', '%' . $request->actor_name . '%')
+                                ->pluck('mov_id');
+            $query->whereIn('id', $actor_movie_ids);
+        }
+
+        // Search for brand_name in tags table and get related movie ids
+        if($request->has('brand_name') && !empty($request->brand_name)){
+            $brand_movie_ids = DB::table('tags')
+                                ->where('genre', 'BrandName')
+                                ->where('tag', 'LIKE', '%' . $request->brand_name . '%')
+                                ->pluck('mov_id');
+            $query->whereIn('id', $brand_movie_ids);
+        }
+
+        // Search for other_keyword in tags table and get related movie ids
+        if($request->has('other_keyword') && !empty($request->other_keyword)){
+            $other_movie_ids = DB::table('tags')
+                                ->where('genre', 'Other')
+                                ->where('tag', 'LIKE', '%' . $request->other_keyword . '%')
+                                ->pluck('mov_id');
+            $query->whereIn('id', $other_movie_ids);
+        }
+
+        // Filter by Story Tellings if selected
+        if ($request->has('storytellings_id') && !empty($request->storytellings_id)) {
+            foreach ($request->storytellings_id as $storytell) {
+                $query
+                ->orWhere('storytellings_id', 'LIKE', "%,$storytell,%")
+                ->orWhere('storytellings_id', 'LIKE', "$storytell,%")
+                ->orWhere('storytellings_id', 'LIKE', "%,$storytell");
+            }
+        }
+
+        // Filter by Color Terms if selected
+        if ($request->has('color_id') && !empty($request->color_id)) {
+            foreach ($request->color_id as $color) {
+                $query
+                ->orWhere('color_id', 'LIKE', "%,$color,%")
+                ->orWhere('color_id', 'LIKE', "$color,%")
+                ->orWhere('color_id', 'LIKE', "%,$color");
+            }
+        }
+
+        // Filter by Shape Terms if selected
+        if ($request->has('shape_id') && !empty($request->shape_id)) {
+            foreach ($request->shape_id as $shape) {
+                $query
+                ->orWhere('shape_id', 'LIKE', "%,$shape,%")
+                ->orWhere('shape_id', 'LIKE', "$shape,%")
+                ->orWhere('shape_id', 'LIKE', "%,$shape");
+            }
+        }
+
+        // Filter by Brightness Terms if selected
+        if ($request->has('brightness_id') && !empty($request->brightness_id)) {
+            foreach ($request->brightness_id as $bright) {
+                $query
+                ->orWhere('brightness_id', 'LIKE', "%,$bright,%")
+                ->orWhere('brightness_id', 'LIKE', "$bright,%")
+                ->orWhere('brightness_id', 'LIKE', "%,$bright");
+            }
+        }
+
+        // Filter by Emotional Terms if selected
+        if ($request->has('emotional_id') && !empty($request->emotional_id)) {
+            foreach ($request->emotional_id as $emoti) {
+                $query
+                ->orWhere('emotional_id', 'LIKE', "%,$emoti,%")
+                ->orWhere('emotional_id', 'LIKE', "$emoti,%")
+                ->orWhere('emotional_id', 'LIKE', "%,$emoti");
+            }
+        }
+
+        // Filter by Enbvironment Terms if selected
+        if ($request->has('enbvironment_id') && !empty($request->enbvironment_id)) {
+            foreach ($request->enbvironment_id as $enbviro) {
+                $query
+                ->orWhere('enbvironment_id', 'LIKE', "%,$enbviro,%")
+                ->orWhere('enbvironment_id', 'LIKE', "$enbviro,%")
+                ->orWhere('enbvironment_id', 'LIKE', "%,$enbviro");
+            }
+        }
+
+        // Filter by Object Terms if selected
+        if ($request->has('object_id') && !empty($request->object_id)) {
+            foreach ($request->object_id as $objec) {
+                $query
+                ->orWhere('object_id', 'LIKE', "%,$objec,%")
+                ->orWhere('object_id', 'LIKE', "$objec,%")
+                ->orWhere('eobject_id', 'LIKE', "%,$objec");
+            }
+        }
     
-        $movie = $query->paginate(5);
+        $movie = $query->paginate(100);
     
         return view('frontend.movie.movie_search', compact('movie'));
     } // End Method
@@ -240,9 +346,9 @@ class IndexController extends Controller
             });
         }
     
-        $movie = $query->paginate(5);
+        $movie = $query->paginate(100);
     
-        return view('frontend.movie.movie_search', compact('movie', 'other'));
+        return view('frontend.movie.movie_search', compact('movie'));
     } // End Method
 
     // All Contents Search
@@ -276,7 +382,7 @@ class IndexController extends Controller
             }
         });
 
-        $movie = $query->paginate(5);
+        $movie = $query->paginate(100);
 
         return view('frontend.movie.movie_search', compact('movie'));
     } // End Method

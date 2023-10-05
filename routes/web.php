@@ -7,7 +7,11 @@ use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\ProductsTypeController;
 use App\Http\Controllers\Backend\MovieController;
+
 use App\Http\Middleware\RedirectIfAuthenticated;
+
+use App\Http\Controllers\Backend\BlogController;
+
 use App\Http\Controllers\Creator\CreatorMovieController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
@@ -267,6 +271,28 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::post('/update/creator', 'UpdateCreator')->name('update.creator');
         Route::get('/delete/creator/{id}', 'DeleteCreator')->name('delete.creator');
         Route::get('/changeStatus', 'changeStatus');
+    });
+
+    // Blog Category All Route
+    Route::controller(BlogController::class)->group(function(){
+
+        Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+        Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+        Route::get('/blog/category/{id}', 'EditBlogCategory');
+        Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+        Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+
+    });
+
+    // Blog All Route from Admin
+    Route::controller(BlogController::class)->group(function(){
+
+        Route::get('/all/post', 'AllPost')->name('all.post');
+        Route::get('/add/post', 'AddPost')->name('add.post');
+        Route::post('/store/post', 'StorePost')->name('store.post');
+        Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
+        Route::post('/update/post', 'UpdatePost')->name('update.post');
+        Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');
     });
 
 }); // End Group Admin Middleware
