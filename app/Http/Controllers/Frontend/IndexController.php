@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\MovieMessage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Schedule;
 
 class IndexController extends Controller
 {
@@ -49,7 +50,7 @@ class IndexController extends Controller
         $relatedMovieCat = Movie::where('movcat_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->limit(1)->get();
         $goal_id = $movie->movie_goals;
         $relatedMovieGoal = Movie::where('movie_goals', $goal_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->limit(1)->get();
-        $appeal_id = $movie->movie_appelas;
+        $appeal_id = $movie->movie_appels;
         $relatedMovieAppeal = Movie::where('movie_appeals', $appeal_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->limit(1)->get();
         return view('frontend.movie.movie_details', compact(
             'movie', 
@@ -386,5 +387,33 @@ class IndexController extends Controller
 
         return view('frontend.movie.movie_search', compact('movie'));
     } // End Method
+
+    // Store Schedule
+    public function StoreSchedule(Request $request){
+        $cid = $request->creator_id;
+        $mid = $request->movie_id;
+        if (Auth::check()){
+            Schedule::insert([
+                'user_id' => Auth::user()->id,
+                'movie_id' => $mid,
+                'creator_id' => $cid,
+                'meeting_date' => $request->meeting_date,
+                'meeting_time' => $request->meeting_time,
+                'message' => $request->message,
+                'created_at' => Carbon::now(),
+            ]);
+            $notification = array(
+                'message' => 'Send Request Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }else{
+        $notification = array(
+            'message' => 'Please Login Your Account First',
+            'alert-type' => 'error'
+        );
+        return redirect()->back()->with($notification);
+        }
+    }
 
 }

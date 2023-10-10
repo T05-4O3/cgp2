@@ -1,5 +1,9 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
+    @section('title')
+        {{ $movie->movie_title }} | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
     <!--Page Title-->
     <section class="page-title-two bg-color-1 centred">
@@ -189,40 +193,34 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="schedule-box content-widget">
                             <div class="title-box">
                                 <h4>Schedule A Meeting</h4>
                             </div>
                             <div class="form-inner">
-                                <form action="property-details.html" method="post">
+                                <form action="{{ route('store.schedule') }}" method="post">
+                                    @csrf
                                     <div class="row clearfix">
+                                        <input type="hidden" name="movie_id" value="{{ $movie->id }}">
+                                        @if($movie->creator_id == Null)
+                                        <input type="hidden" name="creator_id" value="">
+                                        @else
+                                        <input type="hidden" name="creator_id" value="{{ $movie->creator_id}}">
+                                        @endif
                                         <div class="col-lg-6 col-md-12 col-sm-12 column">
                                             <div class="form-group">
                                                 <i class="far fa-calendar-alt"></i>
-                                                <input type="text" name="date" placeholder="Tour Date" id="datepicker">
+                                                <input type="text" name="meeting_date" placeholder="Meeting Date" id="datepicker">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-12 column">
                                             <div class="form-group">
                                                 <i class="far fa-clock"></i>
-                                                <input type="text" name="time" placeholder="Any Time">
+                                                <input type="text" name="meeting_time" placeholder="Any Time">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                            <div class="form-group">
-                                                <input type="text" name="name" placeholder="Your Name" required="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                            <div class="form-group">
-                                                <input type="email" name="email" placeholder="Your Email" required="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                            <div class="form-group">
-                                                <input type="tel" name="phone" placeholder="Your Phone" required="">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-lg-12 col-md-12 col-sm-12 column">
                                             <div class="form-group">
                                                 <textarea name="message" placeholder="Your message"></textarea>

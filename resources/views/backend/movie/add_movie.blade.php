@@ -24,7 +24,7 @@
                                     <div class="form-group mb-3">
                                         <label class="form-label">Movie Url</label>
                                         <div class="input-group">
-                                            <input type="text" name="movie_url" class="form-control"  id="movieUrlInput">
+                                            <input type="text" name="movie_url" class="form-control"  id="movieUrlInput" placeholder="Please enter the YouTube URL">
                                             <button type="button" class="btn btn-inverse-primary" onclick="loadVideo()">View</button>
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@
                                         <!-- <label class="form-label">Movie Status</label> -->
                                         <div class="form-group mb-3">
                                             <select name="movie_status" class="form-select" id="exampleFormControlSelect1">
-                                                <option selected="" disabled="">Select Status</option>
+                                                <option selected="" disabled="">Select Video Type</option>
                                                 <option value="ad_movie">Advertising</option>
                                                 <option value="other">Other</option>
                                             </select>

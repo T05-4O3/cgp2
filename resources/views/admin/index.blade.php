@@ -1,5 +1,9 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+    @section('title')
+        Welcome to Dashboard | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <div class="page-content">
 

@@ -5,6 +5,11 @@
 $ptype = App\Models\ProductsType::latest()->limit(16)->get();
 @endphp
 
+    @section('title')
+        All Category | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
+
 <!--Page Title-->
 <section class="page-title-two bg-color-1 centred">
     <div class="pattern-layer">

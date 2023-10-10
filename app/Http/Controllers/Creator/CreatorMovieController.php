@@ -22,6 +22,9 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MovieMessage;
+use App\Models\Schedule;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ScheduleMail;
 
 class CreatorMovieController extends Controller
 {
@@ -430,5 +433,40 @@ class CreatorMovieController extends Controller
         return view('creator.message.message_details', compact('usermsg','msgdetails'));
 
     } // End Method
+
+    public function CreatorScheduleRequest(){
+        $id = Auth::user()->id;
+        $usermsg = Schedule::where('creator_id', $id)->with('movie')->get();
+        return view('creator.schedule.schedule_request',compact('usermsg'));
+
+    } // End Method  
+
+    public function CreatorDetailsSchedule($id){
+        $schedule = Schedule::findOrFail($id);
+        return view('creator.schedule.schedule_details',compact('schedule'));
+
+    } // End Method
+
+    public function CreatorUpdateSchedule(Request $request){
+        $sid = $request->id;
+        Schedule::findOrFail($sid)->update([
+            'status' => '1',
+        ]);
+        // Start Send Email
+        $sendmail = Schedule::findOrFail($sid);
+        $data = [
+            'meeting_date' => $sendmail->meeting_date, 
+            'meeting_time' => $sendmail->meeting_time, 
+        ];
+        Mail::to($request->email)->send(new ScheduleMail($data));
+
+        //End Send Email
+        $notification = array(
+            'message' => 'You Have Confirm Schedule Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect() -> route('creator.schedule.request') -> with($notification);
+
+    } // End Method  
 
 }

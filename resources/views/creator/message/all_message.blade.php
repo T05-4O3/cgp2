@@ -1,5 +1,9 @@
 @extends('creator.creator_dashboard')
 @section('creator')
+    @section('title')
+        All Message | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <div class="page-content">
         

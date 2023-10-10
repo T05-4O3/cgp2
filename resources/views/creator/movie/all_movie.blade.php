@@ -1,11 +1,15 @@
 @extends('creator.creator_dashboard')
 @section('creator')
+    @section('title')
+        All Videos | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <div class="page-content">
 
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <a href="{{ route('creator.add.movie') }}" class="btn btn-inverse-info"> Add Movies</a>
+            <a href="{{ route('creator.add.movie') }}" class="btn btn-inverse-info"> All Videos</a>
         </ol>
     </nav>
 
@@ -13,14 +17,14 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Movies All</h6>
+                    <h6 class="card-title">All Videos</h6>
                     
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Movie Url</th>
+                                    <th>Video Url</th>
                                     <th>Category</th>
                                     <th>Status Type</th>
                                     <th>Status</th>

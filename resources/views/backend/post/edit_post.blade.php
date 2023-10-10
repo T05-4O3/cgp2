@@ -89,7 +89,7 @@
             },
             messages :{
                 storytellings_name: {
-                    required : 'Please Enter Storytellings Name',
+                    required : 'Please Enter Blog Title',
                 },
             },
             errorElement : 'span', 

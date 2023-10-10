@@ -1,5 +1,9 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
+    @section('title')
+        User Profile | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -7,10 +11,10 @@
 <section class="page-title centred" style="background-image: url( {{ asset('frontend/assets/images/background/page-title-5.jpg') }});">
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>User Profile </h1>
+            <h1>User Profile</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="index.html">Home</a></li>
-                <li>User Profile </li>
+                <li>User Profile</li>
             </ul>
         </div>
     </div>

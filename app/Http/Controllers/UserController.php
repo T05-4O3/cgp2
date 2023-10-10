@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
+use App\Models\Schedule;
 
 class UserController extends Controller
 {
     public function Index(){
         return view('frontend.index');
-
     } // End Method
 
     public function UserProfile(){
@@ -30,7 +30,6 @@ class UserController extends Controller
         $data->email = $request->email;
         $data->phone = $request->phone;
         $data->company = $request->company;
-        
         if($request->file('photo')){
             $file = $request->file('photo');
             @unlink(public_path('upload/user_images/'.$data->photo));
@@ -38,13 +37,11 @@ class UserController extends Controller
             $file->move(public_path('upload/user_images'),$filename);
             $data['photo'] = $filename;
         }
-        
         $data->save();
         $notification = array(
             'message' => 'User Profile Updated Successfully',
             'alert-type' => 'success'
         );
-
         return redirect()->back()->with($notification);
     } // End Method
 
@@ -53,7 +50,6 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
-
         try{
             $user = User::create([
                 'name' => $request->name,
@@ -64,7 +60,6 @@ class UserController extends Controller
                 'role' => 'user',
                 'status' => 'active',
             ]);
-    
             event(new Registered($user));
             Auth::login($user);
             return redirect(RouteServiceProvider::CLIENT);
@@ -78,23 +73,16 @@ class UserController extends Controller
      */
     public function UserLogout(Request $request){
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         $notification = array(
             'message' => 'User Logout Successfully',
             'alert-type' => 'success'
         );
-
         return redirect('/login')->with($notification);
     } // End Method
-
     public function UserChangePassword(){
-
         return view('frontend.dashboard.change_password');
-
     } // End Method
 
 
@@ -111,22 +99,24 @@ class UserController extends Controller
                 'message' => 'Old Password Does not Match!',
                 'alert-type' => 'error'
             );
-    
             return back()->with($notification);
-
         }
 
         /// Update The New Password
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
-
         $notification = array(
             'message' => 'Password Change Successfully',
             'alert-type' => 'success'
         );
-
         return back()->with($notification);
+    } // End Method
 
+    public function UserScheduleRequest(){
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+        $srequest = Schedule::where('user_id', $id)->get();
+        return view('frontend.message.schedule_request',compact('userData', 'srequest'));
     } // End Method
 }

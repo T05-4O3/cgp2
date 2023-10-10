@@ -1,5 +1,9 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
+    @section('title')
+        SoYouKnow - Contextual Vision
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <!-- banner-section -->
 @include('frontend.home.banner')
@@ -47,7 +51,7 @@
 
 
 <!-- news-section -->
-<!-- @include('frontend.home.news') -->
+@include('frontend.home.news')
 <!-- news-section end -->
 
 

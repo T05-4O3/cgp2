@@ -1,5 +1,9 @@
 @extends('creator.creator_dashboard')
 @section('creator')
+    @section('title')
+        Add Videos | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -14,7 +18,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add Movie</h6>
+                        <h6 class="card-title">Add Video</h6>
 
                         <form method="post" action="{{ route('creator.store.movie') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
@@ -22,16 +26,16 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group mb-3">
-                                        <label class="form-label">Movie Url</label>
+                                        <label class="form-label">Video Url</label>
                                         <div class="input-group">
-                                            <input type="text" name="movie_url" class="form-control"  id="movieUrlInput">
+                                            <input type="text" name="movie_url" class="form-control"  id="movieUrlInput" placeholder="Please enter the YouTube URL">
                                             <button type="button" class="btn btn-inverse-primary" onclick="loadVideo()">View</button>
                                         </div>
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Movie Title</label>
+                                        <label class="form-label">Video Title</label>
                                         <input type="text" name="movie_title" class="form-control" id="movieTitleInput">
                                     </div>
                                 </div><!-- Col -->
@@ -40,7 +44,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Movie</label>
+                                        <label class="form-label"></label>
                                         <div id="videoContainer">
                                             <iframe id="videoFrame" frameborder="0" allowfullscreen></iframe>
                                         </div>
@@ -207,10 +211,10 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="md-3">
-                                        <!-- <label class="form-label">Movie Status</label> -->
+                                        <!-- <label class="form-label">Video Status</label> -->
                                         <div class="form-group mb-3">
                                             <select name="movie_status" class="form-select" id="exampleFormControlSelect1">
-                                                <option selected="" disabled="">Select Status</option>
+                                                <option selected="" disabled="">Select Video Type</option>
                                                 <option value="ad_movie">Advertising</option>
                                                 <option value="other">Other</option>
                                             </select>
@@ -284,7 +288,7 @@
                     required : 'Please Enter YouTube URL',
                 },
                 movie_status: {
-                    required : 'Please Select Movie Status',
+                    required : 'Please Select Video Status',
                 },
                 movcat_id: {
                     required : 'Please Select Category',
@@ -337,7 +341,7 @@
 
 
 <script type="text/javascript">
-    // Ad Movie View
+    // Ad Video View
     function loadVideo() {
         // Get the YouTube URL from the input field
         var url = document.getElementById('movieUrlInput').value;
@@ -377,7 +381,7 @@
         xhr.send();
     }
     
-    // Movie Size
+    // Video Size
     function adjustVideoSize() {
         var iframe = document.getElementById('videoFrame');
         var container = document.getElementById('videoContainer');

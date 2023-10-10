@@ -1,5 +1,9 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+    @section('title')
+        Change Password | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

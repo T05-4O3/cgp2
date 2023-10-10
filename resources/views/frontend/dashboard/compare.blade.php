@@ -1,5 +1,9 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
+    @section('title')
+        Change Password | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
         <!--Page Title-->
         <section class="page-title-two bg-color-1 centred">
@@ -9,10 +13,10 @@
             </div>
             <div class="auto-container">
                 <div class="content-box clearfix">
-                    <h1>Compare Movies</h1>
+                    <h1>Compare Videos</h1>
                     <ul class="bread-crumb clearfix">
                         <li><a href="index.html">Home</a></li>
-                        <li>Compare Movies</li>
+                        <li>Compare Videos</li>
                     </ul>
                 </div>
             </div>

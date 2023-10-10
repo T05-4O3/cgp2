@@ -1,5 +1,9 @@
 @extends('creator.creator_dashboard')
 @section('creator')
+    @section('title')
+        Message Details | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <div class="page-content">
         
@@ -92,7 +96,7 @@
                                             <td>{{ $msgdetails['user']['phone'] }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Movie Title</th>
+                                            <th>Video Title</th>
                                             <td>{{ $msgdetails['user']['name'] ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>

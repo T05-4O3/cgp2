@@ -61,6 +61,13 @@ $status = $creatorId->status;
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('creator.schedule.request') }}" class="nav-link">
+                            <i class="link-icon" data-feather="calendar"></i>
+                            <span class="link-title">Schedule Request</span>
+                            </a>
+                        </li>
+
                         <li class="nav-item nav-category">Components</li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">

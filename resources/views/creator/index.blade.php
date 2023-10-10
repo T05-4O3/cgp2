@@ -7,6 +7,11 @@ $creatorId = App\Models\User::find($id);
 $status = $creatorId->status;
 @endphp
 
+    @section('title')
+        Welcome to Creator Dashboard | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
+
 <div class="page-content">
     @if($status === 'active')
     <h4>Creator Account Is <span class="text-success">Active</span></h4>

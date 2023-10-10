@@ -1,5 +1,9 @@
 @extends('creator.creator_dashboard')
 @section('creator')
+    @section('title')
+        Video Details | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -8,22 +12,22 @@
 	<div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h6 class="card-title">Movie Details</h6>
+                <h6 class="card-title">Video Details</h6>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <td>Movie Title</td>
+                                <td>Video Title</td>
                                 <td><code>{{ $movie -> movie_title}}</code></td>
                             </tr>
                             <tr>
-                                <td>Movie Url</td>
+                                <td>Video Url</td>
                                 <td>
                                     <code>{{ $movie -> movie_url }}</code>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Movie</br>
+                                <td>Video</br>
                                     <input type="text" name="movie_url" class="form-control" id="movieUrlInput" value="{{ $movie -> movie_url }}"  style="visibility: hidden">
                                     <button type="button" class="btn btn-inverse-primary" onclick="loadVideo()">View</button>
                                 </td>
@@ -38,7 +42,7 @@
                                 <td><code>{{ $movie -> movie_status}}</code></td>
                             </tr>
                             <tr>
-                                <td>Movie Status</td>
+                                <td>Video Status</td>
                                 <td>
                                     @if($movie -> status == 1)
                                     <span class="badge rounded-pill bg-success">Active</span>
@@ -173,11 +177,11 @@
                                     <td><code>{{ $movie -> movie_status}}</code></td>
                                 </tr>
                                 <tr>
-                                    <td>Features Movie</td>
+                                    <td>Features Video</td>
                                     <td><code>{{ $movie -> movie_status}}</code></td>
                                 </tr>
                                 <tr>
-                                    <td>Hot Movie</td>
+                                    <td>Hot Video</td>
                                     <td><code>{{ $movie -> movie_status}}</code></td>
                                 </tr>
                                 <tr>
@@ -207,7 +211,7 @@
 </div>
 
 <script type="text/javascript">
-    // Ad Movie View
+    // Ad Video View
     function loadVideo(movieTitle) {
     var url = document.getElementById('movieUrlInput').value;
     var videoId = getYouTubeVideoId(url);
@@ -227,7 +231,7 @@
     }
 
     
-    // Movie Size
+    // Video Size
     function adjustVideoSize() {
         var iframe = document.getElementById('videoFrame');
         var container = document.getElementById('videoContainer');

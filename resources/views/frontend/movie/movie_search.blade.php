@@ -1,5 +1,9 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
+    @section('title')
+        Video Search | SoYouKnow
+        <!-- Reference Image Video Storage -->
+    @endsection
 
 <!--Page Title-->
 <section class="page-title-two bg-color-1 centred">
@@ -9,10 +13,10 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>Content Search</h1>
+            <h1>Video Search</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/')}}">Home</a></li>
-                <li>Content Search</li>
+                <li>Video Search</li>
             </ul>
         </div>
     </div>
@@ -82,7 +86,7 @@
                     </div>
                     <div class="category-widget sidebar-widget">
                         <div class="widget-title">
-                            <h5>Status Of Gallery</h5>
+                            <h5>Type Of Video</h5>
                         </div>
                         <ul class="category-list clearfix">
                             <li><a href="{{ route('advertising.content') }}">Advertising<span></span></a></li>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\MovieController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SettingController;
 
 use App\Http\Controllers\Creator\CreatorMovieController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -46,6 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
     Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
+
+    Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])->name('user.schedule.request');
+
     
     // User Wishlist All Route
     Route::controller(WishlistController::class)->group(function(){
@@ -295,6 +299,20 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
         Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');
     });
 
+    // SMTP Setting All Route from Admin
+    Route::controller(SettingController::class)->group(function(){
+
+        Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+        Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');
+    });
+
+    // Site Setting All Route from Admin
+    Route::controller(SettingController::class)->group(function(){
+
+        Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+        Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');
+    });
+
 }); // End Group Admin Middleware
 
 /// Creator Group Middleware
@@ -313,6 +331,11 @@ Route::middleware(['auth','role:creator'])->group(function(){
         Route::post('/creator/store/movie', 'CreatorStoreMovie')->name('creator.store.movie');
         Route::get('/creator/movie/message', 'CreatorMovieMessage')->name('creator.movie.message');
         Route::get('/creator/message/details/{id}', 'CreatorMessageDetails')->name('creator.message.details');
+        
+        // Schedule Request Route
+        Route::get('/creator/schedule/request', 'CreatorScheduleRequest')->name('creator.schedule.request');
+        Route::get('/creator/details/schedule/{id}', 'CreatorDetailsSchedule')->name('creator.details.schedule');
+        Route::post('/creator/update/schedule', 'CreatorUpdateSchedule')->name('creator.update.schedule');
     });
 
     // Creator All Route from Admin
@@ -361,3 +384,15 @@ Route::post('/other/gallery/search', [IndexController::class, 'OtherGallerySearc
 
 // Other Contents Search Options Route
 Route::post('/all/gallery/search', [IndexController::class, 'AllGallerySearch'])->name('all.gallery.search');
+
+// Blog Details Route
+Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
+Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
+Route::post('/store/comment', [BlogController::class, 'StoreComment'])->name('store.comment');
+Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->name('admin.blog.comment');
+Route::get('/admin/comment/reply/{id}', [BlogController::class, 'AdminCommentReply'])->name('admin.comment.reply');
+Route::post('/reply/message', [BlogController::class, 'ReplyMessage'])->name('reply.message');
+
+// Meeting Message Request Route
+Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');
