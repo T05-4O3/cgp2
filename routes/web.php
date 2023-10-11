@@ -12,6 +12,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\RoleController;
 
 use App\Http\Controllers\Creator\CreatorMovieController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -101,7 +102,7 @@ Route::post('/creator/register', [CreatorController::class, 'CreatorRegister'])-
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 
  /// Admin Group Middleware
- Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','role:admin'])->group(function(){
     
     // Movie All Route
     Route::controller(MovieController::class)->group(function(){
@@ -311,6 +312,21 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
         Route::get('/site/setting', 'SiteSetting')->name('site.setting');
         Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');
+    });
+
+    // Permission All Route
+    Route::controller(RoleController::class)->group(function(){
+
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::get('/add/permission', 'AddPermission')->name('add.permission');
+        Route::post('/store/permission', 'StorePermission')->name('store.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+        Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+        Route::get('/export', 'Export')->name('export');
+        Route::post('/import', 'Import')->name('import');
     });
 
 }); // End Group Admin Middleware
