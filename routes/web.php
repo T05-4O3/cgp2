@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
  /// Admin Group Middleware
-Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','roles:admin'])->group(function(){
 
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
@@ -83,7 +83,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
 }); // End Group Admin Middleware
 
  /// Creator Group Middleware
-Route::middleware(['auth','role:creator'])->group(function(){
+Route::middleware(['auth','roles:creator'])->group(function(){
 
     Route::get('/creator/dashboard', [CreatorController::class, 'CreatorDashboard'])->name('creator.dashboard');
     Route::get('/creator/logout', [CreatorController::class, 'CreatorLogout'])->name('creator.logout');
@@ -102,13 +102,13 @@ Route::post('/creator/register', [CreatorController::class, 'CreatorRegister'])-
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 
  /// Admin Group Middleware
-Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','roles:admin'])->group(function(){
     
     // Movie All Route
     Route::controller(MovieController::class)->group(function(){
 
-        Route::get('/all/movie', 'AllMovie')->name('all.movie');
-        Route::get('/add/movie', 'AddMovie')->name('add.movie');
+        Route::get('/all/movie', 'AllMovie')->name('all.movie')->middleware('permission:all.movie');
+        Route::get('/add/movie', 'AddMovie')->name('add.movie')->middleware('permission:add.movie');
         Route::post('/store/movie', 'StoreMovie')->name('store.movie');
         Route::get('/edit/movie/{id}', 'EditMovie')->name('edit.movie');
         Route::post('/update/movie', 'UpdateMovie')->name('update.movie');
@@ -125,8 +125,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     // Products Type All Route
     Route::controller(ProductsTypeController::class)->group(function(){
 
-        Route::get('/all/type', 'AllType')->name('all.type');
-        Route::get('/add/type', 'AddType')->name('add.type');
+        Route::get('/all/type', 'AllType')->name('all.type')->middleware('permission:all.type');
+        Route::get('/add/type', 'AddType')->name('add.type')->middleware('permission:add.type');
         Route::post('/store/type', 'StoreType')->name('store.type');
         Route::get('/edit/type/{id}', 'EditType')->name('edit.type');
         Route::post('/update/type', 'UpdateType')->name('update.type');
@@ -329,10 +329,39 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/import', 'Import')->name('import');
     });
 
+    // Roles All Route
+    Route::controller(RoleController::class)->group(function(){
+
+        Route::get('/all/roles', 'AllRoles')->name('all.roles');
+        Route::get('/add/roles', 'AddRoles')->name('add.roles');
+        Route::post('/store/roles', 'StoreRoles')->name('store.roles');
+        Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
+        Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+        Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
+
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
+    });
+
+    // Admin User All Route from Admin
+    Route::controller(AdminController::class)->group(function(){
+
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
+        Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+        Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
+        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
+        Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
+        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+    });
+
 }); // End Group Admin Middleware
 
 /// Creator Group Middleware
-Route::middleware(['auth','role:creator'])->group(function(){
+Route::middleware(['auth','roles:creator'])->group(function(){
     // Creator All Movie
     Route::controller(CreatorMovieController::class)->group(function(){
 

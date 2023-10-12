@@ -35,7 +35,9 @@
                                 @foreach($allcreator as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td><img src="{{ !empty($item->photo) ?url('upload/creator_images/'.$item->photo) : url('upload/no_image.jpg') }}" style="width:70px; height:40px;"></td>
+                                    <td>
+                                        <img src="{{ !empty($item->photo) ?url('upload/creator_images/'.$item->photo) : url('upload/no_image.jpg') }}" style="width:70px; height:40px;">
+                                    </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->role }}</td>
                                     <td>
@@ -46,7 +48,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <input data-id="{{ $item->id }}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->status ? 'checked' : '' }}>                                   </td>
+                                        <input data-id="{{ $item->id }}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->status ? 'checked' : '' }}>
+                                    </td>
                                     <td>
                                         <a href="{{ route('edit.creator' ,$item->id) }}" class="btn btn-inverse-warning" title="Edit"><i data-feather="edit"></i></a>
                                         <a href="{{ route('delete.creator',$item->id) }}" class="btn btn-inverse-danger" id="delete" title="Delete"><i data-feather="trash-2"></i></a>
