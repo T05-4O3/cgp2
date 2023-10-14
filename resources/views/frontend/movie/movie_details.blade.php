@@ -259,7 +259,13 @@
                                         <li><i class="fas fa-map-marker-alt"></i>{{ $movie->user->company }}</li>
                                         <li><i class="fas fa-phone"></i><a href="tel:{{ $movie->user->phone }}">{{ $movie->user->phone }}</a></li>
                                     </ul>
-                                    <div class="btn-box"><a href="agents-details.html">View Gallery</a></div>
+                                    @auth
+                                    <div id="app">
+                                        <send-message :receiverid="{{ $movie->creator_id }}" receivername="{{ $movie->user->name }}"></send-message>
+                                    </div>
+                                    @else
+                                    <span class="text-danger">For Chat Login First</span>
+                                    @endauth
                                 </div>
                                 @endif
                             </div>

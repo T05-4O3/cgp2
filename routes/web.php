@@ -13,6 +13,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\ChatController;
 
 use App\Http\Controllers\Creator\CreatorMovieController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
     Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])->name('user.schedule.request');
+
+    Route::get('/live/chat', [UserController::class, 'LiveChat'])->name('live.chat');
 
     
     // User Wishlist All Route
@@ -441,3 +444,13 @@ Route::post('/reply/message', [BlogController::class, 'ReplyMessage'])->name('re
 
 // Meeting Message Request Route
 Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');
+
+// Chat Post Request Route
+Route::post('/send-message', [ChatController::class, 'SendMsg'])->name('send.msg');
+
+Route::get('/user-all', [ChatController::class, 'GetAllUsers']);
+
+Route::get('/user-message/{id}', [ChatController::class, 'UserMsgById']);
+
+// Creator Live Chat Route
+Route::get('/creator/live/chat', [ChatController::class, 'CreatorLiveChat'])->name('creator.live.chat');

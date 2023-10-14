@@ -119,4 +119,10 @@ class UserController extends Controller
         $srequest = Schedule::where('user_id', $id)->get();
         return view('frontend.message.schedule_request',compact('userData', 'srequest'));
     } // End Method
+
+    public function LiveChat(){
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+        return view('frontend.dashboard.live_chat',compact('userData'));
+    } // End Method
 }
