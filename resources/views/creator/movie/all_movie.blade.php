@@ -9,7 +9,7 @@
 
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <a href="{{ route('creator.add.movie') }}" class="btn btn-inverse-info"> All Videos</a>
+            <a href="{{ route('creator.add.movie') }}" class="btn btn-inverse-info"> Add Videos</a>
         </ol>
     </nav>
 

@@ -36,6 +36,20 @@
                                         </tr>
                                         <tr>
                                         <td><i data-feather="x" class="icon-md text-danger me-2"></i></td>
+                                        <td>
+                                            <p class="text-muted">Feature Video Plan</p>
+                                            <small class="text-muted">&ast;Additional charges apply</small>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td><i data-feather="x" class="icon-md text-danger me-2"></i></td>
+                                        <td>
+                                            <p class="text-muted">Hot Video Plan</p>
+                                            <small class="text-muted">&ast;Additional charges apply</small>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td><i data-feather="x" class="icon-md text-danger me-2"></i></td>
                                         <td><p class="text-muted">Premium Support</p></td>
                                         </tr>
                                     </table>
@@ -50,8 +64,8 @@
                                         <div class="card-body">
                                             <h4 class="text-center mt-3 mb-4">Business</h4>
                                             <i data-feather="gift" class="text-success icon-xxl d-block mx-auto my-3"></i>
-                                            <h1 class="text-center">¥100,000</h1>
-                                            <p class="text-muted text-center mb-4 fw-light">Unlimited Months</p>
+                                            <h1 class="text-center">¥10,000</h1>
+                                            <p class="text-muted text-center mb-4 fw-light">Monthly Payment</p>
                                             <h5 class="text-success text-center mb-4">Up to 50 Movies</h5>
                                             <table class="mx-auto">
                                                 <tr>
@@ -59,12 +73,26 @@
                                                 <td><p>Up to 50 Movies</p></td>
                                                 </tr>
                                                 <tr>
-                                                <td><i data-feather="check" class="icon-md text-danger me-2"></i></td>
+                                                <td><i data-feather="x" class="icon-md text-warning me-2"></i></td>
+                                                <td>
+                                                    <p class="text-muted">Feature Video Plan</p>
+                                                    <small class="text-muted">&ast;Additional charges apply</small>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td><i data-feather="x" class="icon-md text-warning me-2"></i></td>
+                                                <td>
+                                                    <p class="text-muted">Hot Video Plan</p>
+                                                    <small class="text-muted">&ast;Additional charges apply</small>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td><i data-feather="x" class="icon-md text-danger me-2"></i></td>
                                                 <td><p class="text-muted">Premium Support</p></td>
                                                 </tr>
                                             </table>
                                             <div class="d-grid">
-                                                <button class="btn btn-success mt-4">Start free trial</button>
+                                                <a href="{{ route('buy.business.plan') }}" class="btn btn-success mt-4">Start Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -73,14 +101,28 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="text-center mt-3 mb-4">Professional</h4>
-                                        <i data-feather="briefcase" class="text-primary icon-xxl d-block mx-auto my-3"></i>
-                                        <h1 class="text-center">¥500,000</h1>
-                                        <p class="text-muted text-center mb-4 fw-light">Unlimited Months</p>
-                                        <h5 class="text-primary text-center mb-4">Up to 300 Movies</h5>
+                                        <i data-feather="briefcase" class="text-warning icon-xxl d-block mx-auto my-3"></i>
+                                        <h1 class="text-center">¥50,000</h1>
+                                        <p class="text-muted text-center mb-4 fw-light">Monthly Payment</p>
+                                        <h5 class="text-warning text-center mb-4">Up to 200 Movies</h5>
                                         <table class="mx-auto">
                                             <tr>
                                             <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                                            <td><p>Up to 300 Movies</p></td>
+                                            <td><p>Up to 200 Movies</p></td>
+                                            </tr>
+                                            <tr>
+                                            <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
+                                            <td>
+                                                <p>Feature Video Plan</p>
+                                                <small class="text-muted">&ast;Includes 3 sets of consecutive 10 days.</small>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
+                                            <td>
+                                                <p>Hot Video Plan</p>
+                                                <small class="text-muted">&ast;Includes 3 sets of consecutive 10 days.</small>
+                                            </td>
                                             </tr>
                                             <tr>
                                             <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
@@ -88,7 +130,7 @@
                                             </tr>
                                         </table>
                                         <div class="d-grid">
-                                            <button class="btn btn-primary mt-4">Start free trial</button>
+                                            <a href="{{ route('buy.professional.plan') }}" class="btn btn-warning mt-4">Start Now</a>
                                         </div>
                                     </div>
                                 </div>

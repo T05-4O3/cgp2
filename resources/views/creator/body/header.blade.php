@@ -1,6 +1,6 @@
 
 <nav class="navbar">
-                    <a href="#" class="sidebar-toggler">
+                    <a href="{{ route('creator.dashboard') }}" class="sidebar-toggler">
                         <i data-feather="menu"></i>
                     </a>
                     <div class="navbar-content">

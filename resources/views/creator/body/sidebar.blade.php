@@ -39,18 +39,21 @@ $status = $creatorId->status;
                                     <li class="nav-item">
                                     <a href="{{ route('creator.all.movie') }}" class="nav-link">All Movie</a>
                                     </li>
-                                    <li class="nav-item">
-                                    <a href="{{ route('creator.add.movie') }}" class="nav-link">Add Movie</a>
-                                    </li>
                                 </ul>
                             </div>
                         </li>
 
-                        
                         <li class="nav-item">
                             <a href="{{ route('buy.package') }}" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">Buy Packege</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('package.history') }}" class="nav-link">
+                            <i class="link-icon" data-feather="calendar"></i>
+                            <span class="link-title">Packege History</span>
                             </a>
                         </li>
 

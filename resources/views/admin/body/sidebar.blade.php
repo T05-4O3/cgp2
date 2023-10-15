@@ -368,6 +368,13 @@
                         </li>
                         @endif
 
+                        <li class="nav-item">
+                            <a href="{{ route('admin.package.history') }}" target="_blank" class="nav-link">
+                                <i class="link-icon" data-feather="hash"></i>
+                                <span class="link-title">Package History</span>
+                            </a>
+                        </li>
+
                         @if(Auth::user()->can('message.menu'))
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#blogcategory" role="button" aria-expanded="false" aria-controls="uiComponents">

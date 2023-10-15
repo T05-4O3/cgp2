@@ -93,7 +93,7 @@ Route::middleware(['auth','roles:creator'])->group(function(){
     Route::get('/creator/profile', [CreatorController::class, 'CreatorProfile'])->name('creator.profile');
     Route::post('/creator/profile/store', [CreatorController::class, 'CreatorProfileStore'])->name('creator.profile.store');
     Route::get('/creator/change/password', [CreatorController::class, 'CreatorChangePassword'])->name('creator.change.password');
-    Route::post('/creator/update/store', [CreatorController::class, 'CreatorUpdatePassword'])->name('creator.update.password');
+    Route::post('/creator/update/password', [CreatorController::class, 'CreatorUpdatePassword'])->name('creator.update.password');
 
 }); // End Group Creator Middleware
 
@@ -120,6 +120,9 @@ Route::middleware(['auth','roles:admin'])->group(function(){
         Route::get('/details/movie/{id}', 'DetailsMovie')->name('details.movie');
         Route::post('/inactive/movie', 'InactiveMovie')->name('inactive.movie');
         Route::post('/active/movie', 'ActiveMovie')->name('active.movie');
+
+        Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
+        Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
 
         Route::get('/admin/movie/message', 'AdminMovieMessage')->name('admin.movie.message');
 
@@ -390,6 +393,13 @@ Route::middleware(['auth','roles:creator'])->group(function(){
     Route::controller(CreatorMovieController::class)->group(function(){
 
         Route::get('/buy/package', 'BuyPackage')->name('buy.package');
+        Route::get('/buy/business/plan', 'BuyBusinessPlan')->name('buy.business.plan');
+        Route::post('/store/business/plan', 'StoreBusinessPlan')->name('store.business.plan');
+        Route::get('/buy/professional/plan', 'BuyProfessionalPlan')->name('buy.professional.plan');
+        Route::post('/store/professional/plan', 'StoreProfessionalPlan')->name('store.professional.plan');
+
+        Route::get('/package/history', 'PackageHistory')->name('package.history');
+        Route::get('/creator/package/invoice/{id}', 'CreatorPackageInvoice')->name('creator.package.invoice');
     });
 
 }); // End Group Creator Middleware

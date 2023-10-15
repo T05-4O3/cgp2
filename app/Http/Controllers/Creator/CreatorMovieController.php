@@ -21,6 +21,9 @@ use App\Models\User;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DB;
+use App\Models\PackagePlan;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\MovieMessage;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Mail;
@@ -52,25 +55,35 @@ class CreatorMovieController extends Controller
         $storytellings = Storytellings::latest()->get();
         $tags = Tag::latest()->get();
 
-        return view('creator.movie.add_movie',compact(
-            // 'apiKey',
-            'productType',
-            'goal',
-            'targets',
-            'appealPoints',
-            'color',
-            'shape',
-            'brightness',
-            'emotional',
-            'environment',
-            'object',
-            'storytellings',
-            'tags'
-        ));
-
+        $id = Auth::user()->id;
+        $movie = User::where('role', 'creator')->where('id', $id)->first();
+        $pcount = $movie->credit;
+        // dd($pcount);
+        if ($pcount == 5 || $pcount == 50){
+            return redirect()->route('buy.package');
+        }else{
+            return view('creator.movie.add_movie',compact(
+                // 'apiKey',
+                'productType',
+                'goal',
+                'targets',
+                'appealPoints',
+                'color',
+                'shape',
+                'brightness',
+                'emotional',
+                'environment',
+                'object',
+                'storytellings',
+                'tags'
+            ));
+        }
     } // End Method
 
     public function CreatorStoreMovie(Request $request){
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
 
         $targe = $request->targets_type_id;
         $targets = implode(",", $targe);
@@ -149,6 +162,10 @@ class CreatorMovieController extends Controller
             }
         }
         // End Tags //
+
+        User::where('id', $id)->update([
+            'credit' => DB::raw('5 + '.$nid),
+        ]);
 
         $notification = array(
             'message' => 'Movie Inserted Successfully',
@@ -411,13 +428,83 @@ class CreatorMovieController extends Controller
         );
 
         return redirect() -> back() -> with($notification);
-
     } // End Method
 
     public function BuyPackage(){
         return view('creator.package.buy_package');
+    } // End Method
 
-    } // End Method  
+    public function BuyBusinessPlan(){
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        return view('creator.package.business_plan', compact('data'));
+    } // End Method
+
+    public function StoreBusinessPlan(Request $request){
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
+        PackagePlan::insert([
+            'user_id' => $id,
+            'package_name' => 'Business',
+            'package_credits' => '50',
+            'invoice' => 'SYK'.mt_rand(10000000,99999999),
+            'package_amount' => '10000',
+            'created_at' => Carbon::now(),
+        ]);
+        User::where('id', $id)->update([
+            'credit' => DB::raw('50 + '.$nid),
+        ]);
+        $notification = array(
+            'message' => 'You Have Purchese Business Package Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('creator.all.movie')-> with($notification);
+    } // End Method
+
+    public function BuyProfessionalPlan(){
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        return view('creator.package.professional_plan', compact('data'));
+    } // End Method
+
+    public function StoreProfessionalPlan(Request $request){
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
+        PackagePlan::insert([
+            'user_id' => $id,
+            'package_name' => 'Professional',
+            'package_credits' => '200',
+            'invoice' => 'SYK'.mt_rand(10000000,99999999),
+            'package_amount' => '50000',
+            'created_at' => Carbon::now(),
+        ]);
+        User::where('id', $id)->update([
+            'credit' => DB::raw('200 + '.$nid),
+        ]);
+        $notification = array(
+            'message' => 'You Have Purchese Professional Package Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('creator.all.movie')-> with($notification);
+    } // End Method
+
+    public function PackageHistory(){
+        $id = Auth::user()->id;
+        $packagehistory = PackagePlan::where('user_id', $id)->get();
+        return view('creator.package.package_history', compact('packagehistory'));
+    } // End Method
+
+    public function CreatorPackageInvoice($id){
+        $packagehistory = PackagePlan::where('id', $id)->first();
+        $pdf = Pdf::loadView('creator.package.package_history_invoice', 
+        compact('packagehistory'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+    } // End Method
 
     public function CreatorMovieMessage(){
         $id = Auth::user()->id;
