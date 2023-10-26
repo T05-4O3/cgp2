@@ -7,9 +7,9 @@ $setting = App\Models\SiteSetting::find(1);
         <div class="top-inner clearfix">
             <div class="left-column pull-left">
                 <ul class="info clearfix">
-                    <li><i class="far fa-map-marker-alt"></i>{{ $setting->company_address }}</li>
-                    <li><i class="far fa-clock"></i>Mon - Fri 10:00 - 18:00</li>
-                    <li><i class="far fa-phone"></i><a href="tel:2512353256">{{ $setting->support_phone }}</a></li>
+                    <!-- <li><i class="far fa-map-marker-alt"></i>{{ $setting->company_address }}</li> -->
+                    <!-- <li><i class="far fa-clock"></i>Mon - Fri 10:00 - 18:00</li> -->
+                    <!-- <li><i class="far fa-phone"></i><a href="tel:2512353256">{{ $setting->support_phone }}</a></li> -->
                 </ul>
             </div>
             <div class="right-column pull-right">
@@ -39,7 +39,7 @@ $setting = App\Models\SiteSetting::find(1);
     <!-- header-lower -->
     <div class="header-lower">
         <div class="outer-box">
-            <div class="main-box">
+            <div class="main-box d-flex justify-content-between">
                 <div class="logo-box">
                     <figure class="logo"><a href="{{ url('/')}}"><img src="{{ asset($setting->logo) }}" alt=""></a></figure>
                 </div>

@@ -52,7 +52,7 @@ $ptype = App\Models\ProductsType::latest()->limit(16)->get();
     </div>
 </section>
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="{{ asset('frontend/background-image: url(assets/images/shape/shape-2.png') }});"></div>
     <div class="auto-container">
@@ -76,6 +76,6 @@ $ptype = App\Models\ProductsType::latest()->limit(16)->get();
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+subscribe-section end -->
 
 @endsection

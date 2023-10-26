@@ -13,7 +13,7 @@
         <div class="content-box clearfix">
             <h1>Change Password</h1>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('/')}}">Home</a></li>
                 <li>Change Password</li>
             </ul>
         </div>
@@ -49,8 +49,7 @@
                                 <p>{{ $userData->email }}</p>
                             </div> 
                         </div>
-                    </div> 
-
+                    </div>
                     <div class="sidebar-widget category-widget">
                         <div class="widget-title">
                         </div>
@@ -59,14 +58,10 @@
                 </div>
             </div>
 
-
-
-
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
                 <div class="blog-details-content">
                     <div class="news-block-one">
                         <div class="inner-box">
-                            
                             <div class="lower-content">
     
                                 <form action="{{ route('user.password.update') }}" method="post" class="default-form" enctype="multipart/form-data">
@@ -89,31 +84,22 @@
                                         <label>Confirm New Password</label>
                                         <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation">
                                     </div>
-
                                     <div class="form-group message-btn">
                                         <button type="submit" class="theme-btn btn-one">Save Changes </button>
                                     </div>
                                 </form>
 
-
-
                             </div>
                         </div>
                     </div>
-                        
-                    
                 </div>
-
-
             </div> 
-
-
         </div>
     </div>
 </section>
 <!-- sidebar-page-container -->
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="background-image: url( {{ asset('assets/images/shape/shape-2.png') }});"></div>
     <div class="auto-container">
@@ -137,6 +123,6 @@
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+subscribe-section end -->
 
 @endsection

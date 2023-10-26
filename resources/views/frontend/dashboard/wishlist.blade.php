@@ -13,10 +13,10 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>Wishlist Movie</h1>
+            <h1>Wishlist</h1>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
-                <li>Wishlist Movie</li>
+                <li><a href="{{ url('/')}}">Home</a></li>
+                <li>Wishlist</li>
             </ul>
         </div>
     </div>
@@ -78,7 +78,7 @@
 <!-- property-page-section end -->
 
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-2.png') }});"></div>
     <div class="auto-container">
@@ -102,7 +102,7 @@
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+ubscribe-section end -->
 
 <script type="text/javascript">
         window.addEventListener('DOMContentLoaded', function() {

@@ -180,13 +180,6 @@
                                             <div class="text pull-left">
                                                 <h6>{{ $item->genre }}&nbsp;&nbsp;&nbsp;<span>{{ $item->tag }}</span></h6>
                                             </div>
-                                            <ul class="rating pull-right clearfix">
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-40"></i></li>
-                                            </ul>
                                         </div>
                                         @endforeach
                                     </div>
@@ -194,7 +187,7 @@
                             </div>
                         </div>
 
-                        <div class="schedule-box content-widget">
+                        <!-- <div class="schedule-box content-widget">
                             <div class="title-box">
                                 <h4>Schedule A Meeting</h4>
                             </div>
@@ -234,7 +227,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
@@ -270,7 +263,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-inner">
+                            <!-- <div class="form-inner">
                                 @auth
                                 @php
                                 $id = Auth::user()->id;
@@ -326,12 +319,10 @@
                                         <button type="submit" class="theme-btn btn-one">Send Message</button>
                                     </div>
                                 </form>
-
                                 @endauth
-
-                            </div>
-
+                            </div> -->
                         </div>
+
                         <!-- <div class="calculator-widget sidebar-widget">
                             <div class="calculate-inner">
                                 <div class="widget-title">
@@ -518,7 +509,7 @@
     <!-- property-details end -->
 
 
-    <!-- subscribe-section -->
+    <!-- subscribe-section
     <section class="subscribe-section bg-color-3">
         <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-2.png') }});"></div>
         <div class="auto-container">
@@ -542,7 +533,7 @@
             </div>
         </div>
     </section>
-    <!-- subscribe-section end -->
+    subscribe-section end -->
 
 <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function() {

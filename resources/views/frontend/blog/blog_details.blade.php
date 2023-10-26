@@ -195,7 +195,7 @@
 </section>
 <!-- sidebar-page-container -->
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
     <div class="auto-container">
@@ -219,6 +219,6 @@
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+subscribe-section end -->
 
 @endsection

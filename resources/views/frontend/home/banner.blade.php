@@ -7,11 +7,11 @@ $othmovie = App\Models\Movie::where('movie_status', 'other')->get();
 <section class="banner-section" id="p5-canvas" style="background-image: url({{ asset('frontend/assets/images/banner/banner-1.jpg') }});">
     <div class="auto-container">
         <div class="inner-container">
-            <div class="content-box centred">
+            <!-- <div class="content-box centred">
                 <h2>Contextual Vision</h2>
                 <p>Understand the diverse contexts contained in advertisements and other images to ensure effective communication.</p>
                 <p>映像に込められた文脈の共通理解を促し、クリエイティブ、コミュニケーションへの活用をサポートします。</p>
-            </div>
+            </div> -->
             <div class="search-field">
                 <div class="tabs-box">
                     <div class="tab-btn-box">

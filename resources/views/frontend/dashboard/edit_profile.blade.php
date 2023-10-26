@@ -13,7 +13,7 @@
         <div class="content-box clearfix">
             <h1>User Profile</h1>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('/')}}">Home</a></li>
                 <li>User Profile</li>
             </ul>
         </div>
@@ -128,7 +128,7 @@
 </section>
 <!-- sidebar-page-container -->
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="background-image: url( {{ asset('assets/images/shape/shape-2.png') }});"></div>
     <div class="auto-container">
@@ -152,7 +152,7 @@
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+subscribe-section end -->
 
 <script type="text/javascript">
     $(document).ready(function(){

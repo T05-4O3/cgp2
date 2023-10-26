@@ -12,7 +12,7 @@ $blog = App\Models\BlogPost::Latest()->limit(2)->get();
                             <h3>About</h3>
                         </div>
                         <div class="text">Understand the diverse contexts contained in advertisements and other images to ensure effective communication.</br>
-                        映像に込められた文脈の共通理解を促し、クリエイティブ、コミュニケーションへの活用をサポートします。
+                        映像に込められた文脈の共通理解を促し、クリエイティブ、コミュニケーションをサポートします。
                         </div>
                     </div>
                 </div>

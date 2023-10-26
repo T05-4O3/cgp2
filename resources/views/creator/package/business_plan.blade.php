@@ -18,7 +18,7 @@
                             <div class="col-lg-3 ps-0">
                                 <a href="#" class="noble-ui-logo logo-light d-block mt-3"></a>                 
                                 <p class="mt-1 mb-1"><b></b></p>
-                                <p>108,<br> Great Russell St,<br>London, WC1B 3NA.</p>
+                                <p>108,<br> Ginza St,<br>Tokyo, .</p>
                                 <h5 class="mt-5 mb-2 text-muted">Invoice to :</h5>
                                 <p>{{ $data->name }}<br>{{ $data->email }}<br>{{ $data->address }}</p>
                             </div>
@@ -46,7 +46,7 @@
                                     <tr class="text-end">
                                         <td class="text-start">1</td>
                                         <td class="text-start">Business</td>
-                                        <td>50</td>
+                                        <td>20</td>
                                         <td>¥10,000</td>
                                         <td>¥10,000</td>
                                     </tr>

@@ -57,39 +57,39 @@ $status = $creatorId->status;
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('creator.movie.message') }}" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">Message</span>
                             </a>
-                        </li>
+                        </li> -->
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('creator.schedule.request') }}" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">Schedule Request</span>
                             </a>
-                        </li>
+                        </li> -->
 
-                        <li class="nav-item nav-category">Components</li>
+                        <!-- <li class="nav-item nav-category">Components</li> -->
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('creator.live.chat') }}" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">Live Chat</span>
                             </a>
-                        </li>
+                        </li> -->
                         
                         @else
                         @endif
                         
-                        <li class="nav-item nav-category">Docs</li>
+                        <!-- <li class="nav-item nav-category">Docs</li>
                         <li class="nav-item">
                             <a href="#" target="_blank" class="nav-link">
                                 <i class="link-icon" data-feather="hash"></i>
                                 <span class="link-title">Documentation</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>

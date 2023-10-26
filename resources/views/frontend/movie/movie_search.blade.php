@@ -169,7 +169,7 @@
 <!-- property-page-section end -->
 
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="{{ asset('frontend/background-image: url(assets/images/shape/shape-2.png') }});"></div>
     <div class="auto-container">
@@ -193,6 +193,6 @@
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+subscribe-section end -->
 
 @endsection

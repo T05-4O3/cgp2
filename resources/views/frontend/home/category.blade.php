@@ -21,7 +21,7 @@ $ptype = App\Models\ProductsType::latest()->limit(5)->get();
                 </li>
                 @endforeach
             </ul>
-            <div class="more-btn"><a href="{{ route('movie.type_16', $item->id) }}" class="theme-btn btn-one">16 Categories</a></div>
+            <div class="more-btn"><a href="{{ route('movie.type_16', $item->id) }}" class="theme-btn btn-one">All Categories</a></div>
         </div>
     </div>
 </section>

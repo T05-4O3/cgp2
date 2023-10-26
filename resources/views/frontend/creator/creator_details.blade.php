@@ -15,7 +15,7 @@
             <div class="content-box clearfix">
                 <h1>{{ $creator->name }}</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ url('/')}}">Home</a></li>
                     <li>{{ $creator->name }}</li>
                 </ul>
             </div>
@@ -37,19 +37,19 @@
                                 <h4>{{ $creator->name }}</h4>
                                 <span class="designation">{{ $creator->company }}</span>
                             </div>
-                            <ul class="social-list pull-right clearfix">
+                            <!-- <ul class="social-list pull-right clearfix">
                                 <li><a href="agents-details.html"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="agents-details.html"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="agents-details.html"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <div class="text">
-                            <p>TestTestTest</p>
+                            <!-- <p>TestTestTest</p> -->
                         </div>
-                        <ul class="info clearfix mr-0">
+                        <!-- <ul class="info clearfix mr-0">
                             <li><i class="fab fa fa-envelope"></i><a href="mailto:{{ $creator->email }}">{{ $creator->email }}</a></li>
                             <li><i class="fab fa fa-phone"></i><a href="tel:{{ $creator->phone }}">{{ $creator->phone }}</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
@@ -235,7 +235,7 @@
 <!-- agents-page-section end -->
 
 
-<!-- subscribe-section -->
+<!-- subscribe-section
 <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
     <div class="auto-container">
@@ -259,7 +259,7 @@
         </div>
     </div>
 </section>
-<!-- subscribe-section end -->
+subscribe-section end -->
 
 <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function() {
